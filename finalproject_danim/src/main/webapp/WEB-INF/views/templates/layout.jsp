@@ -24,8 +24,8 @@
 </head>
 <body>
 <div id="container">
-	<div id="header_top"><tiles:insertAttribute name="left" /></div>
-	<div id="header_bottom"><tiles:insertAttribute name="header" /></div>
+	<div id="header_top"><tiles:insertAttribute name="header_top" /></div>
+	<div id="header_bottom"><tiles:insertAttribute name="header_bottom" /></div>
 	<div id="main"><tiles:insertAttribute name="main" /></div>
 	<div id="footer"><tiles:insertAttribute name="footer" /></div>
 </div>
