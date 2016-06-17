@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menu">
+
+	<resultMap type="menuVO" id="menuRM">
+		<result column="shopname" property="bestFoodVO.shopname"/>
+		<result column="shop_add" property="bestFoodVO.shop_add"/>
+		<result column="foodtype" property="bestFoodVO.foodtype"/>
+		<result column="area_name" property="bestFoodVO.area_name"/>
+		<result column="detailarea_name" property="bestFoodVO.detailarea_name"/>
+	</resultMap>
+ 	<select id="detailFood" resultMap="menuRM">
+ 		select m.menu_no,m.food_picture,m.price,m.food_name,m.foodshop_no,b.shopname,b.shop_add,b.foodtype,b.area_name,b.detailarea_name
+ 		from foodmenu m, bestfood b
+ 		where m.foodshop_no=b.foodshop_no and m.foodshop_no=#{value}
+ 	</select>
+ 	
+ 	
+</mapper>

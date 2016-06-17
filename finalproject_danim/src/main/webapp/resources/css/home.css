@@ -1,0 +1,213 @@
+/*------------------tiles적용css----------------------*/
+   #container{
+      width: 90%; /* container 경계선 1 , left  200 padding 5+5 ,
+                                 main 600 padding 5+5 ,  border-left: 1   */
+      /* border: 1px solid black; */
+      margin-left: auto;
+      margin-right: auto;/*  좌우 여백 동일하게 해서 중앙정렬 */
+   }
+	#header_top{
+		padding: 5px;
+		height: 20%;
+		/* max-height: 20%; */
+		text-align:center;
+	}
+	#header_bottom{
+		padding: 5px;
+		height: 40%;
+		/* max-height: 40%; */
+		border-bottom: 1px solid black;
+		/* padding: 5px;
+		height:100%;
+		width:200px; */
+	}
+	#main{
+		padding: 5px;
+		width:90%;
+		height: 1000px;		
+		/* float: left; */ /* left로 부유위치를 지정해 left와 main이 수평 배치하도록 한다    */
+/* 		border-left: 1px solid black; */
+	}
+	#footer{
+		padding: 5px;
+		height: auto;
+/* 		border-top: 1px solid black; */
+		clear:both; /* float 속성 요소 아래에 배치하기 위해 float 속성 초기화(clear)   */
+	}
+
+ 
+/*-------------------Body---------------------*/
+body {
+	/* color: #000;
+	font: 300 15px/15px Roboto, Arial, Helvetica; */
+	/* background: url(../bootstrap/images/bg.jpg) right no-repeat fixed #fff; */
+	/* background-size: cover;
+	-webkit-font-smoothing: antialiased; */
+}
+/*----------------------------------------*/
+.container_12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height: 20px;
+}
+
+.container_12 .grid_4 {
+  width:500px;
+}
+/*----------------------------------------*/
+.container_12 .grid_12 {
+  width:800px;
+}
+
+.grid_12 {
+  display:inline;
+  float: left;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navigation {
+  z-index: 999;
+  position: relative;
+  padding: 5px 0 0;
+  font-family: 'Marvel', sans-serif;
+  font-weight: normal;
+}
+.navigation .sf-menu {
+  z-index: 990;
+  text-align: center;
+  position: relative;
+}
+.navigation nav {
+  position: absolute;
+  padding: 0;
+}
+.sf-menu ul {
+  position: absolute;
+  top: -999px;
+  display: none;
+}
+.sf-menu > li > ul > li {
+  float: none;
+  position: static;
+}
+.sf-menu > li {
+  float: none;
+  display: inline-block;
+  font-weight: 300;
+  position: relative;
+  font-size: 30px;
+  line-height: 52px;
+}
+.sf-menu > li + li {
+  margin-left: 46px;
+}
+.sf-menu > li + li:after {
+  content: '';
+  background-color: #800040;
+  height: 5px;
+  width: 1px;
+  height: 41px;
+  position: absolute;
+  left: -25px;
+  top: 6px;
+}
+.sf-menu > li > a {
+  position: relative;
+  color: #800040;
+  text-align: center;
+}
+.sf-menu > li > a.sf-with-ul:after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  bottom: 15px;
+  /* left: 50%; */
+  bottom: -5px;
+  pointer-events: none;
+  z-index: 999;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 3px 3px 0 3px;
+  border-color: #fff transparent transparent transparent;
+}
+.sf-menu > li.sfHover > a,
+.sf-menu > li.current > a,
+.sf-menu > li > a:hover {
+  color: #ec9e9e;
+}
+/*----------------------------------------*/
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 20px;
+}
+/*----------------------------------------*/
+.col-md-4 {
+  margin-bottom: 86px;
+  text-align: center;
+  background-color: #c7c7c7;
+}
+
+.col-md-4 .banner_title {
+  display: block;
+  font: 40px/30px 'Marvel', sans-serif;
+  color: #ffffff;
+  background-color: #ec9e9e;
+  padding: 40px 0 40px;
+  position: relative;
+}
+.col-md-4 .banner_title:after {
+  position: absolute;
+  content: '';
+  background-color: #ffffff;
+  width: 135px;
+  height: 3px;
+  bottom: 55px;
+  left: 50%;
+  margin-left: -68px;
+}
+.col-md-4 a.banner_title:hover {
+  background-color: #1e2439;
+}
+/*-----------------회원가입 & 회원정보수정-----------------------*/
+.input_form{
+	width:500px;
+	/* background-color: #ff5555; */
+}
+
+#nav {
+width:750px;
+margin:0 auto;
+list-style:none;
+}
+#nav li {
+float:left;
+}
+#nav a {
+display:block;
+text-align:center;
+width:150px; /* fixed width */
+text-decoration:none; 
+}
+
+.searchForm{
+	width: 400px;
+	margin-bottom: 20px;
+	text-align: left;
+	background-color: #ffffff;
+}
+.thumimg {
+	width: 100%; 
+	max-width: 350px;
+	height:100%;
+	max-height:200px; 
+	vertical-align: middle;
+}
+	

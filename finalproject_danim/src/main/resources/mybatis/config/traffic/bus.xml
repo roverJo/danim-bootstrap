@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bus">
+ 	<select id="searchEndAreaByTer" parameterType="string" resultType="string">
+ 		select distinct b.end_area from bus b,terminal t
+ 		where b.terminal_no = t.terminal_no and b.terminal_no = #{value}
+ 	</select>
+ 	
+ 	<resultMap type="busVO" id="busRM">
+ 		<result property="terminalVO.terminal_name" column="terminal_name"/>
+ 		<result property="terminalVO.terminal_no" column="terminal_no"/>
+ 		<result property="leadTime" column="leadtime"/> 
+ 		<result property="busType" column="bustype"/>
+ 	</resultMap>
+ 	
+ 	<select id="getBusList" parameterType="busVO" resultMap="busRM">
+ 		select b.bus_no,b.operation_time,b.end_area,t.terminal_no,t.terminal_name,b.price,b.leadtime,b.bustype
+ 		from bus b,terminal t
+ 		where b.terminal_no = t.terminal_no and b.terminal_no = #{terminalVO.terminal_no}
+ 		and b.end_area = #{end_area}
+ 	</select>
+ 	
+ 	<select id="getBusInfo" parameterType="int" resultMap="busRM">
+ 		select b.bus_no,b.operation_time,b.end_area,b.price,b.leadtime,b.bustype,t.terminal_name 
+ 		from bus b,terminal t
+		where b.terminal_no = t.terminal_no and b.bus_no = #{value}
+ 	</select>
+</mapper>

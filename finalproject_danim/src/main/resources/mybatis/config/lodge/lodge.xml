@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lodge">
+	<resultMap type="lodgeVO" id="lodgeRM">
+		<result column="picture_name" property="lodgePictureVO.picture_name"/>
+		<result column="picture_no" property="lodgePictureVO.picture_no"/>
+	</resultMap>
+	<!-- <select id="lodge" parameterType="lodgeVO" resultMap="lodgeRM">
+		select l.lodge_no, l.shopname, p.picture_no, p.picture_name from lodge l, lodgepicture p
+		where l.lodge_no=p.lodge_no and p.picture_name like '%_a.jpg%' order by picture_no asc
+	</select> -->
+	<select id="searchLodgeByNameAndKind" parameterType="lodgeVO" resultMap="lodgeRM">
+		select l.lodge_no, l.shopname,l.lodgetype, p.picture_no, p.picture_name from lodge l, lodgepicture p
+		where l.lodge_no=p.lodge_no and l.detailarea_name=#{detailarea_name} and l.lodgetype=#{lodgetype} and p.picture_name like '%_a.jpg%' order by picture_no asc
+	</select>
+<!--  	<select id="showlodge" resultType="lodgeVO">
+ 		select * from lodge
+ 		where lodge_no=#{value} 
+ 	</select> -->
+ 	<select id="showlodge" parameterType="lodgeVO" resultMap="lodgeRM">
+ 		select l.lodge_no, l.shopname, l.shopinfo, l.lodgetype, l.price, l.area_name, l.detailarea_name, p.picture_no, p.picture_name from lodge l, lodgepicture p 
+		where l.lodge_no=p.lodge_no and l.lodge_no=#{value} order by picture_no asc
+ 	</select>
+ 	<select id="lodgeNo" resultType="lodgeVO">
+ 		select * from lodge order by lodge_no asc
+ 		<!-- select distinct(lodge_no) from lodge order by lodge_no asc -->
+ 	</select>
+ 	
+ 	<select id="getLodgeInfo" parameterType="int" resultType="lodgeVO">
+ 		select lodge_no, shopname, shopinfo, lodgetype, price, area_name, detailarea_name from lodge
+		where lodge_no=#{value}  
+ 	</select>
+ 	
+ 	<select id="getLodgePicture" parameterType="string" resultType="lodgePictureVO">
+ 		select p.picture_no,p.picture_name from lodge l,lodgepicture p
+ 		where l.lodge_no = p.lodge_no and p.lodge_no = #{value}
+ 	</select>
+ 	
+ 	 <!-- 숙박 탑5리스트 가져오기 -->
+ 	<select id="lodgetop5list" resultType="lodgeVO">
+ 		select shopname,lodgetype,detailarea_name,hits rank from
+		(select shopname,lodgetype,detailarea_name,hits, rank() over	(order by hits desc) as rank from lodge )
+   <![CDATA[
+       where rank < 6
+    	]]>
+ 	</select>
+</mapper>

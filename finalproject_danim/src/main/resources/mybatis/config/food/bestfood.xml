@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bestfood">
+<!--  	<select id="searchArea" resultType="areaVO">
+ 		select area_name from area
+ 	</select> -->
+ 	
+ 	<select id="searchBestFood" resultType="bestFoodVO" parameterType="bestFoodVO">
+ 		select foodshop_no,shopname,shop_add,foodtype,area_name,detailarea_name,main_price,main_food from bestfood
+ 		where detailarea_name =#{detailarea_name} and foodtype=#{foodtype}
+ 	</select>
+ 	
+ 		<select id="searchAllBestFood" resultType="bestFoodVO" parameterType="bestFoodVO">
+ 		select foodshop_no,shopname,shop_add,foodtype,area_name,detailarea_name,main_price,main_food from bestfood
+ 		where detailarea_name =#{detailarea_name}
+ 	</select>
+<!--  	<select id="detailFood" resultType="bestFoodVO">
+ 		select foodshop_no,shopname,shop_add,foodtype,area_name,detailarea_name from bestfood
+ 		where foodshop_no=#{value}
+ 	</select> -->
+ 	
+ 	<update id="updateHits" parameterType="int">
+ 		update bestfood set hits=hits+1 where foodshop_no=#{value}
+ 	</update>
+ 	
+ 	<select id="getBestFoodInfo" resultType="bestFoodVO" parameterType="int">
+ 		select foodshop_no,shopname,shop_add,foodtype,area_name,detailarea_name,main_price,main_food from bestfood
+ 		where foodshop_no=#{foodshop_no}
+ 	</select>
+ 	
+ 	<!-- 음식 탑5리스트 가져오기 -->
+ 	<select id="foodtop5list" resultType="bestFoodVO">
+ 		select shopname,foodtype,detailarea_name,hits rank from
+	(select shopname,foodtype,detailarea_name,hits, rank() over	(order by hits desc) as rank from bestfood )
+   <![CDATA[
+       where rank < 6
+    	]]>
+ 	</select>
+ 	
+</mapper>
