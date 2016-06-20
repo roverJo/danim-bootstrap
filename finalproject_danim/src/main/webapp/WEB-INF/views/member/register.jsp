@@ -65,11 +65,11 @@
 				alert("패스워드를 입력하세요!");
 				return false;
 			}
+			 */
 			if($("#passView").html()!="비밀번호 일치!"){
 				alert("비밀번호를 확인하세요!");
 				return false;
 			}
-			 */
 			if($("#nickView").html()!="사용 가능!"){
 				alert("닉네임을 체크하세요!");
 				return false;
@@ -86,7 +86,7 @@
 	});
 </script>
 <div class="container" align="center">
-	<div class="addTopHeight"></div>
+	<div class="addHeight"></div>
 		<div id="contact-area" class="community">
 		<h3 class="lead">회원가입</h3><br>
 			<form id="registerForm" action="register.do" method="post" class="input_form">

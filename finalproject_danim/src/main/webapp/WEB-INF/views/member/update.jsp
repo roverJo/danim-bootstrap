@@ -65,26 +65,28 @@
 	});
 </script>
 <div class="container" align="center">
-	<h1>회원정보수정</h1><br>
-	<div id="contact-area" class="col-md-12">
-		<form id="updateForm" action="login_updateResult.do" method="post" class="input_form text-left">
-		아이디 <input type="text" name="id" value="${mvo.id}" class="form-control" readonly><br>
-		비밀번호 <input type="password" name="password" class="form-control" required><br>
-		비밀번호 확인 <input type="password" name="checkpass" class="form-control" required>
-		<!-- <span id="passView"></span><br> -->
-		<div class="col-md-12" id="passView" aria-hidden="true"></div><br>
-		닉네임 <input type="text" name="nickname" value="${mvo.nickname}" class="form-control" required>
-		<!-- <span id="nickView"></span><br> -->
-		<div class="col-md-12" id="nickView" aria-hidden="true"></div><br>
-		주소 <select name="address" class="btn btn-default dropdown-toggle col-md-12" required>
-		<option value="">----주소----</option>
-		<c:forEach items="${area}" var="area">
-		<option value="${area.area_name}">${area.area_name}</option>
-		</c:forEach>
-		</select>
-		<br><br><br>
-		이메일 <input type="email" name="email_add" value="${mvo.email_add}" class="form-control" required><br><br>
-		<input type="submit" value="수정" class="btn btn-info col-md-12">
-		</form>
-	</div>
+	<div class="addHeight"></div>
+		<div id="contact-area" class="community">
+			<h3 class="lead">회원 정보 수정</h3><br>
+				<form id="updateForm" action="login_updateResult.do" method="post" class="input_form text-left">
+				아이디 <input type="text" name="id" value="${mvo.id}" class="form-control" readonly><br>
+				비밀번호 <input type="password" name="password" class="form-control" required><br>
+				비밀번호 확인 <input type="password" name="checkpass" class="form-control" required>
+				<!-- <span id="passView"></span><br> -->
+				<div class="col-md-12" id="passView" aria-hidden="true"></div><br>
+				닉네임 <input type="text" name="nickname" value="${mvo.nickname}" class="form-control" required>
+				<!-- <span id="nickView"></span><br> -->
+				<div class="col-md-12" id="nickView" aria-hidden="true"></div><br>
+				주소 <select name="address" class="btn btn-default dropdown-toggle col-md-12" required>
+				<option value="">----주소----</option>
+				<c:forEach items="${area}" var="area">
+				<option value="${area.area_name}">${area.area_name}</option>
+				</c:forEach>
+				</select>
+				<br><br><br>
+				이메일 <input type="email" name="email_add" value="${mvo.email_add}" class="form-control" required><br><br>
+				<input type="submit" value="수정" class="btn btn-info col-md-12">
+				</form>
+		</div>
+	<div class="clear"></div>
 </div>

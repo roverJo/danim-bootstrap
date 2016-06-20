@@ -22,11 +22,30 @@
 	/* 	background-size: cover; */
 	}
 	.addHeight{
-		height: 150px;
+		height: 30px;
 	}
 	.community{
 		background-color: #f3f3f3;
+		padding: 10px;
 	}
+	.custab{
+	    border: 1px solid #ccc;
+	    padding: 5px;
+	    margin: 5% 0;
+	    box-shadow: 3px 3px 2px #ccc;
+	    transition: 0.5s;
+	    }
+	.custab:hover{
+	    box-shadow: 3px 3px 0px transparent;
+	    transition: 0.5s;
+	    }
+    #contact-area{
+    	width: 500px;
+    }
+    .btn-md-4 {
+    width: 33.33333333333333%;
+    float: center;
+  	}
 </style>
 
 <!-- CSS -->

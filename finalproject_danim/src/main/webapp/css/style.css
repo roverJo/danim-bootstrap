@@ -183,7 +183,7 @@ h2 {
 h3 {
   font: bold 48px/52px 'Marvel', sans-serif;
   color: #1e2439;
-  padding-top: 44px;
+  /* padding-top: 44px; */
   margin-bottom: 28px;
 }
 /****Lists****/
