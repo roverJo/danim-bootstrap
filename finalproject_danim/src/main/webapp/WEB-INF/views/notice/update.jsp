@@ -26,24 +26,30 @@ alert("관리자제한");
 location.href="${initParam.root}home.do";
 </script>
 </c:if>
-<form method="post" id="update_form" 
-action="${initParam.root}noticeupdate.do?no=${requestScope.nvo.noticeno}">
-	<table class="update" border="1">
-	<tr>
-	<td>
-	글번호:<input type="text" name="noticeno" value="${requestScope.nvo.noticeno}"  readonly></input>
-	|제목:<input type="text" id="title" name="title" value="${requestScope.nvo.title}"></input>
-	</td>
-	<tr>
-	<td>
-	<textarea rows="16" cols="64" id="content" name="content">${requestScope.nvo.content}</textarea>
-	</td>
-	</tr>
-	<tr>
-	<td valign="middle">
-	<img id="updateBtn" class="action" src="" alt="수정"  onclick="content_submit()">
-	<img id="returnBtn" class="action" src="" alt="취소" onclick="cancel()">
-	</td>
-	</tr>
-	</table>
-</form>
+<div class="container_12" align="center">
+<div class="addHeight"></div>
+	<div class="community">
+		<form method="post" id="update_form" 
+		action="${initParam.root}noticeupdate.do?no=${requestScope.nvo.noticeno}">
+			<table class="update" border="1">
+			<tr>
+			<td>
+			글번호:<input type="text" name="noticeno" value="${requestScope.nvo.noticeno}"  readonly></input>
+			|제목:<input type="text" id="title" name="title" value="${requestScope.nvo.title}"></input>
+			</td>
+			<tr>
+			<td>
+			<textarea rows="16" cols="64" id="content" name="content">${requestScope.nvo.content}</textarea>
+			</td>
+			</tr>
+			<tr>
+			<td valign="middle">
+			<img id="updateBtn" class="action btn-info" src="" alt="수정"  onclick="content_submit()">
+			<img id="returnBtn" class="action" src="" alt="취소" onclick="cancel()">
+			</td>
+			</tr>
+			</table>
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>

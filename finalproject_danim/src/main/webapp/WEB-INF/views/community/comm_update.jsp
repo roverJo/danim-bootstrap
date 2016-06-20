@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:choose>
-	<c:when test="${sessionScope.mvo!=null}">
-<script type="text/javascript" src="${initParam.root}editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="${initParam.root}resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 var oEditors = [];
 $(document).ready(function(){
@@ -11,7 +9,7 @@ $(document).ready(function(){
 						oAppRef: oEditors,
 						elPlaceHolder: "ir1",
 						//SmartEditor2Skin.html 파일이 존재하는 경로
-						sSkinURI: "${initParam.root}editor/SmartEditor2Skin.html",	
+						sSkinURI: "${initParam.root}resources/editor/SmartEditor2Skin.html",	
 						htParams : {
 							// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 							bUseToolbar : false,				
@@ -49,31 +47,40 @@ $(document).ready(function(){
 	});//reset click
 });
 </script>
-		<form action="comm_update.do" method="post" id="frm">
-		<input type="hidden" name="comm_no" value="${commVO.comm_no }">
-		<textarea hidden="textTest" id="textTest"></textarea>
-		<table width="100%">
-				<tr>
-					<td>작성자</td>
-					<td><input type="text" name="id" value="${sessionScope.mvo.nickname}" readonly/></td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td>
-						<textarea rows="10" cols="30" id="ir1" name="content" style="width:766px; height:412px; ">${commVO.content }</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<input type="button" class="btn btn-success" id="save" value="확인"/>
-						<input type="button" class="btn btn-default" id="reset" value="초기화"/>
-					</td>
-				</tr>
-		</table>
-		</form>	
-	</c:when>
-	<c:otherwise>
-		<c:redirect url="home.do" />
-		<%-- <c:import url="home.do" /> --%>
-	</c:otherwise>
-</c:choose>
+<div class="addHeight"></div>
+<div id="layer" class="container_12">
+    <div class="community">
+		<c:choose>
+			<c:when test="${sessionScope.mvo!=null }">
+				<form action="comm_update.do" method="post" id="frm">
+				<input type="hidden" name="comm_no" value="${commVO.comm_no }">
+				<textarea hidden="textTest" id="textTest"></textarea>
+				<table width="100%">
+						<tr>
+							<td>작성자</td>
+							<td><input type="text" name="id" value="${sessionScope.mvo.nickname}" readonly/></td>
+						</tr>
+						<tr>
+							<td>내용</td>
+							<td>
+								<textarea rows="10" cols="30" id="ir1" name="content" style="width:766px; height:412px; ">${commVO.content }</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+								<input type="button" class="btn btn-success" id="save" value="확인"/>
+								<input type="button" class="btn btn-default" id="reset" value="초기화"/>
+							</td>
+						</tr>
+				</table>
+				</form>	
+		</c:when>
+		<c:otherwise>
+			<c:redirect url="home.do" />
+			<%-- <c:import url="home.do" /> --%>
+		</c:otherwise>
+	</c:choose>
+	<div class="clear"></div>
+	</div>	
+  <div class="clear"></div>
+</div>

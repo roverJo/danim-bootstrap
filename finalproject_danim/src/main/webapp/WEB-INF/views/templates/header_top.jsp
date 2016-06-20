@@ -13,17 +13,17 @@
               <ul class="sf-menu">
                <li class="current"><a href="home.do">Home</a></li>
                <li><a href="${initParam.root }community_list.do?rownum=5">Community</a></li>
-               <c:if test="${sessionScope.mvo!=null }">
+             <c:if test="${sessionScope.mvo!=null }">
                <li><a href="${initParam.root}zim_list.do">ZZim</a>
                <li><a href="${initParam.root}login_cartList.do">Cart</a></li>
-               </c:if>
+             </c:if>
                <li><a href="${initParam.root }notice_list.do?pageNo=1">Notice</a></li>
                <li class="dropdown"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown">검색</button>
-               <div>
+                <div>
                		 <ul class="dropdown-menu" role="menu">
-					    <li><a href="#">교통</a></li>
-					    <li><a href="#">숙박</a></li>
-					    <li><a href="#">음식</a></li>
+					    <li><a href="${initParam.root}traffic_search.do">교통검색</a></li>
+					    <li><a href="${initParam.root}lodge_lodge.do">숙박검색</a></li>
+					    <li><a href="${initParam.root }bestfood_search.do">음식검색</a></li>
              		</ul>
              	</div>
                </li>
@@ -59,8 +59,4 @@
 		<a href="${initParam.root}login_cartList.do">장바구니</a><br>
 	</c:otherwise>
 </c:choose>
-
-
-
-
  --%>

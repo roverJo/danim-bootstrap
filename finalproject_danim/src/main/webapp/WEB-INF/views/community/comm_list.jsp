@@ -19,18 +19,27 @@
 
 	a.cbtn {display:inline-block; height:25px; padding:0 14px 0; border:1px solid #304a8a; background-color:#3f5a9d; font-size:13px; color:#fff; line-height:25px;}	
 	a.cbtn:hover {border: 1px solid #091940; background-color:#1f326a; color:#fff;}
+	
+	.glyphicon{
+		cursor: pointer;
+	}
  </style>
 
 <%-- <link rel = "stylesheet" type = "text/css" href = "${initParam.root}fontium/css/fontium.css" /> --%>
 <script type="text/javascript" src="${initParam.root}resources/js/jquery.bpopup.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		<%-- 댓글 더보기 클릭 시 페이지 reloading되며, 사용자가 보던 위치로 돌아감--%>
+		if ( window.location.href.indexOf('page_y') != -1 ) {
+	        var match = window.location.href.split('?')[1].split("&")[0].split("=");
+	        $('html, body').scrollTop( match[1] );
+	    }
 		$("#commWrite").click(function() {
 			location.href="community_write.do";
 		});
+				$("#btn").html("<button type='button' onclick='loadData()'>더보기</button>");
 		$(window).scroll(function() { // 스크롤하면 아래 코드 실행
 			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-				$("#btn").html("<button type='button' onclick='loadData()'>더보기</button>");
 			}
 		}); //scroll
 		
@@ -163,53 +172,58 @@
 
 	}				
 </script>
-<div id="layer">
-<div class="bg"></div>
-<div id="layer2" class="pop-layer">
-	<div class="pop-container">
-				        <div class="pop-conts"></div>
-				        <div class="btn-r">
-				        	<a href="#" class="cbtn">Close</a>
-				        </div>
+<div class="addHeight"></div>
+<div id="layer" class="container_12">
+	<div class="bg"></div>
+	<div id="layer2" class="pop-layer">
+		<div class="pop-container">
+					        <div class="pop-conts"></div>
+					        <!-- <div class="btn-r">
+					        	<a href="#" class="cbtn">Close</a>
+					        </div> -->
+		</div>
 	</div>
-</div>
-<table border="1" id="commTable">
-	<!-- <tr>
-		<td>글번호</td>
-		<td>작성자</td>
-		<td>작성시간</td>
-		<td>글내용</td>
-		<td>좋아용</td>
-	</tr> -->
-<c:forEach var="list" items="${commList}">
-	 <tr>
-		<td><strong>${list.memberVO.nickname}</strong></td>
-		<td>${list.timePosted}</td>
-		<td name="likeDiv" title="${list.comm_no }">
-			<c:choose>
-			<c:when test="${list.userLike==1 }">
-				<div class='glyphicon glyphicon-heart' data-toggle='tooltip' title='좋아요 취소'></div>
-			</c:when>
-			<c:when test="${list.userLike==0 }">
-				<div class="glyphicon glyphicon-heart-empty" data-toggle="tooltip" title="좋아요!"></div><!--fonti um-heart onclick="updateLike('${list.comm_no}')" -->
-			</c:when>
-			</c:choose>
-			${list.likePosted }</td>
-	</tr>
-	<tr>
-		<td colspan="3"  height="100" width="500">${list.content}<br>
-			<%-- <c:if test="${fn:contains(list.content, 'img') }">
-			</c:if> --%>
-			<a href="#" onClick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">상세보기</a>
-		</td>
-	</tr>
-</c:forEach>
-</table>
-<c:if test="${commList.size() >= param.rownum}">
-	<span id="btn"></span>
-</c:if>
-<c:if test="${sessionScope.mvo!=null}">
-	<input type="image" class="fonti um-pencil" alt="글작성" id="commWrite">
-	<!-- id="commWrite" alt="글작성"  -->
-</c:if>
+	<div class="grid_12">
+		<div class="community">
+			<table border="1" id="commTable">
+				<!-- <tr>
+					<td>글번호</td>
+					<td>작성자</td>
+					<td>작성시간</td>
+					<td>글내용</td>
+					<td>좋아용</td>
+				</tr> -->
+			<c:forEach var="list" items="${commList}">
+				 <tr>
+					<td><strong>${list.memberVO.nickname}</strong></td>
+					<td>${list.timePosted}</td>
+					<td name="likeDiv" title="${list.comm_no }">
+						<c:choose>
+						<c:when test="${list.userLike==1 }">
+							<div class='glyphicon glyphicon-heart' data-toggle='tooltip' title='좋아요 취소'></div>
+						</c:when>
+						<c:when test="${list.userLike==0 }">
+							<div class="glyphicon glyphicon-heart-empty" data-toggle="tooltip" title="좋아요!"></div><!--fonti um-heart onclick="updateLike('${list.comm_no}')" -->
+						</c:when>
+						</c:choose>
+						${list.likePosted }</td>
+				</tr>
+				<tr>
+					<td colspan="3"  height="100" width="500">${list.content}<br>
+						<%-- <c:if test="${fn:contains(list.content, 'img') }">
+						</c:if> --%>
+						<a href="#" onClick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">상세보기</a>
+					</td>
+				</tr>
+			</c:forEach>
+			</table>
+			<c:if test="${commList.size() >= param.rownum}">
+				<span id="btn"></span>
+			</c:if>
+			<c:if test="${sessionScope.mvo!=null}">
+				<input type="image" class="fonti um-pencil" alt="글작성" id="commWrite">
+				<!-- id="commWrite" alt="글작성"  -->
+			</c:if>
+		</div>
+	</div>
 </div>

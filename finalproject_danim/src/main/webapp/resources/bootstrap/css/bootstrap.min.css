@@ -31,7 +31,7 @@ audio:not ([controls] ){
 [hidden], template {
 	display: none
 }
-
+/* 
 a {
 	background-color: transparent
 }
@@ -39,7 +39,7 @@ a {
 a:active, a:hover {
 	outline: 0
 }
-
+ */
 abbr[title] {
 	border-bottom: 1px dotted
 }
@@ -51,12 +51,12 @@ b, strong {
 dfn {
 	font-style: italic
 }
-
+/* 
 h1 {
 	margin: .67em 0;
 	font-size: 2em
 }
-
+ */
 mark {
 	color: #000;
 	background: #ff0
@@ -1328,7 +1328,7 @@ html {
 	font-size: 10px;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
-
+/* 
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
@@ -1336,13 +1336,13 @@ body {
 	color: #333;
 	background-color: #fff
 }
-
+ */
 button, input, select, textarea {
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit
 }
-
+/* 
 a {
 	color: #337ab7;
 	text-decoration: none
@@ -1358,7 +1358,7 @@ a:focus {
 	outline: 5px auto -webkit-focus-ring-color;
 	outline-offset: -2px
 }
-
+ */
 figure {
 	margin: 0
 }
@@ -1422,7 +1422,7 @@ hr {
 	overflow: visible;
 	clip: auto
 }
-
+/* 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
 	font-family: inherit;
 	font-weight: 500;
@@ -1482,7 +1482,7 @@ hr {
 .h6, h6 {
 	font-size: 12px
 }
-
+ */
 p {
 	margin: 0 0 10px
 }

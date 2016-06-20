@@ -23,30 +23,36 @@ alert("관리자제한");
 location.href="${initParam.root}home.do";
 </script>
 </c:if>
-<form method="post" action="${initParam.root}write.do" id="write_form">
-<table class="inputForm">
-<caption>글쓰기</caption>
-<tbody>
-<tr>
-<td>제목</td>
-<td><input type="text" id="title" name="title" size="45"></td>
-</tr>
-<tr>
-<td>닉네임</td>
-<td>${sessionScope.mvo.nickname}</td>
-</tr>
-<tr>
-<td colspan="4" align="left">&nbsp;&nbsp;
-<textarea cols="52" rows="16" id="content" name="content"></textarea>
-</td>
-</tr>
-<tr>
-<td colspan="4" align="center">
-<img id="writeBtn" class="action" src="" alt="입력"  onclick="content_submit()">
-<img id="resetBtn" class="action" src="" alt="취소" onclick="cancel()">
-</td>
-</tr>
-</tbody>
-</table>
-</form>
 
+<div class="container_12" align="center">
+<div class="addHeight"></div>
+	<div class="community">
+		<form method="post" action="${initParam.root}write.do" id="write_form">
+		<table class="inputForm">
+		<caption>글쓰기</caption>
+		<tbody>
+		<tr>
+		<td>제목</td>
+		<td><input type="text" id="title" name="title" size="45"></td>
+		</tr>
+		<tr>
+		<td>닉네임</td>
+		<td>${sessionScope.mvo.nickname}</td>
+		</tr>
+		<tr>
+		<td colspan="4" align="left">&nbsp;&nbsp;
+		<textarea cols="52" rows="16" id="content" name="content"></textarea>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="4" align="center">
+		<img id="writeBtn" class="action" src="" alt="입력"  onclick="content_submit()">
+		<img id="resetBtn" class="action" src="" alt="취소" onclick="cancel()">
+		</td>
+		</tr>
+		</tbody>
+		</table>
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
