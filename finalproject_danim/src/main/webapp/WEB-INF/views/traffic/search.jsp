@@ -12,7 +12,7 @@
 				dataType:"json",
 				success:function(area){
 					//alert(jsonData[0].area_name);
-					var selectArea ="<select id='areaName'>";
+					var selectArea ="<select class='form-control' id='areaName'>";
 					selectArea += "<option value=''>출발지를 선택하세요</option>";
 					for(var i = 0 ; i < area.length; i++)
 					{
@@ -33,7 +33,7 @@
 			$("#searchResult").html("");
 			if($(this).val() != "")
 			{
-				var selectKind = "<select id='kind'>"
+				var selectKind = "<select class='form-control' id='kind'>"
 				selectKind += "<option value=''>수단을 선택하세요</option>"
 				selectKind += "<option value='버스'>버스</option>";
 				selectKind += "<option value='기차'>기차</option>";
@@ -55,7 +55,7 @@
 					url:"searchTerminal.do?area_name="+$("#areaName").val(),
 					dataType:"json",
 					success:function(terminalList){
-						var selectTerminal ="<select id='terminalName'>";
+						var selectTerminal ="<select class='form-control' id='terminalName'>";
 						selectTerminal += "<option value=''>터미널을 선택하세요</option>";
 						for(var i = 0 ; i < terminalList.length; i++)
 						{
@@ -73,7 +73,7 @@
 					url:"searchStation.do?area_name="+$("#areaName").val(),
 					dataType:"json",
 					success:function(stationList){
-						var selectStation ="<select id='stationName'>";
+						var selectStation ="<select class='form-control' id='stationName'>";
 						selectStation += "<option value=''>역을 선택하세요</option>";
 						for(var i = 0 ; i < stationList.length; i++)
 						{
@@ -98,7 +98,7 @@
 					url:"searchEndAreaByTer.do?terminalName="+$("#terminalName").val(),
 					dataType:"json",
 					success:function(endAreaList){
-						var selectEndArea ="<select id='endAreaName'>";
+						var selectEndArea ="<select class='form-control' id='endAreaName'>";
 						selectEndArea += "<option value=''>도착지를 선택하세요</option>";
 						for(var i = 0 ; i < endAreaList.length; i++)
 						{
@@ -123,7 +123,7 @@
 					url:"searchEndAreaBySta.do?stationName="+$("#stationName").val(),
 					dataType:"json",
 					success:function(endAreaList){
-						var selectEndArea ="<select id='endAreaName'>";
+						var selectEndArea ="<select class='form-control' id='endAreaName'>";
 						selectEndArea += "<option value=''>도착지를 선택하세요</option>";
 						for(var i = 0 ; i < endAreaList.length; i++)
 						{
@@ -142,7 +142,7 @@
 			$("#searchResult").html("");
 			if($(this).val() != "")
 			{
-				$("#basketTraffic").html("<input type='button' id='searchBtn' value='검색'>");	
+				$("#basketTraffic").html("<input type='button' class='btn btn-info btn-md-4' id='searchBtn' value='검색'>");	
 			}
 		});
 		//////////////////////////////////////////////////////////////////
@@ -257,19 +257,21 @@
 		
 	});
 </script>
-<h3>교통검색페이지</h3><br>
+<div class="container" align="center">
+<h3 class="lead">교통검색페이지</h3><br>
 <form id="trafficForm" method="get" action="login_checkTypeByTraffic.do">
 	<input type="hidden" name="no" value="">
 	<!-- 출발지역검색 -->
-	<span id="searchArea"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span id="searchArea" class="col-md-6"></span>
 	<!-- 교통수단검색 -->
-	<span id="searchKind"></span><br><br>
+	<span id="searchKind" class="col-md-6"></span><br><br>
 	<!-- 터미널검색or역검색 -->
-	<span id="searchTerminalorStation"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span id="searchTerminalorStation" class="col-md-6"></span>
 	<!-- 도착지역검색 -->
-	<span id="searchEndArea"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span id="searchEndArea" class="col-md-6"></span><br><br>
 	<!-- 장바구니버튼 -->
 	<span id="basketTraffic"></span><br><br>
 	<!-- result -->
 	<span id="searchResult"></span>
 </form>
+</div>

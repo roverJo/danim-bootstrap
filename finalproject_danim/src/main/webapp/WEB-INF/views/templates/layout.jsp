@@ -46,6 +46,30 @@
     width: 33.33333333333333%;
     float: center;
   	}
+  	.selectArea{
+  		display : table;
+		margin-left: 25%;
+		margin-right: 30%;
+		display: inline-block;
+  	}
+  	.searchForm{
+		width: 350px;
+		/* margin-top: 10px;
+		margin-bottom: 30px;
+		margin-left: 20px;
+		margin-right: 10px; */
+		margin-left: 20px;
+	/* 	padding: 10px;  */
+	/* 	text-align: left; */
+		background-color: #ffffff;
+	}
+	.thumimg {
+	width: 100%; 
+	max-width: 350px;
+	height:100%;
+	max-height:200px; 
+	vertical-align: middle;
+	}
 </style>
 
 <!-- CSS -->

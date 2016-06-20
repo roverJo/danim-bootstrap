@@ -20,8 +20,8 @@
 			<form id="loginForm" action="login.do" method="post">
 			아이디 <input type="text" name="id" placeholder="id" class="input-small" required>
 			비밀번호  <input type="password" name="password" placeholder="password" class="input-small" required>
-			<input type="submit" class="btn btn-info" value="로그인">
-			<a href="${initParam.root}inregi.do" class="btn btn-default">회원가입</a>
+			<input type="submit" class="btn btn-primary" value="로그인">
+			<a href="${initParam.root}inregi.do" class="btn btn-primary">회원가입</a>
 			</form>
 		</c:if>
 		<c:if test="${sessionScope.mvo!=null}">
