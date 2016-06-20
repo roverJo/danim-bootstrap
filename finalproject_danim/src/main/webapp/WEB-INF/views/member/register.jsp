@@ -86,28 +86,30 @@
 	});
 </script>
 <div class="container" align="center">
-	<h1>회원가입</h1><br>
-	<div id="contact-area" class="col-md-12">
-		<form id="registerForm" action="register.do" method="post" class="input_form">
-		<input type="text" name="id" class="form-control" placeholder="아이디" required>
-		<!-- <span id="idView"></span> -->
-		<div class="col-md-12" id="idView" aria-hidden="true"></div><br>
-		<input type="password" name="password" class="form-control" placeholder="비밀번호" required><br>
-		<input type="password" name="checkpass" class="form-control" placeholder="비밀번호 확인" required>
-		<!-- <span id="passView"></span> -->
-		<div class="col-md-12" id="passView" aria-hidden="true"></div><br>
-		<input type="text" name="nickname" class="form-control" placeholder="닉네임" required>
-		<!-- <span id="nickView"></span><br> -->
-		<div class="col-md-12" id="nickView" aria-hidden="true"></div><br>
-		<select name="address" class="btn btn-default dropdown-toggle col-md-12" required>
-		<option value="">----주소----</option>
-		<c:forEach items="${area}" var="area">
-		<option value="${area.area_name}">${area.area_name}</option>
-		</c:forEach>
-		</select>
-		<br><br><br>
-		<input type="email" name="email_add" class="form-control" placeholder="email" required><br><br>
-		<input type="submit" value="회원가입" class="btn btn-info col-md-12">
-		</form>
-	</div>
+	<div class="addTopHeight"></div>
+		<div id="contact-area" class="community">
+		<h3 class="lead">회원가입</h3><br>
+			<form id="registerForm" action="register.do" method="post" class="input_form">
+			<input type="text" name="id" class="form-control" placeholder="아이디" required>
+			<!-- <span id="idView"></span> -->
+			<div class="col-md-12" id="idView" aria-hidden="true"></div><br>
+			<input type="password" name="password" class="form-control" placeholder="비밀번호" required><br>
+			<input type="password" name="checkpass" class="form-control" placeholder="비밀번호 확인" required>
+			<!-- <span id="passView"></span> -->
+			<div class="col-md-12" id="passView" aria-hidden="true"></div><br>
+			<input type="text" name="nickname" class="form-control" placeholder="닉네임" required>
+			<!-- <span id="nickView"></span><br> -->
+			<div class="col-md-12" id="nickView" aria-hidden="true"></div><br>
+			<select name="address" class="btn btn-default dropdown-toggle col-md-12" required>
+			<option value="">----주소----</option>
+			<c:forEach items="${area}" var="area">
+			<option value="${area.area_name}">${area.area_name}</option>
+			</c:forEach>
+			</select>
+			<br><br><br>
+			<input type="email" name="email_add" class="form-control" placeholder="email" required><br><br>
+			<input type="submit" value="회원가입" class="btn btn-info btn-md-4">
+			</form>
+		</div>
+	<div class="clear"></div>
 </div>

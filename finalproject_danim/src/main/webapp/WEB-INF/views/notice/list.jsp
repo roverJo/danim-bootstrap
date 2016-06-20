@@ -3,8 +3,8 @@
 <div class="container_12">
 <div class="addHeight"></div>
 	<div class="community">
-		<table class="list">
-			<caption>공지사항</caption>
+		<h3>공지사항</h3>
+		<table class="table table-striped custab">
 			<thead>
 			<tr>
 				<th class="noticeno">글번호</th>
@@ -13,7 +13,6 @@
 				<th class="timePosted">작성일</th>
 			</tr>
 			</thead>
-			<tbody>
 		<c:forEach var="nvo" items="${requestScope.lvo.list}">
 		<tr>
 			<td>${nvo.noticeno}</td>
@@ -22,13 +21,11 @@
 			<td>${nvo.timePosted}</td>
 		</tr>
 		</c:forEach>
-			</tbody>
 		</table>
 		<br></br>
 		<c:if test="${sessionScope.mvo.admin==1||sessionScope.mvo.admin==99}">
 		<a href="${initParam.root}notice_write.do">글쓰기</a>
 		</c:if>
-		
 		
 		<br><br>	
 		

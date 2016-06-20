@@ -28,8 +28,8 @@ public class NoticeController {
 			}
 		}
 		noticeService.write(noticeVO);
-		System.out.println(noticeVO);
-	return new ModelAndView("home");
+//		System.out.println(noticeVO);
+	return new ModelAndView("redirect:notice_list.do");
 	}
 
 	@RequestMapping("notice_list.do")
@@ -56,7 +56,7 @@ public class NoticeController {
 	@RequestMapping(value="noticeupdate.do",method=RequestMethod.POST)
 	public ModelAndView updateNotice(NoticeVO noticeVO) {
 		noticeService.updateNotice(noticeVO);
-		System.out.println(noticeVO);
+//		System.out.println(noticeVO);
 		return new ModelAndView("notice_content","nvo",noticeService.content(noticeVO.getNoticeno()));
 	}
 }

@@ -16,8 +16,10 @@ $(document).ready(function(){
 	});
 });
 </script>
-
-	<table class="content" border="1">
+<div class="container_12" align="center">
+<div class="addHeight"></div>
+	<div class="community">
+	<table class="table">
 	<caption>상세보기</caption>
 	<c:set var="nvo" value="${requestScope.nvo}"/>
 	<tr>
@@ -44,4 +46,6 @@ $(document).ready(function(){
 		</td>
 		</tr>
 	</table>
-
+	</div>
+	<div class="clear"></div>
+</div>

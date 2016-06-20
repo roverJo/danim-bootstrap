@@ -74,7 +74,7 @@ $(document).ready(function(){
 	<input type="hidden" name="lodgetype" value="">
 	
 	<!-- 지역검색 -->
-	<div id="searchArea"></div><br>
+	<div id="searchArea" class="col-md-4"></div><br>
 	<!-- 세부지역검색 -->
 	<div id="searchDetailArea"></div><br>
 	<!-- 숙박종류검색 -->

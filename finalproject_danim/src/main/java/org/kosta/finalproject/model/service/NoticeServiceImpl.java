@@ -42,7 +42,7 @@ public class NoticeServiceImpl implements NoticeService{
 		int total=noticeDAO.totalContent();
 		NoticePagingBean paging=new NoticePagingBean(total,pageNo,pagingConfig);
 		NoticeListVO lvo=new NoticeListVO(list,paging);
-		System.out.println(noticeDAO.getNoticeList(paramMap));
+//		System.out.println(noticeDAO.getNoticeList(paramMap));
 		return lvo;
 	}
 

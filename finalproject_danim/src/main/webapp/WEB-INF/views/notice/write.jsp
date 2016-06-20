@@ -4,9 +4,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#writeBtn").click(function(){
+		//showObj($("#write_form input[name=content]"));
+//	alert($("#write_form input[name=content]"))
+
 	if($("#title").val()==""){
 	alert("제목을 입력하세요!");
-	}else if($("#content").val()==""){
+	}else if($("#noticeContent").val()==""){
 	alert("본문을 입력하세요!");
 	}else{
 	$("#write_form").submit();
@@ -16,6 +19,15 @@ $(document).ready(function(){
 	$("#write_form")[0].reset();
 	});
 });
+function showObj(obj) {
+	var str = "";
+	for(key in obj) {
+		str += key+"="+obj[key]+"\n";
+	}
+
+	alert(str);
+	return;
+}
 </script>
 <c:if test="${sessionScope.mvo==null}">
 <script type="text/javascript">
@@ -41,13 +53,15 @@ location.href="${initParam.root}home.do";
 		</tr>
 		<tr>
 		<td colspan="4" align="left">&nbsp;&nbsp;
-		<textarea cols="52" rows="16" id="content" name="content"></textarea>
+		<textarea cols="52" rows="16" id="noticeContent" name="content"></textarea>
 		</td>
 		</tr>
 		<tr>
 		<td colspan="4" align="center">
-		<img id="writeBtn" class="action" src="" alt="입력"  onclick="content_submit()">
-		<img id="resetBtn" class="action" src="" alt="취소" onclick="cancel()">
+		<input type="button" class="btn btn-success" id="writeBtn" value="입력"/>
+		<input type="reset" class="btn btn-default" id="resetBtn" value="취소"/>
+		<!-- <img id="writeBtn" class="action" src="" alt="입력"  onclick="content_submit()">
+		<img id="resetBtn" class="action" src="" alt="취소" onclick="cancel()"> -->
 		</td>
 		</tr>
 		</tbody>
