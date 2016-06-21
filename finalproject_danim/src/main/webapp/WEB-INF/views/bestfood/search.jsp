@@ -10,8 +10,8 @@ $(document).ready(function(){
 			url:"searchAreaFood.do",
 			dataType:"json",
 			success:function(area){
-				var selectArea ="<select id='areaFoodName'>";
-				selectArea += "<option value=''>출발지를 선택하세요</option>";
+				var selectArea ="<select class='form-control' id='areaFoodName'>";
+				selectArea += "<option value=''>지역을 선택하세요</option>";
 				for(var i = 0 ; i < area.length; i++)
 				{
 					selectArea += "<option value="+area[i].area_name+">"+area[i].area_name+"</option>";
@@ -31,7 +31,7 @@ $(document).ready(function(){
 			url:"searchFoodDetailArea.do?area_name="+$("#areaFoodName").val(),
 			dataType:"json",
 			success:function(detailAreaList){
-				var selectFoodDetailArea ="<select id='DetailAreaName'>";
+				var selectFoodDetailArea ="<select class='form-control' id='DetailAreaName'>";
 				selectFoodDetailArea += "<option value=''>세부지역을 선택하세요</option>";
 				for(var i = 0 ; i < detailAreaList.length; i++)
 				{
@@ -47,7 +47,7 @@ $(document).ready(function(){
 	$("#bestfoodForm").on("change", "#DetailAreaName", function () {
 		if($(this).val() != "")
 		{
-			var selectKind = "<select id='foodtype'>"
+			var selectKind = "<select class='form-control' id='foodtype'>"
 			selectKind += "<option value=''>음식종류를 선택하세요</option>"
 			selectKind += "<option value='한식'>한식</option>";
 			selectKind += "<option value='중식'>중식</option>";
@@ -65,13 +65,13 @@ $(document).ready(function(){
 	$("#bestfoodForm").on("change", "#foodtype", function () {
 		$("#searchFoodBtn").html("");
 		if($(this).val() != ""){
-			$("#searchFoodBtn").html("<input type='button' id='searchBtn' value='검색'>");	
+			$("#searchFoodBtn").html("<input type='submit' id='searchBtn' class='btn btn-info btn-lg' value='검색'>");	
 		}
 	});
 	
 
 	//검색버튼 눌렀을때
-	$("#bestfoodForm").on("click", "#searchBtn",function(){
+/* 	$("#bestfoodForm").on("click", "#searchBtn",function(){
 		$.ajax({
 			type:"get",
 			url:"chkLogging.do",
@@ -99,6 +99,7 @@ $(document).ready(function(){
 							result +="</tr>";
 							for(var i = 0; i < foodList.length; i++)
 							{
+								//<td><a href="detailFood.do?foodshop_no=${foodList.foodshop_no}">${foodList.shopname }</a></td>
 								result += "<tr>";
 								result +="<td><a href='detailFood.do?foodshop_no="+foodList[i].foodshop_no+"'>"+foodList[i].shopname+"</a></td>";
 								result +="<td>"+foodList[i].detailarea_name+"</td>";
@@ -122,10 +123,10 @@ $(document).ready(function(){
 				
 			}
 		});
-	});//검색 버튼 끝
+	}); *///검색 버튼 끝
 	
 	//장바구니(찜리스트) 넣기
-	$("#bestfoodForm").on("change", "input[type='radio'][name=foodListchbox]", function () {
+/* 	$("#bestfoodForm").on("change", "input[type='radio'][name=foodListchbox]", function () {
 		if($("#bestfoodForm input[type='radio'][name=foodListchbox]:checked").length == 1)
 		{
 			var flag = confirm("장바구니에 넣으시겠습니까?");
@@ -139,7 +140,7 @@ $(document).ready(function(){
 				$(this).prop("checked",false);
 			}
 		}
-	});
+	}); */
 
 	//다 선택 후 넘어갈 때
 	$("#bestfoodForm").submit(function(){
@@ -150,19 +151,26 @@ $(document).ready(function(){
 });
   </script>
  <h3>음식검색페이지</h3>
- <form id="bestfoodForm" method="post" action="checkFoodShopNo.do">
- 	<!-- <input type="hidden" name="area_name" value=""> -->
-	<input type="hidden" name="no" value="">
-	<!-- 지역검색 -->
-	<span id="searchArea"></span>
-	<!-- 세부지역검색 -->
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	  <span id="searchDetailArea"></span><br><br>
-	<!-- 음식종류 검색 -->
-	<span id="searchFoodMenu"></span>
-	<!-- 검색 -->
-&nbsp;&nbsp;&nbsp;	  <span id="searchFoodBtn"></span>
-	<!-- 장바구니버튼 -->
-	<div id="basketTraffic"></div>
-	<!-- 검색결과 보여주는 곳 -->
-	<div id="searchFoodResult"></div>
+ <div class="container" align="center">
+ <div class="addHeight"></div>
+ <form id="bestfoodForm" method="post" action="searchBestFood.do">
+ 	<input type="hidden" name="area_name" value="">
+ 	<input type="hidden" name="foodtype" value="">
+ 	<input type="hidden" name="detailarea_name" value="">
+	<!-- <input type="hidden" name="no" value=""> -->
+	<div class="selectArea col-md-12">
+		<!-- 지역검색 -->
+		<div id="searchArea" class="col-md-6"></div><br><br>
+		<!-- 세부지역검색 -->
+		<div id="searchDetailArea" class="col-md-6"></div><br><br>
+		<!-- 음식종류 검색 -->
+		<div id="searchFoodMenu" class="col-md-6"></div><br><br>
+		<!-- 검색 -->
+		<div id="searchFoodBtn" class="col-md-6"></div><br><br>
+		<!-- 장바구니버튼 -->
+		<div id="basketTraffic" class="col-md-6"></div><br><br>
+		<!-- 검색결과 보여주는 곳 -->
+		<div id="searchFoodResult" class="col-md-6"></div><br><br>
+	</div>
  </form>
+ </div>

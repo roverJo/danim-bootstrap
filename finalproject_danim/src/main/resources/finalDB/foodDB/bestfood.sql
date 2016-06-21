@@ -66,4 +66,7 @@ select foodshop_no,shopname,shop_add,foodtype,area_name,detailarea_name,main_pri
 from bestfood 
 where shopname='강남닭꼬치' and area_name='서울특별시' and detailarea_name='서울';
 
-
+select f.foodshop_no,f.shopname,f.shop_add,f.foodtype,f.area_name,f.detailarea_name,f.main_price,f.main_food,f.main_menu_picture,f.local_area 
+from (select foodshop_no,shopname,shop_add,foodtype,area_name,detailarea_name,main_price,main_food,main_menu_picture,local_area,ceil(rownum/#{numberOfContent}) as page 
+from bestfood where detailarea_name =#{bestFoodVO.detailarea_name} and foodtype=#{bestFoodVO.foodtype} order by foodshop_no desc)f
+where page = #{pageNo}

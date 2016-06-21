@@ -44,9 +44,9 @@ public class LodgeController {
 	
 	@RequestMapping("searchLodgeByNameAndKind.do")
 	public ModelAndView searchLodgeByNameAndKind(LodgeVO vo,String pageNo){	
-		System.out.println("vvvvv"+vo);
+		//System.out.println("vvvvv"+vo);
 		LodgeListVO lodgeListVO = lodgeService.searchLodgeByNameAndKind(vo,pageNo);
-		System.out.println(lodgeListVO);
+		//System.out.println(lodgeListVO);
 		return new ModelAndView("lodge_searchLodge","list",lodgeListVO);
 	}
 }

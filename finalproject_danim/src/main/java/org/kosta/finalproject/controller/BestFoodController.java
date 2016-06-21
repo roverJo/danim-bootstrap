@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.finalproject.model.service.BestFoodService;
 import org.kosta.finalproject.model.vo.area.AreaVO;
 import org.kosta.finalproject.model.vo.area.DetailAreaVO;
+import org.kosta.finalproject.model.vo.food.BestFoodListVO;
 import org.kosta.finalproject.model.vo.food.BestFoodVO;
 import org.kosta.finalproject.model.vo.food.MenuVO;
 import org.springframework.stereotype.Controller;
@@ -39,23 +41,22 @@ public class BestFoodController {
 	
 	//음식점 검색(메인검색)
 	@RequestMapping("searchBestFood.do")
-	@ResponseBody
-	//public ModelAndView searchBestFood(String detailarea_name, String foodtype){
-    public List<BestFoodVO> searchBestFood(BestFoodVO bestFoodVO){
-		List<BestFoodVO> foodList=null;
+	public ModelAndView searchBestFood(BestFoodVO bestFoodVO,String pageNo,HttpServletRequest request){
+		BestFoodListVO bestFoodListVO = null;
+		request.setAttribute("foodtype", bestFoodVO.getFoodtype());
+		
 		if(bestFoodVO.getFoodtype().equals("전체")){
-			foodList=bestFoodService.searchAllBestFood(bestFoodVO);
+			bestFoodListVO=bestFoodService.searchAllBestFood(bestFoodVO,pageNo);
 		}else{
-			foodList=(ArrayList<BestFoodVO>) bestFoodService.searchBestFood(bestFoodVO);
+			bestFoodListVO= bestFoodService.searchBestFood(bestFoodVO,pageNo);
 		}
-		System.out.println(foodList);
-		return foodList;
+		
+		return new ModelAndView("bestfood_search_result","foodList",bestFoodListVO);
 	}
 	
 	//음식점 메뉴 상세보기
 	@RequestMapping("detailFood.do")
 	public ModelAndView detailFood(int foodshop_no){
-		System.out.println(foodshop_no);
 		List<MenuVO> detailFoodList=bestFoodService.detailFood(foodshop_no);
 		System.out.println(detailFoodList);
 		bestFoodService.updateHits(foodshop_no);

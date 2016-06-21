@@ -191,8 +191,7 @@
 									{
 										result +="<td><input type='radio' name ='traffic_no' class='radio' value='"+trafficVO.busList[i].bus_no+"'></td>";	
 									}
-									result +="</tr>";
-									alert(result);
+									result +="</tr>";									
 								}
 							}
 							else if(trafficVO.trainList != null)
@@ -273,6 +272,8 @@
 	<span id="searchEndArea" class="col-md-6"></span><br><br>
 	<!-- 장바구니버튼 -->
 	<span id="basketTraffic"></span><br><br>
+	<hr>
+	<div class="addHeight"></div>
 	<!-- result -->
 	<span id="searchResult"></span>
 </form>

@@ -1,5 +1,7 @@
 package org.kosta.finalproject.model.vo.food;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MenuVO {
 	private int menu_no;
 	private String food_picture;
@@ -7,12 +9,14 @@ public class MenuVO {
 	private String food_name;
 	private int foodshop_no;
 	private BestFoodVO bestFoodVO;
+	private MultipartFile uploadFile;
 	public MenuVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public MenuVO(int menu_no, String food_picture, int price,
-			String food_name, int foodshop_no, BestFoodVO bestFoodVO) {
+			String food_name, int foodshop_no, BestFoodVO bestFoodVO,
+			MultipartFile uploadFile) {
 		super();
 		this.menu_no = menu_no;
 		this.food_picture = food_picture;
@@ -20,6 +24,7 @@ public class MenuVO {
 		this.food_name = food_name;
 		this.foodshop_no = foodshop_no;
 		this.bestFoodVO = bestFoodVO;
+		this.uploadFile = uploadFile;
 	}
 	public int getMenu_no() {
 		return menu_no;
@@ -57,13 +62,18 @@ public class MenuVO {
 	public void setBestFoodVO(BestFoodVO bestFoodVO) {
 		this.bestFoodVO = bestFoodVO;
 	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	@Override
 	public String toString() {
 		return "MenuVO [menu_no=" + menu_no + ", food_picture=" + food_picture
 				+ ", price=" + price + ", food_name=" + food_name
 				+ ", foodshop_no=" + foodshop_no + ", bestFoodVO=" + bestFoodVO
-				+ "]";
+				+ ", uploadFile=" + uploadFile + "]";
 	}
-	
 	
 }

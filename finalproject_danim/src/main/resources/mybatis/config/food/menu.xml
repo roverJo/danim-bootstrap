@@ -17,6 +17,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		from foodmenu m, bestfood b
  		where m.foodshop_no=b.foodshop_no and m.foodshop_no=#{value}
  	</select>
+ 	<!-- 메뉴 등록 -->
+ 	<insert id="foodMenuRegister" parameterType="menuVO">
+ 		insert into foodmenu(menu_no,food_picture,price,food_name,foodshop_no)
+		values(foodmenu_seq.nextval,#{food_picture},#{price},#{food_name},#{foodshop_no})
+ 	</insert>
  	
+ 	<select id="findMenu" resultType="menuVO">
+ 	select menu_no,food_picture,price,food_name,foodshop_no from FOODMENU where foodshop_no=#{values}
+ 	</select>
  	
 </mapper>

@@ -36,3 +36,5 @@ values(foodmenu_seq.nextval,'라볶이.jpg',3000,'라볶이',4);
 
 select *from foodmenu;
 
+insert into foodmenu(menu_no,food_picture,price,food_name,foodshop_no)
+values(foodmenu_seq.nextval,'떡꼬치.jpg',1500,'라볶이',1);

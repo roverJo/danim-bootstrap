@@ -17,7 +17,7 @@
 <script type="text/javascript" src="${initParam.root}resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <style type="text/css">
 	#main{
-		background: url(resources/bootstrap/images/bg.jpg) no-repeat center fixed;
+		 background: url(resources/bootstrap/images/bg.jpg) no-repeat center fixed;
 		-webkit-background-size: cover;
 	/* 	background-size: cover; */
 	}

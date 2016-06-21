@@ -57,23 +57,17 @@
 			
 			var foodshop_no = $(this).parent().parent().find("input[name=foodshop_no]").val();
 			window.open("cartDetailInfoByFood.do?foodshop_no="+foodshop_no,"음식상세정보","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");
-		});
-		
-
-		
-		
-
-
-	
-		
+		});		
 	});
 </script>
+<div class="container" align="center">
 <div class="cartDiv">
 <h2>장바구니</h2>
 <hr>
 <c:if test="${!empty cartListVO}">
 	<c:forEach items="${cartListVO.cartList }" var="list" varStatus="stat">
-	<table border="1" >
+	<table border="1" class="table table-striped">
+	<div class="addHeight"></div>
 		<c:if test="${!empty list.busVO }">
 			<input type="hidden" name="bus_no" value="${list.busVO.bus_no }">
 			<tr class="bus">
@@ -150,4 +144,5 @@
 </p>
 	
 </c:if>
+</div>
 </div>

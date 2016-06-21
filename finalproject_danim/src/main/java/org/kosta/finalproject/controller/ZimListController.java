@@ -219,7 +219,7 @@ public class ZimListController
 					}
 				}
 			}
-			bestFoodVO =(BestFoodVO) bestFoodService.getBestFoodInfo(bestFoodVO.getFoodshop_no());
+			bestFoodVO =(BestFoodVO) bestFoodService.getFoodInfo(bestFoodVO.getFoodshop_no());
 			bestFoodList.add(bestFoodVO);
 			session.setAttribute("bestFoodList", bestFoodList);
 			return new ModelAndView("zim_list");
