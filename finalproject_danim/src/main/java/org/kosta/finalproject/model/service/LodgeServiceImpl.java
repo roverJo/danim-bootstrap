@@ -1,26 +1,35 @@
 package org.kosta.finalproject.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.kosta.finalproject.model.dao.LodgeDAO;
+import org.kosta.finalproject.model.vo.PagingBean;
 import org.kosta.finalproject.model.vo.area.AreaVO;
 import org.kosta.finalproject.model.vo.area.DetailAreaVO;
+import org.kosta.finalproject.model.vo.cart.CartListVO;
+import org.kosta.finalproject.model.vo.cart.CartVO;
+import org.kosta.finalproject.model.vo.cart.MemberAndParamMapVO;
+import org.kosta.finalproject.model.vo.lodge.LodgeAndParamMapVO;
+import org.kosta.finalproject.model.vo.lodge.LodgeListVO;
 import org.kosta.finalproject.model.vo.lodge.LodgePictureVO;
 import org.kosta.finalproject.model.vo.lodge.LodgeVO;
+import org.kosta.finalproject.model.vo.member.MemberVO;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LodgeServiceImpl implements LodgeService {
+	
 	@Resource
 	private LodgeDAO lodgeDAO;
-	/*@Override
-	public List<LodgeVO> lodge() {
-		return lodgeDAO.lodge();
-	}*/
+	@Resource(name="pagingConfigLodge")
+	private Map<String,Integer> pagingConfigLodge; 
+	
 	@Override
-	public List<LodgeVO> showlodge(int no) {
+	public List<LodgeVO> showlodge(int no) 
+	{
 		return lodgeDAO.showlodge(no);
 	}
 	@Override
@@ -36,8 +45,22 @@ public class LodgeServiceImpl implements LodgeService {
 		return lodgeDAO.searchDetailArea(area_name);
 	}
 	@Override
-	public List<LodgeVO> searchLodgeByNameAndKind(LodgeVO vo) {
-		return lodgeDAO.searchLodgeByNameAndKind(vo);
+	public LodgeListVO searchLodgeByNameAndKind(LodgeVO vo,String pageNo){			
+		if(pageNo==null||pageNo=="") 
+			pageNo="1";
+		int pno=Integer.parseInt(pageNo);		
+		return searchLodgeByNameAndKind(vo,pno);
+	}
+	
+	@Override
+	public LodgeListVO searchLodgeByNameAndKind(LodgeVO vo,int pageNo) 
+	{
+		List<LodgeVO> list = lodgeDAO.searchLodgeByNameAndKind(new LodgeAndParamMapVO(vo,pageNo,pagingConfigLodge.get("numberOfContent")));
+		int total=lodgeDAO.totalLodge(vo);
+		System.out.println(total);
+		PagingBean paging=new PagingBean(total,pageNo,pagingConfigLodge);
+		LodgeListVO lvo=new LodgeListVO(list,paging);
+		return lvo;
 	}
 	@Override
 	public LodgeVO getLodgeInfo(int lodge_no) 

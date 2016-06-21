@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.kosta.finalproject.model.vo.area.AreaVO;
 import org.kosta.finalproject.model.vo.area.DetailAreaVO;
+import org.kosta.finalproject.model.vo.lodge.LodgeAndParamMapVO;
 import org.kosta.finalproject.model.vo.lodge.LodgePictureVO;
 import org.kosta.finalproject.model.vo.lodge.LodgeVO;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -36,7 +37,7 @@ public class LodgeDAOImpl implements LodgeDAO {
 		return template.selectList("detailarea.searchDetailArea",area_name);
 	}
 	@Override
-	public List<LodgeVO> searchLodgeByNameAndKind(LodgeVO vo) {
+	public List<LodgeVO> searchLodgeByNameAndKind(LodgeAndParamMapVO vo) {
 		return template.selectList("lodge.searchLodgeByNameAndKind",vo);
 	}
 	@Override
@@ -53,5 +54,11 @@ public class LodgeDAOImpl implements LodgeDAO {
 	//탑리스트5 뽑아오기
 	public List<LodgeVO> lodgetop5list(){
 		return template.selectList("lodge.lodgetop5list");
+	}
+	@Override
+	public int totalLodge(LodgeVO vo)
+	{
+		// TODO Auto-generated method stub
+		return template.selectOne("lodge.totalLodge",vo);
 	}
 }

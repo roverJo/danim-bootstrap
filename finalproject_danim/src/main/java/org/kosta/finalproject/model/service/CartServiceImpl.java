@@ -37,7 +37,6 @@ public class CartServiceImpl implements CartService
 		paramMap.put("pageNo", pageNo);
 		paramMap.put("numberOfContent", pagingConfigCart.get("numberOfContent"));*/
 		List<CartVO> list = cartDAO.getCartList(new MemberAndParamMapVO(memberVO,pageNo,pagingConfigCart.get("numberOfContent")));
-		System.out.println(list.get(0));
 		int total=cartDAO.totalCart(memberVO);
 		PagingBean paging=new PagingBean(total,pageNo,pagingConfigCart);
 		CartListVO lvo=new CartListVO(list,paging);

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.kosta.finalproject.model.service.LodgeService;
 import org.kosta.finalproject.model.vo.area.AreaVO;
 import org.kosta.finalproject.model.vo.area.DetailAreaVO;
+import org.kosta.finalproject.model.vo.lodge.LodgeListVO;
 import org.kosta.finalproject.model.vo.lodge.LodgeVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +33,7 @@ public class LodgeController {
 			List<DetailAreaVO> detailAreaList=(List<DetailAreaVO>) lodgeService.searchDetailArea(area_name);
 			return detailAreaList;
 		}
-	/*@RequestMapping("searchLodge.do")
-	public ModelAndView lodge(){
-		List<LodgeVO> list=lodgeService.lodge();
-		System.out.println(list);
-		return new ModelAndView("lodge_searchLodge","list",list);
-	}*/
+	
 	@RequestMapping("showlodge.do")
 	public ModelAndView showlodge(HttpServletRequest request,int no){
 		List<LodgeVO> list=lodgeService.showlodge(no);
@@ -47,10 +43,10 @@ public class LodgeController {
 	}
 	
 	@RequestMapping("searchLodgeByNameAndKind.do")
-	public ModelAndView searchLodgeByNameAndKind(LodgeVO vo){	
-	
-		List<LodgeVO> list=lodgeService.searchLodgeByNameAndKind(vo);
-		System.out.println(list);
-		return new ModelAndView("lodge_searchLodge","list",list);
+	public ModelAndView searchLodgeByNameAndKind(LodgeVO vo,String pageNo){	
+		System.out.println("vvvvv"+vo);
+		LodgeListVO lodgeListVO = lodgeService.searchLodgeByNameAndKind(vo,pageNo);
+		System.out.println(lodgeListVO);
+		return new ModelAndView("lodge_searchLodge","list",lodgeListVO);
 	}
 }

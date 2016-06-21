@@ -7,11 +7,9 @@ import javax.annotation.Resource;
 import org.kosta.finalproject.model.dao.TrafficDAO;
 import org.kosta.finalproject.model.vo.area.AreaVO;
 import org.kosta.finalproject.model.vo.member.MemberVO;
-
 import org.kosta.finalproject.model.vo.traffic.BusVO;
 import org.kosta.finalproject.model.vo.traffic.StationVO;
 import org.kosta.finalproject.model.vo.traffic.TerminalVO;
-
 import org.kosta.finalproject.model.vo.traffic.TrainVO;
 import org.springframework.stereotype.Service;
 
@@ -82,6 +80,34 @@ public class TrafficServiceImpl implements TrafficService
 	{
 		// TODO Auto-generated method stub
 		return trafficDAO.getTrainInfo(train_no);
+	}
+
+	@Override
+	public BusVO checkDB(BusVO busVO) 
+	{
+		// TODO Auto-generated method stub
+		return trafficDAO.checkDB(busVO);
+	}
+
+	@Override
+	public void insertBusByExcel(BusVO busVO) 
+	{
+		// TODO Auto-generated method stub
+		trafficDAO.insertBusByExcel(busVO);
+	}
+
+	@Override
+	public TerminalVO getTerminalNo(String terminal_name) 
+	{
+		// TODO Auto-generated method stub
+		return trafficDAO.getTerminalNo(terminal_name);
+	}
+
+	@Override
+	public void updateBusByExcel(BusVO busVO) 
+	{
+		// TODO Auto-generated method stub
+		trafficDAO.updateBusByExcel(busVO);
 	}
 	
 	

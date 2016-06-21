@@ -28,4 +28,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		from bus b,terminal t
 		where b.terminal_no = t.terminal_no and b.bus_no = #{value}
  	</select>
+ 	
+ 	<select id="checkDB" parameterType="busVO" resultMap="busRM">
+ 		select b.bus_no 
+ 		from bus b,terminal t
+		where b.terminal_no = t.terminal_no 
+		and t.terminal_name = #{terminalVO.terminal_name}
+		and b.end_area = #{end_area}
+		and b.operation_time = #{operation_time}
+ 	</select>
+ 	
+ 	<insert id="insertBusByExcel" parameterType="busVO">
+ 		insert into bus(bus_no,bustype,terminal_no,end_area,price,leadtime,operation_time)
+		values(bus_seq.nextval,#{busType},#{terminalVO.terminal_no},#{end_area},#{price},#{leadTime},#{operation_time})
+ 	</insert>
+ 	
+ 	<update id="updateBusByExcel" parameterType="busVO">
+ 		update bus set bustype=#{busType},end_area=#{end_area},price=#{price},leadtime=#{leadTime},operation_time=#{operation_time}
+ 		where bus_no=#{bus_no}
+ 	</update>
 </mapper>

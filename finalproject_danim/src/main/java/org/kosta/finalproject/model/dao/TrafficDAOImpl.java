@@ -6,11 +6,9 @@ import javax.annotation.Resource;
 
 import org.kosta.finalproject.model.vo.area.AreaVO;
 import org.kosta.finalproject.model.vo.member.MemberVO;
-
 import org.kosta.finalproject.model.vo.traffic.BusVO;
 import org.kosta.finalproject.model.vo.traffic.StationVO;
 import org.kosta.finalproject.model.vo.traffic.TerminalVO;
-
 import org.kosta.finalproject.model.vo.traffic.TrainVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -81,6 +79,34 @@ public class TrafficDAOImpl implements TrafficDAO
 	{
 		// TODO Auto-generated method stub
 		return template.selectOne("train.getTrainInfo",train_no);
+	}
+
+	@Override
+	public BusVO checkDB(BusVO busVO) 
+	{
+		// TODO Auto-generated method stub
+		return template.selectOne("bus.checkDB",busVO);
+	}
+
+	@Override
+	public void insertBusByExcel(BusVO busVO) 
+	{
+		// TODO Auto-generated method stub
+		template.insert("bus.insertBusByExcel",busVO);
+	}
+
+	@Override
+	public TerminalVO getTerminalNo(String terminal_name) 
+	{
+		// TODO Auto-generated method stub
+		return template.selectOne("terminal.getTerminalNo",terminal_name);
+	}
+
+	@Override
+	public void updateBusByExcel(BusVO busVO)
+	{
+		// TODO Auto-generated method stub
+		template.update("bus.updateBusByExcel",busVO);
 	}
 
 	

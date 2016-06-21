@@ -44,14 +44,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		,t.train_no,t.operation_time as train_operation_time,t.end_area as train_end_area,t.price as trainprice,t.leadtime as train_leadtime,t.traintype,s.station_name
 		,f.foodshop_no,f.shopname as foodshopname,f.shop_add,f.foodtype,f.main_price,f.main_food,f.hits,f.detailarea_name as food_detailarea_name
 		,l.lodge_no,l.shopname as lodgeshopname,l.shopinfo,l.lodgetype,l.price as lodgeprice,l.detailarea_name as lodge_detailarea_name
-		from (select combinecart_no,id,bus_no,train_no,foodshop_no,lodge_no,ceil(rownum/#{numberOfContent}) as page from(select combinecart_no,id,bus_no,train_no,foodshop_no,lodge_no from combinecart order by combinecart_no desc))cc,terminal te,bus b,station s,train t,bestfood f,lodge l,member m
+		from(select combinecart_no,id,bus_no,train_no,foodshop_no,lodge_no,ceil(rownum/#{numberOfContent}) as page 
+		from(select ccb.combinecart_no,ccb.id,ccb.bus_no,ccb.train_no,ccb.foodshop_no,ccb.lodge_no from combinecart ccb,member m where m.id = ccb.id and ccb.id = #{memberVO.id} order by combinecart_no desc))cc,
+		terminal te,bus b,station s,train t,bestfood f,lodge l
 		where b.terminal_no = te.terminal_no(+) 
 		and cc.bus_no = b.bus_no(+) 
 		and t.station_no = s.station_no(+) 
 		and cc.train_no = t.train_no(+) 
 		and cc.foodshop_no = f.foodshop_no(+)
 		and cc.lodge_no = l.lodge_no(+)
-		and m.id = cc.id and cc.id = #{memberVO.id} and page = #{pageNo} order by combinecart_no desc
+		and page = #{pageNo} order by combinecart_no desc
 	</select>
 	
 	<select id="totalCart" parameterType="memberVO" resultType="int">

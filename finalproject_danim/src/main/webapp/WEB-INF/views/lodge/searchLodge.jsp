@@ -3,7 +3,7 @@
 <div class="addHeight"></div>
 <table class="table">
 <tr>
-<c:forEach var="list" items="${requestScope.list}" varStatus="i">
+<c:forEach var="list" items="${requestScope.list.lodgeList}" varStatus="i">
   <c:if test="${i.index != 0 && i.index % 4  == 0}">
 	</tr>
 	<tr>
@@ -22,3 +22,30 @@
 </c:forEach>
 </tr> 
 </table>
+
+<p class="paging" align="center">
+	<c:set var="pb" value="${list.pagingBean}"></c:set>
+	<c:if test="${pb.previousPageGroup}">
+		&nbsp;
+		<a href="${initParam.root }searchLodgeByNameAndKind.do?pageNo=${pb.startPageOfPageGroup-1}&detailarea_name=${list.lodgeList[0].detailarea_name}&lodgetype=${list.lodgeList[0].lodgetype}">◀</a>&nbsp;
+	</c:if>
+
+	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+		<c:choose>
+		<c:when test="${pb.nowPage!=i}">
+			<a href="${initParam.root }searchLodgeByNameAndKind.do?pageNo=${i}&detailarea_name=${list.lodgeList[0].detailarea_name}&lodgetype=${list.lodgeList[0].lodgetype}">${i}</a> 
+		</c:when>
+		<c:otherwise>
+		${i}
+		</c:otherwise>
+		</c:choose>
+		&nbsp;
+	</c:forEach>	 
+	
+	<c:if test="${pb.nextPageGroup}">
+		&nbsp;
+		<a href="${initParam.root }searchLodgeByNameAndKind.do?pageNo=${pb.endPageOfPageGroup+1}&detailarea_name=${list.lodgeList[0].detailarea_name}&lodgetype=${list.lodgeList[0].lodgetype}">▶</a>&nbsp;
+		
+	</c:if>
+	 
+</p>

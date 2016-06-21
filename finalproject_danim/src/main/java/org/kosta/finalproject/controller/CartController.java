@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.finalproject.model.service.BestFoodService;
@@ -37,8 +38,11 @@ public class CartController
 	public ModelAndView getCartList(HttpSession session,String pageNo)
 	{
 		MemberVO memberVO = (MemberVO) session.getAttribute("mvo");
+		
 		CartListVO cartListVO = cartService.getCartList(pageNo,memberVO);
+		
 		ArrayList<CartVO> cartList = (ArrayList<CartVO>) cartListVO.getCartList();
+		
 		for(int i = 0; i < cartList.size(); i++)
 		{
 			int totalPrice = 0;
@@ -63,6 +67,8 @@ public class CartController
 			}
 			cartList.get(i).setTotalPrice(totalPrice);
 		}
+		System.out.println(cartListVO);
+		
 		return new ModelAndView("cart_list","cartListVO",cartListVO);
 	}
 	
@@ -100,6 +106,38 @@ public class CartController
 		cartService.cartInsert(cartVO);
 		
 		return new ModelAndView("redirect:login_cartList.do");
+	}
+	
+	@RequestMapping("cartDetailInfoByBus.do")
+	public ModelAndView cartDetailInfoByBus(String bus_no)
+	{
+		//System.out.println(bus_no);
+		BusVO busVO = trafficService.getBusInfo(Integer.parseInt(bus_no));
+		return new ModelAndView("popup/detail_info","busVO",busVO);
+	}
+	
+	@RequestMapping("cartDetailInfoByTrain.do")
+	public ModelAndView cartDetailInfoByTrain(String train_no)
+	{
+		//System.out.println(bus_no);
+		TrainVO trainVO = trafficService.getTrainInfo(Integer.parseInt(train_no));
+		return new ModelAndView("popup/detail_info","trainVO",trainVO);
+	}
+	
+	@RequestMapping("cartDetailInfoByLodge.do")
+	public ModelAndView cartDetailInfoByLodge(HttpServletRequest request,String lodge_no)
+	{
+		List<LodgeVO> list=lodgeService.showlodge(Integer.parseInt(lodge_no));
+		List<String> rlist=lodgeService.lodgeNo();
+		request.setAttribute("rlist", rlist);
+		return new ModelAndView("popup/detail_info","lodgeVO",list);
+	}
+	
+	@RequestMapping("cartDetailInfoByFood.do")
+	public ModelAndView cartDetailInfoByFood(String foodshop_no)
+	{
+		//System.out.println(bus_no);
+		return new ModelAndView("popup/detail_info");
 	}
 	
 	

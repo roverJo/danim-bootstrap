@@ -160,7 +160,7 @@
 						url:"searchTraffic.do?kind="+$("#kind").val()+"&end_area="+$("#endAreaName").val()+"&terminal_no="+$("#terminalName").val()+"&station_no="+$("#stationName").val(),
 						dataType:"json",
 						success:function(trafficVO){
-							var result = "<table border='1'>";
+							var result = "<table border='1'class='table table-striped'><tbody>";
 							if(trafficVO.busList != null)
 							{
 								result += "<input type='hidden' name='type' value='bus'>";
@@ -189,9 +189,10 @@
 									result +="<td>"+trafficVO.busList[i].busType+"</td>";
 									if(!flag)
 									{
-										result +="<td><input type='radio' name ='traffic_no' value="+trafficVO.busList[i].bus_no+"></td>";
+										result +="<td><input type='radio' name ='traffic_no' class='radio' value='"+trafficVO.busList[i].bus_no+"'></td>";	
 									}
 									result +="</tr>";
+									alert(result);
 								}
 							}
 							else if(trafficVO.trainList != null)
@@ -222,12 +223,13 @@
 									result +="<td>"+trafficVO.trainList[i].trainType+"</td>";
 									if(!flag)
 									{
+										
 										result +="<td><input type='radio' name ='traffic_no' value="+trafficVO.trainList[i].train_no+"></td>";
 									}
 									result +="</tr>";
 								}
 							}
-							result += "</table>";
+							result += "</tbody></table>";
 							$("#searchResult").html(result);
 						}
 					});

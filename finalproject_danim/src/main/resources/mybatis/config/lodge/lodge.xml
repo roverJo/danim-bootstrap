@@ -12,10 +12,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select l.lodge_no, l.shopname, p.picture_no, p.picture_name from lodge l, lodgepicture p
 		where l.lodge_no=p.lodge_no and p.picture_name like '%_a.jpg%' order by picture_no asc
 	</select> -->
-	<select id="searchLodgeByNameAndKind" parameterType="lodgeVO" resultMap="lodgeRM">
-		select l.lodge_no, l.shopname,l.lodgetype, p.picture_no, p.picture_name from lodge l, lodgepicture p
-		where l.lodge_no=p.lodge_no and l.detailarea_name=#{detailarea_name} and l.lodgetype=#{lodgetype} and p.picture_name like '%_a.jpg%' order by picture_no asc
+	<select id="searchLodgeByNameAndKind" parameterType="lodgeAndParamMapVO" resultMap="lodgeRM">
+		select l.lodge_no, l.shopname,l.lodgetype,l.detailarea_name, p.picture_no, p.picture_name 
+		from(select lodge_no,shopname,lodgetype,detailarea_name,ceil(rownum/#{numberOfContent}) as page from lodge 
+		where detailarea_name=#{lodgeVO.detailarea_name} and lodgetype=#{lodgeVO.lodgetype} 
+		order by lodge_no desc)l, lodgepicture p
+		where l.lodge_no=p.lodge_no
+		and page = #{pageNo}
+		and p.picture_name like '%_a.jpg%'
 	</select>
+	
+	<select id="totalLodge" parameterType="lodgeVO" resultType="int">
+		select count(*) from lodge where detailarea_name=#{detailarea_name} and lodgetype=#{lodgetype} 
+	</select>
+	
 <!--  	<select id="showlodge" resultType="lodgeVO">
  		select * from lodge
  		where lodge_no=#{value} 
