@@ -56,7 +56,7 @@ $(document).ready(function(){
 	});
 	$("#lodgeForm").on("change", "#lodgeKind", function () {
 		if($(this).val() != ""){
-			$("#searchLodgeBtn").html("<input type='submit'class='btn btn-info' value='검색'>");	
+			$("#searchLodgeBtn").html("<input type='submit'class='btn btn-info btn-lg' value='검색'>");	
 		}
 	});
 	//다 선택 후 넘어갈 때
@@ -67,19 +67,21 @@ $(document).ready(function(){
 });
 </script>
 	
-	
-<h3>숙소검색페이지</h3><br>
- <form id="lodgeForm" method="post" action="searchLodgeByNameAndKind.do" class="searchForm">
- 	<input type="hidden" name="detailarea_name" value="">
+<div class="container" align="center">
+<div class="addHeight"></div>
+<h3 class="lead">숙소검색페이지</h3><br>
+	<form id="lodgeForm" method="post" action="searchLodgeByNameAndKind.do">
+	<input type="hidden" name="detailarea_name" value="">
 	<input type="hidden" name="lodgetype" value="">
-	
-	<!-- 지역검색 -->
-	<div id="searchArea" class="col-md-4"></div><br>
-	<!-- 세부지역검색 -->
-	<div id="searchDetailArea"></div><br>
-	<!-- 숙박종류검색 -->
-	<div id="searchLodgeKind"></div><br>
-	<!-- 검색 -->
-	<div id="searchLodgeBtn"></div><br>
-	
- </form>
+		<div class="selectArea col-md-12">
+			<!-- 지역검색 -->
+			<div id="searchArea" class="col-md-6"></div><br><br>
+			<!-- 세부지역검색 -->
+			<div id="searchDetailArea" class="col-md-6"></div><br><br>
+			<!-- 숙박종류검색 -->
+			<div id="searchLodgeKind" class="col-md-6"></div><br><br>
+			<!-- 검색 -->
+			<div id="searchLodgeBtn" class="col-md-6"></div><br><br>	
+	 	</div>
+	</form>
+ </div> 
