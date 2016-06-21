@@ -45,7 +45,7 @@
   font-weight: normal;
   line-height: 24px;
   font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   padding: 6px 20px 5px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -73,7 +73,7 @@
   border-radius: 4px;
   line-height: 24px;
   font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   padding: 6px 20px 5px;
   outline: none;
   color: #363535;
@@ -170,7 +170,7 @@
   width: 100%;
   line-height: 24px;
   font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   padding: 6px 20px 5px;
   outline: none;
   border: 1px solid #000;
@@ -243,7 +243,7 @@
   z-index: 1050;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   font-size: 13px;
 }
 #contact-form .modal h4 {

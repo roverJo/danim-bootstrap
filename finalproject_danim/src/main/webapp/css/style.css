@@ -7,11 +7,19 @@
 @import url(//fonts.googleapis.com/css?family=Economica);
 @import url(//fonts.googleapis.com/css?family=Marvel:400);
 @import url(//fonts.googleapis.com/css?family=Marvel:700);
+/* 나눔글씨체 추가 */
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfkpJRUw0RGNraDFnVzRFdjhaQnRFQ3BzZ00tRFZobGlKcmprb1hiSUFvZkE/nanumbarunpenr.css");
+@import url("https://googledrive.com/host/0BxmAw3HA4YGCfnE1U2tYVjN2UkVLWnEzaVdsWDRUZ3VFbmpJckF3UG56WkpLSUxKMXFaTlU/nanumbarunpenb.css");
+
+.nanumbarunpenr { font-family:nanumbarunpenr !important; font-size:18px; } 
+.nanumbarunpenb { font-family:nanumbarunpenb !important; font-size:18px; }
+* { font-family:nanumbarunpenb }
+
 .navigation {
   z-index: 999;
   position: relative;
   padding: 5px 0 0;
-  font-family: 'Marvel', sans-serif;
+  /* font-family: 'Marvel', sans-serif; */
   font-weight: normal;
 }
 .navigation .sf-menu {
@@ -28,8 +36,16 @@
 }
 .sf-menu ul {
   position: absolute;
-  top: -999px;
+  /* top: -999px; */
   display: none;
+  width: 120px;
+  background-color: #414141;
+  opacity: 50;
+  font-family: nanumbarunpenb !important;
+  font-size:22px;
+}
+.sf-menu li:click> ul {
+	display: block;
 }
 .sf-menu > li > ul > li {
   float: none;
@@ -61,7 +77,7 @@
   color: #ffffff;
   text-align: center;
 }
-.sf-menu > li > a.sf-with-ul:after {
+/* .sf-menu > li > a.sf-with-ul:after {
   content: '';
   position: absolute;
   width: 5px;
@@ -75,7 +91,7 @@
   border-style: solid;
   border-width: 3px 3px 0 3px;
   border-color: #fff transparent transparent transparent;
-}
+} */
 .sf-menu > li.sfHover > a,
 .sf-menu > li.current > a,
 .sf-menu > li > a:hover {
@@ -172,7 +188,7 @@ h5,
 h6 {
   font-weight: 400;
   color: #5c627c;
-  font-family: 'Economica', sans-serif;
+  /* font-family: 'Economica', sans-serif; */
 }
 h2 {
   font-size: 72px;
