@@ -85,7 +85,7 @@
 				</select>
 				<br><br><br>
 				이메일 <input type="email" name="email_add" value="${mvo.email_add}" class="form-control" required><br><br>
-				<input type="submit" value="수정" class="btn btn-info col-md-12">
+				<input type="submit" value="수정" class="btn btn-info btn-md-4">
 				</form>
 		</div>
 	<div class="clear"></div>
