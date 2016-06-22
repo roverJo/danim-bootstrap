@@ -3,7 +3,7 @@
 <div class="container_12">
 <div class="addHeight"></div>
 	<div class="community">
-		<h3>공지사항</h3>
+		<h3 align="center">공지사항</h3>
 		<table class="table custab">
 			<thead>
 			<tr class="box-black">

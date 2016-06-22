@@ -64,11 +64,12 @@
 		});
 	});
 </script>
-<div class="container" align="center">
+<div class="container_12" align="center">
 	<div class="addHeight"></div>
 		<div id="contact-area" class="community">
 			<h3 class="lead">회원 정보 수정</h3><br>
-				<form id="updateForm" action="login_updateResult.do" method="post" class="input_form text-left">
+				<form id="updateForm" action="login_updateResult.do" method="post" class="input_form">
+				<div class="text-left">
 				아이디 <input type="text" name="id" value="${mvo.id}" class="form-control" readonly><br>
 				비밀번호 <input type="password" name="password" class="form-control" required><br>
 				비밀번호 확인 <input type="password" name="checkpass" class="form-control" required>
@@ -83,8 +84,9 @@
 				<option value="${area.area_name}">${area.area_name}</option>
 				</c:forEach>
 				</select>
-				<br><br><br>
+				<br><br><br><br>
 				이메일 <input type="email" name="email_add" value="${mvo.email_add}" class="form-control" required><br><br>
+				</div>
 				<input type="submit" value="수정" class="btn btn-info btn-md-4">
 				</form>
 		</div>

@@ -23,7 +23,7 @@
 					if(jsonData==""){
 						$("#memberView").html("검색결과가 없습니다");
 					}else{					
-					var table = "<br><table border='1' class='table custab'><tr  class='box-black'>"+
+					var table = "<table border='1' class='table custab'><tr  class='box-black'>"+
 						"<td class='box-text'>아이디</td><td class='box-text'>닉네임</td><td class='box-text'>주소</td><td class='box-text'>이메일</td>";
 					table+= "<td class='box-text'>회원권한</td><td class='box-text'>권한부여</td></tr>";
 					for(var i=0;i<jsonData.length;i++){
@@ -39,7 +39,7 @@
 					table+= "</table>";
 					$("#memberView").html(table);
 					if($("#memberView").html()!=""){
-						$("#submitView").html("<input type='submit' value='권한부여' id='subBtn' class='btn btn-success'>");
+						$("#submitView").html("<input type='submit' value='권한부여' id='subBtn' class='btn btn-success'><div class='addHeight'></div>");
 					}
 					}
 				}
@@ -58,9 +58,9 @@
 		});
 	});
 </script>
-<div class="container_12">
+<div class="container_12" align="center">
 <div class="addHeight"></div>
-	<div class="community">
+	<div class="">
 		<c:if test="${sessionScope.mvo.admin==99}">
 		<h3>운영진 관리</h3>
 		<form id="selectForm" action="admin_appointMember.do">
