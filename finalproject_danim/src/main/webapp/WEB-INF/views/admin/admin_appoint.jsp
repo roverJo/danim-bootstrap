@@ -23,7 +23,7 @@
 					if(jsonData==""){
 						$("#memberView").html("검색결과가 없습니다");
 					}else{					
-					var table = "<table border='1' class='table custab'><tr  class='box-black'>"+
+					var table = "<div class='addHeight'></div><table border='1' class='table custab'><tr  class='box-black'>"+
 						"<td class='box-text'>아이디</td><td class='box-text'>닉네임</td><td class='box-text'>주소</td><td class='box-text'>이메일</td>";
 					table+= "<td class='box-text'>회원권한</td><td class='box-text'>권한부여</td></tr>";
 					for(var i=0;i<jsonData.length;i++){

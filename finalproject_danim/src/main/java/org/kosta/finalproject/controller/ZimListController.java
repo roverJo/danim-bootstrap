@@ -200,15 +200,14 @@ public class ZimListController
 		
 		//음식 찜리스트
 		@RequestMapping("checkFoodShopNo.do")
-		public ModelAndView checkFoodShopNo(String no){
-			
-			
-			return new ModelAndView("redirect:addZimListByFoodShop.do?foodshop_no="+no);
+		public ModelAndView checkFoodShopNo(int foodshop_no){
+			return new ModelAndView("redirect:addZimListByFoodShop.do?foodshop_no="+foodshop_no);
 		}
 		
 		
 		@RequestMapping("addZimListByFoodShop.do")
 		public ModelAndView addZimListByFoodShop(HttpSession session,BestFoodVO bestFoodVO){
+			System.out.println("gggggg");
 			ArrayList<BestFoodVO> bestFoodList =(ArrayList<BestFoodVO>) session.getAttribute("bestFoodList");
 			if(bestFoodList == null){
 				bestFoodList = new ArrayList<BestFoodVO>();
@@ -219,6 +218,7 @@ public class ZimListController
 					}
 				}
 			}
+			System.out.println("test: " + bestFoodList);
 			bestFoodVO =(BestFoodVO) bestFoodService.getFoodInfo(bestFoodVO.getFoodshop_no());
 			bestFoodList.add(bestFoodVO);
 			session.setAttribute("bestFoodList", bestFoodList);

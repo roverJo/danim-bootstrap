@@ -33,7 +33,7 @@
 </c:forEach>
 <hr>
 <c:if test="${sessionScope.mvo != null }">
-<input type="submit" class="col-md-12 btn btn-danger btn-lg" value="경비카트로">
+<input type="submit" class="col-md-12 btn btn-danger btn-lg" value="찜하기">
 </c:if>
 </td>
 </tr>
