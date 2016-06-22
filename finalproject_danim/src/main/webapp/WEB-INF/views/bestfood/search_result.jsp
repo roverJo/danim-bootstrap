@@ -37,29 +37,37 @@
 	</tr>
 </table>
 
-<p class="paging" align="center">
-	<c:set var="pb" value="${foodList.pagingBean}"></c:set>
-	<c:if test="${pb.previousPageGroup}">
-		&nbsp;
-		<a href="${initParam.root }searchBestFood.do?pageNo=${pb.startPageOfPageGroup-1}&detailarea_name=${foodList.bestFoodList[0].detailarea_name}&foodtype=${foodtype}">◀</a>&nbsp;
-	</c:if>
-
-	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-		<c:choose>
-		<c:when test="${pb.nowPage!=i}">
-			<a href="${initParam.root }searchBestFood.do?pageNo=${i}&detailarea_name=${foodList.bestFoodList[0].detailarea_name}&foodtype=${foodtype}">${i}</a> 
-		</c:when>
-		<c:otherwise>
-		${i}
-		</c:otherwise>
-		</c:choose>
-		&nbsp;
-	</c:forEach>	 
-	
-	<c:if test="${pb.nextPageGroup}">
-		&nbsp;
-		<a href="${initParam.root }searchBestFood.do?pageNo=${pb.endPageOfPageGroup+1}&detailarea_name=${foodList.bestFoodList[0].detailarea_name}&foodtype=${foodtype}">▶</a>&nbsp;
-		
-	</c:if>
-	 
-</p>
+<div align="center">
+	<ul class="pagination">
+		<p class="paging">
+			<c:set var="pb" value="${foodList.pagingBean}"></c:set>
+			<c:if test="${pb.previousPageGroup}">
+				&nbsp;
+				<li>
+					<a href="${initParam.root }searchBestFood.do?pageNo=${pb.startPageOfPageGroup-1}&detailarea_name=${foodList.bestFoodList[0].detailarea_name}&foodtype=${foodtype}">◀</a>&nbsp;
+				</li>			
+			</c:if>		
+			<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+				<c:choose>
+				<c:when test="${pb.nowPage!=i}">
+					<li>
+						<a href="${initParam.root }searchBestFood.do?pageNo=${i}&detailarea_name=${foodList.bestFoodList[0].detailarea_name}&foodtype=${foodtype}">${i}</a> 
+					</li>				
+				</c:when>
+				<c:otherwise>
+					<li>
+						<a href="#">${i}</a>
+					</li>
+				</c:otherwise>
+				</c:choose>
+				&nbsp;
+			</c:forEach>	 			
+			<c:if test="${pb.nextPageGroup}">
+				&nbsp;
+				<li>
+					<a href="${initParam.root }searchBestFood.do?pageNo=${pb.endPageOfPageGroup+1}&detailarea_name=${foodList.bestFoodList[0].detailarea_name}&foodtype=${foodtype}">▶</a>&nbsp;
+				</li>
+			</c:if>			 
+		</p>
+	</ul>
+</div>

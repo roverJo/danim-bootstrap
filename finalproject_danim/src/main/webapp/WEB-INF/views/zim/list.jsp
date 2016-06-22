@@ -328,7 +328,7 @@
 		</tr>
 		<c:forEach items="${lodgeList }" var = "list">
 			<tr>
-				<td>${list.detailarea_name }</td>
+				<td>${list.local_area }</td>
 				<td>${list.lodgetype }</td>
 				<td>${list.shopname }</td>
 				<td>${list.price }원</td>			
@@ -361,7 +361,7 @@
 			<c:forEach items="${bestFoodList }" var="bestFoodList">
 			<tr>
 				<td>${bestFoodList.shopname }</td>
-				<td>${bestFoodList.detailarea_name }</td>
+				<td>${bestFoodList.local_area }</td>
 				<td>${bestFoodList.foodtype }</td>
 				<td>${bestFoodList.shop_add }</td>
 				<td>${bestFoodList.main_food }</td>

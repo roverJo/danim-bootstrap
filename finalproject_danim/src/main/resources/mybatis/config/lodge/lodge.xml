@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where lodge_no=#{value} 
  	</select> -->
  	<select id="showlodge" parameterType="lodgeVO" resultMap="lodgeRM">
- 		select l.lodge_no, l.shopname, l.shopinfo, l.lodgetype, l.price, l.area_name, l.detailarea_name, p.picture_no, p.picture_name from lodge l, lodgepicture p 
+ 		select l.lodge_no, l.shopname, l.shopinfo, l.lodgetype, l.price, l.area_name, l.detailarea_name, l.local_area, p.picture_no, p.picture_name from lodge l, lodgepicture p 
 		where l.lodge_no=p.lodge_no and l.lodge_no=#{value} order by picture_no asc
  	</select>
  	<select id="lodgeNo" resultType="lodgeVO">
@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<select id="getLodgeInfo" parameterType="int" resultType="lodgeVO">
- 		select lodge_no, shopname, shopinfo, lodgetype, price, area_name, detailarea_name from lodge
+ 		select lodge_no, shopname, shopinfo, lodgetype, price, area_name, detailarea_name,local_area from lodge
 		where lodge_no=#{value}  
  	</select>
  	

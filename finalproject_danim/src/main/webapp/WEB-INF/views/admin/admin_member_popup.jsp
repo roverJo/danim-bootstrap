@@ -14,6 +14,6 @@
 <h3>관리자 비밀번호 확인</h3>
 <form id="checkForm" action="admin_checkPass.do" method="post">
 <input type="hidden" name="id" value="${id}">
-비밀번호 <input type="password" name="password"><br>
+비밀번호 <input type="password" class="form-con" name="password"><br>
 <input type="submit" value="확인"> <input type=button value=창끄기 onclick='javascript:self.close()'>
 </form>

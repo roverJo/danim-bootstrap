@@ -11,7 +11,7 @@
 		var LeftPosition=(screen.width-w)/2;
 		var TopPosition=(screen.height-h)/2;
 		//버스
-		$(".cartDiv").on("click",".bus", function(){
+		$(".cartDiv").on("click","input[name=busBtn]", function(){
 			w = 300;    //팝업창의 너비
 			h = 200;    //팝업창의 높이
 
@@ -19,11 +19,11 @@
 			LeftPosition=(screen.width-w)/2;
 			TopPosition=(screen.height-h)/2;
 			
-			var bus_no = $(this).parent().parent().find("input[name=bus_no]").val();
+			var bus_no = $(".cartDiv").parent().parent().find("input[name=bus_no]").val();
 			window.open("cartDetailInfoByBus.do?bus_no="+bus_no,"교통상세정보","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");
 		})
 		//기차
-		$(".cartDiv").on("click",".train", function(){
+		$(".cartDiv").on("click","input[name=trainBtn]", function(){
 			w = 300;    //팝업창의 너비
 			h = 200;    //팝업창의 높이
 
@@ -31,11 +31,11 @@
 			LeftPosition=(screen.width-w)/2;
 			TopPosition=(screen.height-h)/2;
 			
-			var train_no = $(this).parent().parent().find("input[name=train_no]").val();
+			var train_no = $(".cartDiv").parent().parent().find("input[name=train_no]").val();
 			window.open("cartDetailInfoByTrain.do?train_no="+train_no,"교통상세정보","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");
 		});
 		//숙박
-		$(".cartDiv").on("click",".lodge", function(){
+		$(".cartDiv").on("click","input[name=lodgeBtn]", function(){
 			w = 1500;    //팝업창의 너비
 			h = 800;    //팝업창의 높이
 
@@ -43,11 +43,11 @@
 			LeftPosition=(screen.width-w)/2;
 			TopPosition=(screen.height-h)/2;
 			
-			var lodge_no = $(this).parent().parent().find("input[name=lodge_no]").val();
+			var lodge_no = $(".cartDiv").parent().parent().find("input[name=lodge_no]").val();
 			window.open("cartDetailInfoByLodge.do?lodge_no="+lodge_no,"숙박상세정보","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");
 		});
 		//음식
-		$(".cartDiv").on("click",".food", function(){
+		$(".cartDiv").on("click","input[name=foodBtn]", function(){
 			w = 640;    //팝업창의 너비
 			h = 510;    //팝업창의 높이
 
@@ -55,7 +55,7 @@
 			LeftPosition=(screen.width-w)/2;
 			TopPosition=(screen.height-h)/2;
 			
-			var foodshop_no = $(this).parent().parent().find("input[name=foodshop_no]").val();
+			var foodshop_no = $(".cartDiv").parent().parent().find("input[name=foodshop_no]").val();
 			window.open("cartDetailInfoByFood.do?foodshop_no="+foodshop_no,"음식상세정보","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");
 		});		
 	});
@@ -70,79 +70,86 @@
 	<div class="addHeight"></div>
 		<c:if test="${!empty list.busVO }">
 			<input type="hidden" name="bus_no" value="${list.busVO.bus_no }">
-			<tr class="bus box-black" >
+			<tr class="bus box-col-top" >
 				<td>교통</td>
 				<td>${list.busVO.terminalVO.terminal_name } --> ${list.busVO.end_area }</td>
 				<td>${list.busVO.busType}</td>
 				<td>${list.busVO.price } 원</td>
-				<td><input type="button" name="busBtn" value="상세보기"></td>
+				<td width="60px"><input type="button" name="busBtn" value="상세보기" class="btn btn-warning"></td>
 			</tr>
 		
 		</c:if>
 		<c:if test="${!empty list.trainVO}">
 			<input type="hidden" name="train_no" value="${list.trainVO.train_no }">
-			<tr class="train box-black">
+			<tr class="train box-col-top">
 				<td>교통</td>
 				<td>${list.trainVO.stationVO.station_name } --> ${list.trainVO.end_area }</td>
 				<td>${list.trainVO.trainType}</td>
 				<td>${list.trainVO.price }원</td>
-				<td><input type="button" name="trainBtn" value="상세보기"></td>
+				<td width="60px"><input type="button" name="trainBtn" value="상세보기" class="btn btn-warning"></td>
 			</tr>
 		</c:if>
 		<c:if test="${!empty list.lodgeVO }">
 			<input type="hidden" name="lodge_no" value="${list.lodgeVO.lodge_no }">
-			<tr class="lodge box-black">
+			<tr class="lodge box-col-top">
 				<td>숙박</td>
-				<td>${list.lodgeVO.detailarea_name }</td>
-				<td>${list.lodgeVO.lodgetype }</td>
+				<td>${list.lodgeVO.local_area }</td>
+				<td>${list.lodgeVO.shopname }</td>
 				<td>${list.lodgeVO.price }원</td>
-				<td><input type="button" name="lodgeBtn" value="상세보기"></td>
+				<td width="60px"><input type="button" name="lodgeBtn" value="상세보기" class="btn btn-warning"></td>
 			</tr>
 		</c:if>
 		<c:if test="${!empty list.bestFoodVO }">
 			<input type="hidden" name="foodshop_no" value="${list.bestFoodVO.foodshop_no }">
-			<tr class="food box-black">
+			<tr class="food box-col-top">
 				<td>음식</td>
-				<td>${list.bestFoodVO.detailarea_name }</td>
-				<td>${list.bestFoodVO.foodtype }</td>
+				<td>${list.bestFoodVO.local_area }</td>
+				<td>${list.bestFoodVO.main_food }</td>
 				<td>${list.bestFoodVO.main_price }원</td>
-				<td><input type="button" name="foodBtn" value="상세보기"></td>
+				<td width="60px"><input type="button" name="foodBtn" value="상세보기" class="btn btn-warning"></td>
 			</tr>
 		</c:if>
 		<tr>
-			<td colspan="5">총금액 : ${list.totalPrice }원</td>
+			<td colspan="5" class="box-col-bottom">총금액 : ${list.totalPrice }원</td>
 		</tr>
 	</table>
 	<div id="trafficDetail"></div>
 	<hr>
 	</c:forEach>
-	
-<p class="paging">
-	<c:set var="pb" value="${cartListVO.pagingBean}"></c:set>
-	<c:if test="${pb.previousPageGroup}">
-		&nbsp;
-		<a href="${initParam.root }login_cartList.do?pageNo=${pb.startPageOfPageGroup-1}">◀</a>&nbsp;
-	</c:if>
-
-	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-		<c:choose>
-		<c:when test="${pb.nowPage!=i}">
-			<a href="${initParam.root }login_cartList.do?pageNo=${i}">${i}</a> 
-		</c:when>
-		<c:otherwise>
-		${i}
-		</c:otherwise>
-		</c:choose>
-		&nbsp;
-	</c:forEach>	 
-	
-	<c:if test="${pb.nextPageGroup}">
-		&nbsp;
-		<a href="login_cartList.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>&nbsp;
-	</c:if>
-	 
-</p>
-	
+<div align="center">
+	<ul class="pagination">			
+		<p class="paging">
+			<c:set var="pb" value="${cartListVO.pagingBean}"></c:set>
+			<c:if test="${pb.previousPageGroup}">
+				&nbsp;
+				<li>
+					<a href="${initParam.root }login_cartList.do?pageNo=${pb.startPageOfPageGroup-1}">◀</a>&nbsp;
+				</li>
+			</c:if>		
+			<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+				<c:choose>
+				<c:when test="${pb.nowPage!=i}">
+					<li>
+						<a href="${initParam.root }login_cartList.do?pageNo=${i}">${i}</a> 
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li>
+						<a href="#">${i}</a>
+					</li>
+				</c:otherwise>
+				</c:choose>
+				&nbsp;
+			</c:forEach>	 			
+			<c:if test="${pb.nextPageGroup}">
+				&nbsp;
+				<li>
+					<a href="login_cartList.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>&nbsp;
+				</li>
+			</c:if>			 
+		</p>
+	</ul>
+</div>
 </c:if>
 </div>
 </div>

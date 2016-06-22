@@ -28,27 +28,36 @@
 		
 		<div class="addHeight"></div>	
 		
-<!-- 		<p class="paging"> -->
-		<p id="owl1">
+<div align="center">
+	<ul class="pagination">
+		<p class="paging">
 			<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 			<c:if test="${pb.previousPageGroup}">
 			&nbsp;
+			<li>
 			<a href="notice_list.do?pageNo=${pb.startPageOfPageGroup-1}" class="owl-prev">◀</a>&nbsp;
+			</li>
 			</c:if>
 			<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
 				<c:choose>
 				<c:when test="${pb.nowPage!=i}">
+				<li>
 				<a href="notice_list.do?pageNo=${i}">${i}</a> 
+				</li>
 				</c:when>
 				<c:otherwise>
-				${i}
+					<li>
+						<a href="#">${i}</a>
+					</li>
 				</c:otherwise>
 				</c:choose>
 				&nbsp;
 			</c:forEach>	 
 			<c:if test="${pb.nextPageGroup}">
 				&nbsp;
+				<li>
 				<a href="notice_list.do?pageNo=${pb.endPageOfPageGroup+1}" class="owl-next">▶</a>&nbsp;
+				</li>
 			</c:if>
 		</p>
 	</div>

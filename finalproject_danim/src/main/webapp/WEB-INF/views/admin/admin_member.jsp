@@ -50,8 +50,9 @@ $(document).ready(function(){
 		</table>
 		
 		<div class="addHeight"></div>
-		
-		<p class="paging" id="owl1">
+<div align="center">
+	<ul class="pagination">
+		<p class="paging">
 			<%-- 코드를 줄이기 위해 pb 변수에 pagingBean을 담는다. --%>
 			<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 			<!-- 
@@ -61,9 +62,11 @@ $(document).ready(function(){
 						   	    hint)   startPageOfPageGroup-1 하면 됨 		 
 			 -->      
 			<c:if test="${pb.previousPageGroup}">
+			<li>
 			<a href="admin_member.do?pageNo=${pb.startPageOfPageGroup-1}">
 			<!-- <img src="img/left_arrow_btn.gif"> -->
 			◀&nbsp; </a>	
+			</li>
 			</c:if>
 			<!-- step1. 1)현 페이지 그룹의 startPage부터 endPage까지 forEach 를 이용해 출력한다
 						   2) 현 페이지가 아니면 링크를 걸어서 서버에 요청할 수 있도록 한다.
@@ -76,10 +79,14 @@ $(document).ready(function(){
 			end="${pb.endPageOfPageGroup}">
 			<c:choose>
 			<c:when test="${pb.nowPage!=i}">
+			<li>
 			<a href="admin_member.do?pageNo=${i}">${i}</a> 
+			</li>
 			</c:when>
 			<c:otherwise>
-			${i}
+				<li>
+					<a href="#">${i}</a>
+				</li>
 			</c:otherwise>
 			</c:choose>
 			&nbsp;
@@ -91,10 +98,14 @@ $(document).ready(function(){
 						   	    hint)   endPageOfPageGroup+1 하면 됨 		 
 			 -->   
 			<c:if test="${pb.nextPageGroup}">
+			<li>
 			<a href="admin_member.do?pageNo=${pb.endPageOfPageGroup+1}">
 			▶<!-- <img src="img/right_arrow_btn.gif"> --></a>
+			</li>
 			</c:if>
 		</p>
+	</ul>
+	</div>
 		</c:if>
 		<c:if test="${sessionScope.mvo.admin==0}">
 		<script type="text/javascript"> 

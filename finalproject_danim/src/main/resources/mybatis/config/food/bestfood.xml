@@ -47,14 +47,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<!-- 음식 탑5리스트 가져오기 -->
  	<select id="foodtop5list" resultType="bestFoodVO">
  		select shopname,foodtype,detailarea_name,hits rank from
-(select shopname,foodtype,detailarea_name,hits, rank() over	(order by hits desc) as rank from bestfood )
+		(select shopname,foodtype,detailarea_name,hits, rank() over	(order by hits desc) as rank from bestfood )
    <![CDATA[
        where rank < 6
     	]]>
  	</select>
  	
  	<select id="getFoodInfo" resultType="bestFoodVO" parameterType="int">
- 		select foodshop_no,shopname,shop_add,foodtype,area_name,detailarea_name,main_price,main_food from bestfood
+ 		select foodshop_no,shopname,shop_add,foodtype,area_name,detailarea_name,local_area,main_price,main_food from bestfood
  		where foodshop_no=#{foodshop_no}
  	</select>
  	

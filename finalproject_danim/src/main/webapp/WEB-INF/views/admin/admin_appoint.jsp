@@ -68,7 +68,7 @@
 		<option value="id">아이디</option>
 		<option value="nickname">닉네임</option>
 		</select>
-		<input type="text" name="inputVal" >
+		<input type="text" class="form-con" name="inputVal" >
 		<input type="button" value="검색" id="clickBtn" class="btn btn-primary">
 		<div id="memberView"></div>
 		<div id="submitView" align="center"></div>

@@ -42,7 +42,7 @@
 <h2>${list[0].lodgetype } 정보</h2>
 <hr>
 <br>
-지역 : ${requestScope.list[0].detailarea_name}
+지역 : ${requestScope.list[0].local_area}
 <br><br>
 숙소 : ${requestScope.list[0].shopname }
 <br><br>
