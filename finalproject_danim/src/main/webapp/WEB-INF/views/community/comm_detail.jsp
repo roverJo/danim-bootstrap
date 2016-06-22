@@ -15,7 +15,17 @@
 				return false;
 			}
 		});
+		
+		
 <%-- 댓글 --%>		
+$("#commentParentText").keydown(function (key) {
+    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+    alert(1)
+    	key.cancelBubble = true;
+        $("#commentParentSubmit").click();
+        return false;
+    }
+});
 		$("#commentParentSubmit").click(function( event ) {
 			var pText = $("#commentParentText");
 			if($.trim(pText.val())==""){
@@ -325,7 +335,7 @@ $(document).on("click","#replyEditSubmit", function(){
 <table class="list">
 	<thead>
 		<tr>
-			<th class="no">상세내용</th>
+			<th class="no"><h3>상세내용</h3></th>
 		</tr>
 	</thead>
 	<tbody>			
@@ -334,11 +344,20 @@ $(document).on("click","#replyEditSubmit", function(){
 		</tr>
 		<tr>
 		<c:if test="${commVO.memberVO.id==sessionScope.mvo.id }">
-			<td><input type="image" id="contentUpdate" value="수정"><input type="image" id="contentDelete" value="삭제"></td>
+			<td><input type="button" id="contentUpdate" value="수정" class="btn btn-primary"><input type="button" id="contentDelete" value="삭제" class="btn btn-danger"></td>
 		</c:if>		
 		</tr>
 	</tbody>
 </table>
+
+<div class="addHeight"></div>
+
+<table>
+<thead>
+		<tr><th><h4>Comments</h4></th></tr>
+</thead>
+</table>
+
 <c:if test="${sessionScope.mvo!=null }">
 <form id="commentForm">
 <table class="table table-condensed">
@@ -346,10 +365,9 @@ $(document).on("click","#replyEditSubmit", function(){
                             <td>
                                 <span class="form-inline" role="form">
                                     <p>
-                                    
-                                        <div class="form-group">
+                                        <%-- <div class="form-group">
                                             <input type="text" id="commentParentName" name="commentParentName" class="form-control col-lg-2" data-rule-required="true" value="${sessionScope.mvo.nickname }" maxlength="10" readonly>
-                                        </div>
+                                        </div> --%>
                                         <!-- <div class="form-group">
                                             <input type="password" id="commentParentPassword" name="commentParentPassword" class="form-control col-lg-2" data-rule-required="true" placeholder="패스워드" maxlength="10">
                                         </div> -->
@@ -357,13 +375,14 @@ $(document).on("click","#replyEditSubmit", function(){
                                             <button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">확인</button>
                                         </div>
                                     </p>
-                                        <textarea id="commentParentText" name="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4"></textarea>
+                                        <textarea id="commentParentText" name="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4" placeholder="댓글"></textarea>
                                 </span>
                             </td>
                         </tr>
 </table>
 </form>
 </c:if>
+
 <table id="commentTable" class="table table-condensed">
 	<c:forEach items="${commentList}" var="item">
 		<tr id="r1" name="commentParentCode" title="${item.comment_no}">
