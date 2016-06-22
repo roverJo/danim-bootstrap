@@ -17,8 +17,8 @@
 <script type="text/javascript" src="${initParam.root}resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <style type="text/css">
 #main {
-	background: url(resources/bootstrap/images/bg.jpg) no-repeat center
-		fixed;
+	/* background: url(resources/bootstrap/images/bg.jpg) no-repeat center
+		fixed; */
 	-webkit-background-size: cover;
 	/* 	background-size: cover; */
 }
@@ -35,9 +35,14 @@
 .custab {
 	border: 1px solid #ccc;
 	padding: 5px;
-	margin: 5% 0;
+	/* margin: 5% 0; */
 	box-shadow: 3px 3px 2px #ccc;
 	transition: 0.5s;
+}
+.custab tr>th{
+	border: 1px solid white;
+	color: white;
+	text-align: center;
 }
 
 .custab:hover {

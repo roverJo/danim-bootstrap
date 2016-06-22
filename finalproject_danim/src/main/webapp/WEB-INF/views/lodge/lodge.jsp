@@ -69,7 +69,7 @@ $(document).ready(function(){
 	
 <div class="container" align="center">
 <div class="addHeight"></div>
-<h3 align="center">숙소검색페이지</h3><br>
+<h3 align="center">숙소검색</h3><br>
 	<form id="lodgeForm" method="post" action="searchLodgeByNameAndKind.do">
 	<input type="hidden" name="detailarea_name" value="">
 	<input type="hidden" name="lodgetype" value="">

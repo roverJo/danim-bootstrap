@@ -14,7 +14,12 @@
       <img src="${initParam.root}${list.lodgePictureVO.picture_name}" alt="..." class="thumimg">
         <h4>${list.lodgetype }:  <br> ${list.shopname }</h4> <br>
         <p align="center"><a href="${initParam.root}showlodge.do?no=${list.lodge_no}" class="btn btn-success" role="button">상세보기</a>
-        &nbsp;&nbsp;&nbsp;<a href="login_checkZimByLodge.do?lodge_no=${list.lodge_no}" class="btn btn-success" role="button">경비카트로</a>
+        &nbsp;&nbsp;&nbsp;
+	        <c:choose>
+				<c:when test="${sessionScope.mvo!=null}">
+	      			<a href="login_checkZimByLodge.do?lodge_no=${list.lodge_no}" class="btn btn-success" role="button">찜하기</a>
+	        	</c:when>
+			</c:choose>
         </p>
       </div>
     </div>    

@@ -66,11 +66,11 @@
 <hr>
 <c:if test="${!empty cartListVO}">
 	<c:forEach items="${cartListVO.cartList }" var="list" varStatus="stat">
-	<table border="1" class="table table-striped">
+	<table border="1" class="table custab">
 	<div class="addHeight"></div>
 		<c:if test="${!empty list.busVO }">
 			<input type="hidden" name="bus_no" value="${list.busVO.bus_no }">
-			<tr class="bus">
+			<tr class="bus box-black" >
 				<td>교통</td>
 				<td>${list.busVO.terminalVO.terminal_name } --> ${list.busVO.end_area }</td>
 				<td>${list.busVO.busType}</td>
@@ -81,7 +81,7 @@
 		</c:if>
 		<c:if test="${!empty list.trainVO}">
 			<input type="hidden" name="train_no" value="${list.trainVO.train_no }">
-			<tr class="train">
+			<tr class="train box-black">
 				<td>교통</td>
 				<td>${list.trainVO.stationVO.station_name } --> ${list.trainVO.end_area }</td>
 				<td>${list.trainVO.trainType}</td>
@@ -91,7 +91,7 @@
 		</c:if>
 		<c:if test="${!empty list.lodgeVO }">
 			<input type="hidden" name="lodge_no" value="${list.lodgeVO.lodge_no }">
-			<tr class="lodge">
+			<tr class="lodge box-black">
 				<td>숙박</td>
 				<td>${list.lodgeVO.detailarea_name }</td>
 				<td>${list.lodgeVO.lodgetype }</td>
@@ -101,7 +101,7 @@
 		</c:if>
 		<c:if test="${!empty list.bestFoodVO }">
 			<input type="hidden" name="foodshop_no" value="${list.bestFoodVO.foodshop_no }">
-			<tr class="food">
+			<tr class="food box-black">
 				<td>음식</td>
 				<td>${list.bestFoodVO.detailarea_name }</td>
 				<td>${list.bestFoodVO.foodtype }</td>
