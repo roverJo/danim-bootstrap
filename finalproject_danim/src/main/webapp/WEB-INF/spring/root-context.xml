@@ -98,10 +98,10 @@ class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 
 <util:map id="pagingConfigFood">	
 	<entry key="numberOfContent">
-		<value type="int">2</value>
+		<value type="int">8</value>
 	</entry>
 	<entry key="numberOfPage">
-		<value type="int">1</value>
+		<value type="int">5</value>
 	</entry>
 </util:map>
 

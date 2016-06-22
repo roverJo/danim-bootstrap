@@ -16,59 +16,111 @@
 <!-- 유진이꺼 -->
 <script type="text/javascript" src="${initParam.root}resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <style type="text/css">
-	#main{
-		 background: url(resources/bootstrap/images/bg.jpg) no-repeat center fixed;
-		-webkit-background-size: cover;
+#main {
+	background: url(resources/bootstrap/images/bg.jpg) no-repeat center
+		fixed;
+	-webkit-background-size: cover;
 	/* 	background-size: cover; */
-	}
-	.addHeight{
-		height: 30px;
-	}
-	.community{
-		background-color: #f3f3f3;
-		padding: 10px;
-	}
-	.custab{
-	    border: 1px solid #ccc;
-	    padding: 5px;
-	    margin: 5% 0;
-	    box-shadow: 3px 3px 2px #ccc;
-	    transition: 0.5s;
-	    }
-	.custab:hover{
-	    box-shadow: 3px 3px 0px transparent;
-	    transition: 0.5s;
-	    }
-    #contact-area{
-    	width: 500px;
-    }
-    .btn-md-4 {
-    width: 33.33333333333333%;
-    float: center;
-  	}
-  	.selectArea{
-  		display : table;
-		margin-left: 25%;
-		margin-right: 30%;
-		display: inline-block;
-  	}
-  	.searchForm{
-		width: 350px;
-		/* margin-top: 10px;
+}
+
+.addHeight {
+	height: 30px;
+}
+
+.community {
+	background-color: #f3f3f3;
+	padding: 10px;
+}
+
+.custab {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 5% 0;
+	box-shadow: 3px 3px 2px #ccc;
+	transition: 0.5s;
+}
+
+.custab:hover {
+	box-shadow: 3px 3px 0px transparent;
+	transition: 0.5s;
+}
+
+#contact-area {
+	width: 500px;
+}
+
+.btn-md-4 {
+	width: 33.33333333333333%;
+	float: center;
+}
+
+.selectArea {
+	display: table;
+	margin-left: 25%;
+	margin-right: 30%;
+	display: inline-block;
+}
+
+.searchForm {
+	width: 350px;
+	/* margin-top: 10px;
 		margin-bottom: 30px;
 		margin-left: 20px;
 		margin-right: 10px; */
-		margin-left: 20px;
+	margin-left: 20px;
 	/* 	padding: 10px;  */
 	/* 	text-align: left; */
-		background-color: #ffffff;
-	}
-	.thumimg {
-	width: 100%; 
+	background-color: #ffffff;
+}
+
+.thumimg {
+	width: 100%;
 	max-width: 350px;
-	height:100%;
-	max-height:200px; 
+	height: 100%;
+	max-height: 200px;
 	vertical-align: middle;
+}
+
+	/* Community 게시판 List */
+	.card-receep-header {
+		border-bottom: 1px solid #e9ecf0;
+		border-top: 1px solid #e9ecf0;
+	}
+	.card-receep-header .username {
+		color: #004080;
+		font-weight: bold;
+	}
+	.card-receep-header .timeago {
+		color: #c7cbd1;
+		font-size: 12px;
+	}
+	.card-receep-header #like {
+		color: #8a8f96;
+	}
+	.card-receep-header #like:hover {
+		color: #ff0080;
+	}
+	.card-receep-entry {
+		background-size: 33px 34px;
+		position: relative;
+	}
+	#owl1{
+		text-align: center;
+	}
+	/* 테이블 색깔 및 크기 지정 */
+	.box-black {
+	background-color: #ec9e9e;
+	/* rgba(0, 0, 0, 0.7) */
+	}
+	.box-text {
+		border: 1px solid white;
+		color: white;
+		text-align: center;
+	}
+	.box-no{
+		width: 71px;
+		color: white;
+		text-align: center;
 	}
 </style>
 
