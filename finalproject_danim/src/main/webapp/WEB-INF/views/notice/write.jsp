@@ -8,15 +8,15 @@ $(document).ready(function(){
 //	alert($("#write_form input[name=content]"))
 
 	if($("#title").val()==""){
-	alert("제목을 입력하세요!");
+		alert("제목을 입력하세요!");
 	}else if($("#noticeContent").val()==""){
-	alert("본문을 입력하세요!");
+		alert("본문을 입력하세요!");
 	}else{
-	$("#write_form").submit();
+		$("#write_form").submit();
 	}
 	});
 	$("#resetBtn").click(function(){
-	$("#write_form")[0].reset();
+		$("#write_form")[0].reset();
 	});
 });
 function showObj(obj) {
@@ -38,35 +38,35 @@ location.href="${initParam.root}home.do";
 
 <div class="container_12" align="center">
 <div class="addHeight"></div>
-	<div class="community">
+		<h3>글작성</h3>
 		<form method="post" action="${initParam.root}write.do" id="write_form">
-		<table class="inputForm">
-		<caption>글쓰기</caption>
-		<tbody>
-		<tr>
-		<td>제목</td>
-		<td><input type="text" id="title" name="title" size="45"></td>
-		</tr>
-		<tr>
-		<td>닉네임</td>
-		<td>${sessionScope.mvo.nickname}</td>
-		</tr>
-		<tr>
-		<td colspan="4" align="left">&nbsp;&nbsp;
-		<textarea cols="52" rows="16" id="noticeContent" name="content"></textarea>
-		</td>
-		</tr>
-		<tr>
-		<td colspan="4" align="center">
-		<input type="button" class="btn btn-success" id="writeBtn" value="입력"/>
-		<input type="reset" class="btn btn-default" id="resetBtn" value="취소"/>
-		<!-- <img id="writeBtn" class="action" src="" alt="입력"  onclick="content_submit()">
-		<img id="resetBtn" class="action" src="" alt="취소" onclick="cancel()"> -->
-		</td>
-		</tr>
-		</tbody>
-		</table>
+		<div id="contact-area">
+			<table>
+			<tbody class="text-left">
+			<tr>
+				<td>제목</td>
+				<td><input type="text" id="title" name="title" class="form-con" style="width: 333px;"></td>
+			</tr>
+			<tr>
+				<td>닉네임</td>
+				<td align="center"><h4>${sessionScope.mvo.nickname}</h4></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="left">
+				<textarea id="noticeContent" name="content" class="form-con" style="width: 369px; height: 200px;"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				<input type="button" class="btn btn-success" id="writeBtn" value="입력"/>
+				<input type="reset" class="btn btn-default" id="resetBtn" value="취소"/>
+				<!-- <img id="writeBtn" class="action" src="" alt="입력"  onclick="content_submit()">
+				<img id="resetBtn" class="action" src="" alt="취소" onclick="cancel()"> -->
+				</td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
 		</form>
-	</div>
 	<div class="clear"></div>
 </div>

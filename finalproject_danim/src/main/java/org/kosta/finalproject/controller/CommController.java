@@ -28,6 +28,7 @@ public class CommController {
 	@RequestMapping("community_list.do")
 	public ModelAndView getCommList(HttpServletRequest request, int rownum){
 		List<CommunityVO> list = commService.getCommList(rownum);
+		List<CommLikeVO> likeRankList = commService.getLikeRank();
 		HttpSession session = request.getSession(false);
 		if (session != null && session.getAttribute("mvo") != null) {
 			for (CommunityVO clvo : list) {
@@ -36,6 +37,7 @@ public class CommController {
 			}
 		}
 		ModelAndView mv = new ModelAndView("community_list", "commList", list);
+		mv.addObject("rankList", likeRankList);
 		return mv;
 	}
 	

@@ -183,41 +183,60 @@
 					        </div> -->
 		</div>
 	</div>
-	<div class="grid_12">
+<!-- 	<div class="grid_12"> -->
+	<div class="col-md-6">
 		<div class="community" id="contact-area">
+			<table border="1" id="commTable">
+				<c:forEach var="list" items="${commList}">
+					 <tr class="card-receep-header">
+						<td class="username"><strong>${list.memberVO.nickname}</strong></td>
+						<td class="timeago">${list.timePosted}</td>
+						<td id="like" name="likeDiv" title="${list.comm_no }">
+							<c:choose>
+							<c:when test="${list.userLike==1 }">
+								<div class='glyphicon glyphicon-heart' data-toggle='tooltip' title='좋아요 취소'></div>
+							</c:when>
+							<c:when test="${list.userLike==0 }">
+								<div class="glyphicon glyphicon-heart-empty" data-toggle="tooltip" title="좋아요!"></div><!--fonti um-heart onclick="updateLike('${list.comm_no}')" -->
+							</c:when>
+							</c:choose>
+							${list.likePosted }
+						</td>
+					</tr>
+					<tr class="card-receep-entry">
+						<td colspan="3"  height="100" width="500">${list.content}<br>
+							<%-- <c:if test="${fn:contains(list.content, 'img') }">
+							</c:if> --%>
+							<%-- <a href="#" onClick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">상세보기</a> --%>
+							<a href="findCommByNo.do?commNo=${list.comm_no}" >상세보기</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
 			<c:if test="${sessionScope.mvo!=null}">
 				<button type="button" alt="글작성" id="commWrite" class="btn btn-warning">글쓰기</button>
 			</c:if>
-			<table border="1" id="commTable">
-			<c:forEach var="list" items="${commList}">
-				 <tr class="card-receep-header">
-					<td class="username"><strong>${list.memberVO.nickname}</strong></td>
-					<td class="timeago">${list.timePosted}</td>
-					<td id="like" name="likeDiv" title="${list.comm_no }">
-						<c:choose>
-						<c:when test="${list.userLike==1 }">
-							<div class='glyphicon glyphicon-heart' data-toggle='tooltip' title='좋아요 취소'></div>
-						</c:when>
-						<c:when test="${list.userLike==0 }">
-							<div class="glyphicon glyphicon-heart-empty" data-toggle="tooltip" title="좋아요!"></div><!--fonti um-heart onclick="updateLike('${list.comm_no}')" -->
-						</c:when>
-						</c:choose>
-						${list.likePosted }
-					</td>
-				</tr>
-				<tr class="card-receep-entry">
-					<td colspan="3"  height="100" width="500">${list.content}<br>
-						<%-- <c:if test="${fn:contains(list.content, 'img') }">
-						</c:if> --%>
-						<%-- <a href="#" onClick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">상세보기</a> --%>
-						<a href="findCommByNo.do?commNo=${list.comm_no}" >상세보기</a>
-					</td>
-				</tr>
-			</c:forEach>
-			</table>
 			<c:if test="${commList.size() >= param.rownum}">
 				<span id="btn"></span>
 			</c:if>
 		</div>
+	</div>
+	<div class="col-md-6 text-left" align="center">
+		<h3>좋아요 순위</h3>
+		<table border="1" class="table custab">
+				<tr class="box-black">
+					<th>작성자</th>
+					<th>내용</th>
+					<th style="width: 55px;">좋아요</th>
+				</tr>
+				<c:forEach items="${rankList }" var="rankList">
+					<tr>
+						<%-- <td>${rankList.comm_no }</td> --%>
+						<td>${rankList.id }</td>
+						<td>${rankList.content }</td>
+						<td class='glyphicon glyphicon-heart' style="width: 55px;">${rankList.heart }</td>
+					</tr>
+				</c:forEach>
+		</table>
 	</div>
 </div>

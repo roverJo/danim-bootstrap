@@ -43,6 +43,7 @@
 	border: 1px solid white;
 	color: white;
 	text-align: center;
+	background-color: #ec9e9e;
 }
 
 .custab:hover {
@@ -112,11 +113,13 @@
 	#owl1{
 		text-align: center;
 	}
-	/* 테이블 색깔 및 크기 지정 */
+	
+	/* 테이블 색깔 지정 */
 	.box-black {
 	background-color: #ec9e9e;
 	/* rgba(0, 0, 0, 0.7) */
 	}
+	/*********************/
 	.box-col-top{
 	background-color: #fdfdcc;
 	color: #cc6262;
@@ -125,16 +128,18 @@
 	background-color: #32d66c;
 	color: #fffdfd;
 	}
-	.box-text {
-		border: 1px solid white;
-		color: white;
-		text-align: center;
-	}
-	.box-no{
+	/* 테이블 속성 길이 지정 */
+	.box-time{
 		width: 71px;
 		color: white;
 		text-align: center;
 	}
+	.box-notice{
+		width: 60px;
+		color: white;
+		text-align: center;
+	}
+	/****************************/
 	.form-con{	
 	    width: 15%;
 	    height: 34px;
@@ -152,7 +157,20 @@
 	    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 	    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 	}
-		
+	
+	/*********** 영역 길이 수정 *****************/
+	#rankTable {
+		width: 50%;
+		text-align: center;
+	}
+	
+	#notice-list {
+		width: 700px;
+	}
+	#noticeTable {
+		width: 70%;
+	}	
+	/****************************/
 }
 </style>
 

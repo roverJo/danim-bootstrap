@@ -18,9 +18,9 @@ public interface CommunityService {
 	
 	public int updateLikePosted(CommLikeVO paramVO);
 
-	public CommunityVO findCommByNo(int commNo);
-
 	public int findLikeByIdAndNo(CommLikeVO paramVO);
+	
+	public CommunityVO findCommByNo(int commNo);
 
 	public List<CommentVO> getCommentList(int comm_no);
 
@@ -31,7 +31,7 @@ public interface CommunityService {
 	public CommentVO getCommentByNo(int comm_no);
 
 //	public List<ReplyVO> getReplyList(int comment_no);
-
-//	public List<CommLikeVO> getLikePosted();
+	
+	public List<CommLikeVO> getLikeRank();
 
 }

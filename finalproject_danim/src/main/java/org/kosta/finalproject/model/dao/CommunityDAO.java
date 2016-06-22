@@ -25,20 +25,14 @@ public interface CommunityDAO {
 	 * 커뮤니티 게시판 글 삭제
 	 */
 	public void deleteCommunity(CommunityVO paramVO);
-	
-	public List<CommLikeVO> getLikePosted();
 
 	public int updateLikePosted(CommLikeVO paramVO);
 
 	public void deleteLikePosted(CommLikeVO paramVO);
 
-	public int findLikeByCommNo(int comm_no);
-
 	public int findLikeByIdAndNo(CommLikeVO paramVO);
 
 	public CommunityVO findCommByNo(int commNo);
-
-	public int updateComm(CommunityVO paramVO);
 
 	public List<CommentVO> getCommentList(int comm_no);
 
@@ -63,5 +57,7 @@ public interface CommunityDAO {
 	 * 커뮤니티 댓글의 댓글 보기 
 	 */
 	public List<ReplyVO> getReplyList(int comment_no);
+
+	public List<CommLikeVO> getLikeRank();
 
 }

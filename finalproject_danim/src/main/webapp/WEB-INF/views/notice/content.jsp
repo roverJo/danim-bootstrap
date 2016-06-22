@@ -16,36 +16,41 @@ $(document).ready(function(){
 	});
 });
 </script>
+
 <div class="container_12" align="center">
 <div class="addHeight"></div>
-	<div class="community">
-	<table class="table">
-	<caption>상세보기</caption>
+	<h3>상세보기</h3>
+	<table class="table custab">
 	<c:set var="nvo" value="${requestScope.nvo}"/>
 	<tr>
-		<td>글번호:${nvo.noticeno}</td>
-		<td align="right">제목:${nvo.title}</td>
+		<th>글번호</th><td>${nvo.noticeno}</td>
+		<th align="right">제목</th><td align="right">${nvo.title}</td>
 	</tr>
 	<tr>
-		<td>작성자:${nvo.memberVO.nickname}</td>
-		<td align="right">작성일시:${nvo.timePosted}</td>
+		<th>작성자</th><td>${nvo.memberVO.nickname}</td>
+		<th align="right">작성일시</th><td align="right">${nvo.timePosted}</td>
 	</tr>
 	<tr>
-		<td colspan="3">${nvo.content}</td>
+		<td colspan="4"><pre>${nvo.content}</pre></td>
 	</tr>
 	<tr>
-		<td valign="middle" align="center" colspan="3">
-
+		<td valign="middle" align="center" colspan="4">
+		<input type="button" class="btn btn-primary" id="listImg" value="목록"/>
+		<c:if test="${sessionScope.mvo!=null || sessionScope.mvo.admin>=1}">
+		<input type="button" class="btn btn-success" id="updateImg" value="수정"/>
+		<input type="button" class="btn btn-danger" id="deleteImg" value="삭제"/>
+		</c:if>
+	<%-- 
 		<img id="listImg" class="action" src="" alt="목록" onclick="notice_list()">
-	<c:if test="${requestScope.nvo.memberVO.id==sessionScope.mvo.id}">
+	 <c:if test="${requestScope.nvo.memberVO.id==sessionScope.mvo.id}">
 		<img id="deleteImg" class="action" src="" alt="삭제" onclick="notice_delete()">
 		<img id="updateImg" class="action" src="" alt="수정" onclick="notice_update()">
-	</c:if>
+	 </c:if>
+	--%>
 	
 
 		</td>
 		</tr>
 	</table>
-	</div>
 	<div class="clear"></div>
 </div>

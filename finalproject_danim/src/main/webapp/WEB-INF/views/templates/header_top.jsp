@@ -25,6 +25,7 @@
 					    <li><a href="${initParam.root}traffic_search.do">교통검색</a></li>
 					    <li><a href="${initParam.root}lodge_lodge.do">숙박검색</a></li>
 					    <li><a href="${initParam.root }bestfood_search.do">음식검색</a></li>
+					    <li><a href="${initParam.root }toplist.do">검색순위</a></li>
              		</ul>
                </li>
              </ul>

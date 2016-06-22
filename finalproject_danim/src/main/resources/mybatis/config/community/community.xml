@@ -123,4 +123,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where r.id=m.id and r.comment_no=#{value}
 		order by r.reply_no desc
 	</select>
+	
+	<select id="getLikeRank" resultType="commLikeVO">
+		<!-- select comm_no, likepost as likePosted, rank, content from( -->
+		select comm_no, heart, content from(
+		select r.comm_no, r.heart, rank() over (order by r.heart desc) as rank, c.content 
+		from (
+			select comm_no, sum(likePosted) as heart
+			from commLike
+			group by comm_no
+		) r, community c
+		where r.comm_no=c.comm_no 
+		)
+		where rank <![CDATA[<]]>6
+	</select>
 </mapper>

@@ -55,14 +55,13 @@ public class CommunityServiceImpl implements CommunityService {
 	 */
 	@Override
 	public int updateLikePosted(CommLikeVO paramVO){
-		int findNo = commDAO.findLikeByIdAndNo(paramVO);
+		int findNo = findLikeByIdAndNo(paramVO);
 		int result=0;
 		if(findNo==1){
 			commDAO.deleteLikePosted(paramVO);
 		}else{
 			result = commDAO.updateLikePosted(paramVO);
 		}
-//		return commDAO.findLikeByCommNo(paramVO.getComm_no());
 		return result;
 	}
 	
@@ -120,4 +119,9 @@ public class CommunityServiceImpl implements CommunityService {
 	public List<ReplyVO> getReplyList(int comment_no){
 		return commDAO.getReplyList(comment_no);
 	}*/
+
+	@Override
+	public List<CommLikeVO> getLikeRank(){
+		return commDAO.getLikeRank();
+	}
 }

@@ -1,6 +1,5 @@
 package org.kosta.finalproject.model.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -46,43 +45,57 @@ public class CommunityDAOImpl implements CommunityDAO {
 		template.delete("community.deleteCommunity", paramVO);
 	}
 	
-	@Override
+	/*@Override
 	public List<CommLikeVO> getLikePosted(){
 		return template.selectList("community.getLikePosted");
-	}
+	}*/
 	
+	/**
+	 * 커뮤니티 게시글 좋아요 증가
+	 */
 	@Override
 	public int updateLikePosted(CommLikeVO paramVO){
 		return template.insert("community.updateLikePosted",paramVO);
 	}
 	
+	/**
+	 * 커뮤니티 게시글 좋아요 삭제
+	 */
 	@Override
 	public void deleteLikePosted(CommLikeVO paramVO){
 		template.delete("community.deleteLikePosted",paramVO);
 	}
 
-	@Override
+	/*@Override
 	public int findLikeByCommNo(int comm_no) {
 		if((template.selectOne("community.findLikeByNo",comm_no))==null){
 			return 0;
 		}
 		return template.selectOne("community.findLikeByNo",comm_no);
-	}
-	
+	}*/
+
+	/**
+	 * 이 메서드는 해당 게시판 no에 해당 아이디가 
+	 * 좋아요를 클릭하였는지 여부를 count를 통하여 확인 가능하다. 
+	 */
 	@Override
 	public int findLikeByIdAndNo(CommLikeVO paramVO){
 		return template.selectOne("community.findLikeByIdAndNo",paramVO);
 	}
 	
+	/**
+	 * 해당 게시판 no에 정보를 가져온다.
+	 */
 	@Override
 	public CommunityVO findCommByNo(int commNo){
 		return template.selectOne("community.findCommByNo",commNo);
 	}
 	
-	@Override
+	/*@Override
 	public int updateComm(CommunityVO paramVO){
 		return template.update("community.updateComm", paramVO);
 	}
+	*/
 	
 	/**
 	 * 커뮤니티 댓글 추가
@@ -116,6 +129,9 @@ public class CommunityDAOImpl implements CommunityDAO {
 		return template.selectList("community.getCommentList", comm_no);
 	}
 
+	/**
+	 * 커뮤니티 댓글 정보
+	 */
 	@Override
 	public CommentVO getCommentByNo(int comm_no) {
 		return template.selectOne("community.getCommentByNo",comm_no);
@@ -127,5 +143,13 @@ public class CommunityDAOImpl implements CommunityDAO {
 	@Override
 	public List<ReplyVO> getReplyList(int comment_no){
 		return template.selectList("community.getReplyList",comment_no);
+	}
+	
+	/**
+	 * 좋아요 순위별 글내용 리스트
+	 */
+	@Override
+	public List<CommLikeVO> getLikeRank(){
+		return template.selectList("community.getLikeRank");
 	}
 }
