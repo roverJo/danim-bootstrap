@@ -19,7 +19,7 @@ $(document).ready(function(){
 <div class="addHeight"></div>
 	<div class="community">
 		<c:if test="${sessionScope.mvo.admin>=1}">
-		<h3>회원명단</h3>
+		<h3 align="center">회원명단</h3>
 		<table border="1" id="memberTable" class="table custab">
 			<thead>
 			<tr class="box-black">

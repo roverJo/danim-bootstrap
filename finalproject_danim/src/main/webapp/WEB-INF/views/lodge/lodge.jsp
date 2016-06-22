@@ -69,19 +69,19 @@ $(document).ready(function(){
 	
 <div class="container" align="center">
 <div class="addHeight"></div>
-<h3 class="lead">숙소검색페이지</h3><br>
+<h3 align="center">숙소검색페이지</h3><br>
 	<form id="lodgeForm" method="post" action="searchLodgeByNameAndKind.do">
 	<input type="hidden" name="detailarea_name" value="">
 	<input type="hidden" name="lodgetype" value="">
 		<div class="selectArea col-md-12">
 			<!-- 지역검색 -->
-			<div id="searchArea" class="col-md-6"></div><br><br>
+			<div id="searchArea" class="col-md-6"></div><br><br><br>
 			<!-- 세부지역검색 -->
-			<div id="searchDetailArea" class="col-md-6"></div><br><br>
+			<div id="searchDetailArea" class="col-md-6"></div><br><br><br>
 			<!-- 숙박종류검색 -->
-			<div id="searchLodgeKind" class="col-md-6"></div><br><br>
+			<div id="searchLodgeKind" class="col-md-6"></div><br><br><br>
 			<!-- 검색 -->
-			<div id="searchLodgeBtn" class="col-md-6"></div><br><br>	
+			<div id="searchLodgeBtn" class="col-md-6"></div><br><br><br>
 	 	</div>
 	</form>
  </div> 

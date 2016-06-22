@@ -160,21 +160,21 @@
 						url:"searchTraffic.do?kind="+$("#kind").val()+"&end_area="+$("#endAreaName").val()+"&terminal_no="+$("#terminalName").val()+"&station_no="+$("#stationName").val(),
 						dataType:"json",
 						success:function(trafficVO){
-							var result = "<table border='1'class='table table-striped'><tbody>";
+							var result = "<table border='1'class='table custab'><tbody>";
 							if(trafficVO.busList != null)
 							{
 								result += "<input type='hidden' name='type' value='bus'>";
-								result += "<tr>";
-								result +="<td>버스번호</td>";
-								result +="<td>운행시간</td>";
-								result +="<td>출발터미널</td>";
-								result +="<td>도착지역</td>";
-								result +="<td>가격</td>";
-								result +="<td>소요시간</td>";
-								result +="<td>버스종류</td>";
+								result += "<tr class='box-black'>";
+								result +="<th class='box-text'>버스번호</th>";
+								result +="<th class='box-text'>운행시간</th>";
+								result +="<th class='box-text'>출발터미널</th>";
+								result +="<th class='box-text'>도착지역</th>";
+								result +="<th class='box-text'>가격</th>";
+								result +="<th class='box-text'>소요시간</th>";
+								result +="<th class='box-text'>버스종류</th>";
 								if(!flag)
 								{
-									result +="<td>선택</td>";
+									result +="<th class='box-text'>선택</th>";
 								}
 								result +="</tr>";
 								for(var i = 0; i < trafficVO.busList.length; i++)
@@ -197,17 +197,17 @@
 							else if(trafficVO.trainList != null)
 							{
 								result += "<input type='hidden' name='type' value='train'>";
-								result += "<tr>";
-								result +="<td>기차번호</td>";
-								result +="<td>운행시간</td>";
-								result +="<td>출발역</td>";
-								result +="<td>도착지역</td>";
-								result +="<td>가격</td>";
-								result +="<td>소요시간</td>";
-								result +="<td>기차종류</td>";
+								result += "<tr class='box-black'>";
+								result +="<th class='box-text'>기차번호</th>";
+								result +="<th class='box-text'>운행시간</th>";
+								result +="<th class='box-text'>출발역</th>";
+								result +="<th class='box-text'>도착지역</th>";
+								result +="<th class='box-text'>가격</th>";
+								result +="<th class='box-text'>소요시간</th>";
+								result +="<th class='box-text'>기차종류</th>";
 								if(!flag)
 								{
-									result +="<td>선택</td>";
+									result +="<th class='box-text'>선택</th>";
 								}
 								result +="<tr>";
 								for(var i = 0; i < trafficVO.trainList.length; i++)
@@ -258,20 +258,21 @@
 		
 	});
 </script>
+<div class="addHeight"></div>
 <div class="container" align="center">
-<h3 class="lead">교통검색페이지</h3><br>
+<h3 align="center">교통검색페이지</h3><br>
 <form id="trafficForm" method="get" action="login_checkTypeByTraffic.do">
 	<input type="hidden" name="no" value="">
 	<!-- 출발지역검색 -->
 	<span id="searchArea" class="col-md-6"></span>
 	<!-- 교통수단검색 -->
-	<span id="searchKind" class="col-md-6"></span><br><br>
+	<span id="searchKind" class="col-md-6"></span><br><br><br>
 	<!-- 터미널검색or역검색 -->
 	<span id="searchTerminalorStation" class="col-md-6"></span>
 	<!-- 도착지역검색 -->
-	<span id="searchEndArea" class="col-md-6"></span><br><br>
+	<span id="searchEndArea" class="col-md-6"></span><br><br><br>
 	<!-- 장바구니버튼 -->
-	<span id="basketTraffic"></span><br><br>
+	<span id="basketTraffic"></span><br><br><br>
 	<hr>
 	<div class="addHeight"></div>
 	<!-- result -->

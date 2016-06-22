@@ -150,7 +150,8 @@ $(document).ready(function(){
 	
 });
   </script>
- <h3>음식검색페이지</h3>
+<div class="addHeight"></div>
+ <h3 align="center">음식검색페이지</h3>
  <div class="container" align="center">
  <div class="addHeight"></div>
  <form id="bestfoodForm" method="post" action="searchBestFood.do">
