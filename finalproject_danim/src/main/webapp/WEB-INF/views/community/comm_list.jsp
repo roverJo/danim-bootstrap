@@ -37,15 +37,15 @@
 		$("#commWrite").click(function() {
 			location.href="community_write.do";
 		});
-				$("#btn").html("<button type='button' onclick='loadData()'>더보기</button>");
 		$(window).scroll(function() { // 스크롤하면 아래 코드 실행
 			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+				$("#btn").html("<button type='button' onclick='loadData()' class='btn btn-danger'>더보기</button>");
 			}
 		}); //scroll
 		
 		if("${commList.size()>0}"){
 			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-				$("#btn").html("<button type='button' onclick='loadData()'>더보기</button>");
+				$("#btn").html("<button type='button' onclick='loadData()' class='btn btn-danger'>더보기</button>");
 			}
 		}
 		
@@ -173,7 +173,7 @@
 	}				
 </script>
 <div class="addHeight"></div>
-<div id="layer" class="container_12">
+<div id="layer" class="container_12" align="center">
 	<div class="bg"></div>
 	<div id="layer2" class="pop-layer">
 		<div class="pop-container">
@@ -184,20 +184,16 @@
 		</div>
 	</div>
 	<div class="grid_12">
-		<div class="community">
+		<div class="community" id="contact-area">
+			<c:if test="${sessionScope.mvo!=null}">
+				<button type="button" alt="글작성" id="commWrite" class="btn btn-warning">글쓰기</button>
+			</c:if>
 			<table border="1" id="commTable">
-				<!-- <tr>
-					<td>글번호</td>
-					<td>작성자</td>
-					<td>작성시간</td>
-					<td>글내용</td>
-					<td>좋아용</td>
-				</tr> -->
 			<c:forEach var="list" items="${commList}">
-				 <tr>
-					<td><strong>${list.memberVO.nickname}</strong></td>
-					<td>${list.timePosted}</td>
-					<td name="likeDiv" title="${list.comm_no }">
+				 <tr class="card-receep-header">
+					<td class="username"><strong>${list.memberVO.nickname}</strong></td>
+					<td class="timeago">${list.timePosted}</td>
+					<td id="like" name="likeDiv" title="${list.comm_no }">
 						<c:choose>
 						<c:when test="${list.userLike==1 }">
 							<div class='glyphicon glyphicon-heart' data-toggle='tooltip' title='좋아요 취소'></div>
@@ -206,23 +202,21 @@
 							<div class="glyphicon glyphicon-heart-empty" data-toggle="tooltip" title="좋아요!"></div><!--fonti um-heart onclick="updateLike('${list.comm_no}')" -->
 						</c:when>
 						</c:choose>
-						${list.likePosted }</td>
+						${list.likePosted }
+					</td>
 				</tr>
-				<tr>
+				<tr class="card-receep-entry">
 					<td colspan="3"  height="100" width="500">${list.content}<br>
 						<%-- <c:if test="${fn:contains(list.content, 'img') }">
 						</c:if> --%>
-						<a href="#" onClick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">상세보기</a>
+						<%-- <a href="#" onClick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">상세보기</a> --%>
+						<a href="findCommByNo.do?commNo=${list.comm_no}" >상세보기</a>
 					</td>
 				</tr>
 			</c:forEach>
 			</table>
 			<c:if test="${commList.size() >= param.rownum}">
 				<span id="btn"></span>
-			</c:if>
-			<c:if test="${sessionScope.mvo!=null}">
-				<input type="image" class="fonti um-pencil" alt="글작성" id="commWrite">
-				<!-- id="commWrite" alt="글작성"  -->
 			</c:if>
 		</div>
 	</div>

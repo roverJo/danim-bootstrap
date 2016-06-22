@@ -23,8 +23,9 @@
 					if(jsonData==""){
 						$("#memberView").html("검색결과가 없습니다");
 					}else{					
-					var table = "<br><table border='1'><tr><td>아이디</td><td>닉네임</td><td>주소</td><td>이메일</td>";
-						table+= "<td>회원권한</td><td>권한부여</td></tr>";
+					var table = "<br><table border='1' class='table custab'><tr  class='box-black'>"+
+						"<td class='box-text'>아이디</td><td class='box-text'>닉네임</td><td class='box-text'>주소</td><td class='box-text'>이메일</td>";
+					table+= "<td class='box-text'>회원권한</td><td class='box-text'>권한부여</td></tr>";
 					for(var i=0;i<jsonData.length;i++){
 						table+= "<tr><td>"+jsonData[i].id+"</td><td>"+jsonData[i].nickname+"</td><td>"+jsonData[i].address;
 						table+= "</td><td>"+jsonData[i].email_add+"</td>";
@@ -38,7 +39,7 @@
 					table+= "</table>";
 					$("#memberView").html(table);
 					if($("#memberView").html()!=""){
-						$("#submitView").html("<input type='submit' value='권한부여' id='subBtn'>");
+						$("#submitView").html("<input type='submit' value='권한부여' id='subBtn' class='btn btn-success'>");
 					}
 					}
 				}
@@ -57,44 +58,59 @@
 		});
 	});
 </script>
-<c:if test="${sessionScope.mvo.admin==99}">
-<h3>운영진 관리</h3>
-<form id="selectForm" action="admin_appointMember.do">
-운영진 추가 <select name="administer">
-<option value="id">아이디</option>
-<option value="nickname">닉네임</option>
-</select>
-<input type="text" name="inputVal" >
-<input type="button" value="검색" id="clickBtn">
-<div id="memberView"></div>
-<div id="submitView"></div>
-</form>
-</c:if>
-<c:if test="${sessionScope.mvo.admin>=1}">
-<h3>운영진명단</h3>
-<table border="1" id="adminTable">
-<tr>
-	<td>아이디</td><td>닉네임</td><td>주소</td><td>이메일</td><td>회원권한</td>
-	<c:if test="${sessionScope.mvo.admin==99}">
-	<td>권한해제</td>
-	</c:if>
-</tr>
-<c:forEach items="${list}" var="list">
-	<tr>
-	<td>${list.id}</td><td>${list.nickname}</td><td>${list.address}</td><td>${list.email_add}</td>
-	<c:if test="${list.admin==1}">
-	<td>운영진</td>
-	</c:if>
-	<c:if test="${sessionScope.mvo.admin==99}">
-	<td><input type="button" value="권한해제" name="fireBtn" title="${list.id}"></td>
-	</c:if>
-	</tr>	
-</c:forEach>
-</table>
-</c:if>
-<c:if test="${sessionScope.mvo.admin==0}">
-<script type="text/javascript">
-alert("관리자만 입장가능한 페이지입니다!");
-location.href="${initParam.root}home.do";
-</script>
-</c:if>
+<div class="container_12">
+<div class="addHeight"></div>
+	<div class="community">
+		<c:if test="${sessionScope.mvo.admin==99}">
+		<h3>운영진 관리</h3>
+		<form id="selectForm" action="admin_appointMember.do">
+		운영진 추가 <select name="administer">
+		<option value="id">아이디</option>
+		<option value="nickname">닉네임</option>
+		</select>
+		<input type="text" name="inputVal" >
+		<input type="button" value="검색" id="clickBtn" class="btn btn-primary">
+		<div id="memberView"></div>
+		<div id="submitView" align="center"></div>
+		</form>
+		</c:if>
+		
+		<div class="addHeight"></div>
+		
+		<c:if test="${sessionScope.mvo.admin>=1}">
+		<h3>운영진명단</h3>
+		<table border="1" id="adminTable" class="table custab">
+			<thead>
+			<tr class="box-black">
+				<td class="box-text">아이디</td>
+				<td class="box-text">닉네임</td>
+				<td class="box-text">주소</td>
+				<td class="box-text">이메일</td>
+				<td class="box-text">회원권한</td>
+				<c:if test="${sessionScope.mvo.admin==99}">
+				<td class="box-text">권한해제</td>
+				</c:if>
+			</tr>
+			</thead>
+			<c:forEach items="${list}" var="list">
+				<tr>
+				<td>${list.id}</td><td>${list.nickname}</td><td>${list.address}</td><td>${list.email_add}</td>
+				<c:if test="${list.admin==1}">
+				<td>운영진</td>
+				</c:if>
+				<c:if test="${sessionScope.mvo.admin==99}">
+				<td align="center"><input type="button" value="권한해제" name="fireBtn" title="${list.id}" class="btn btn-default"></td>
+				</c:if>
+				</tr>	
+			</c:forEach>
+		</table>
+		</c:if>
+		<c:if test="${sessionScope.mvo.admin==0}">
+		<script type="text/javascript">
+		alert("관리자만 입장가능한 페이지입니다!");
+		location.href="${initParam.root}home.do";
+		</script>
+		</c:if>
+	</div>
+	<div class="clear"></div>
+</div>
