@@ -5,89 +5,6 @@
 	$(document).ready(function() {
 		////////////////////////////////////////////////교통관련 
 		var cartForm = "<hr><input type='submit' class='btn btn-danger' value='장바구니에 담기'>&nbsp;&nbsp;&nbsp;<input type='button' class='btn btn-danger' name='chogi' value='선택 초기화'>";
-		
-		/* $("#lodgeZimForm input[type='radio'][name=insertcart_lodge_no]").change(function() {
-			$("#lodgeZimForm input[name=lodge_no]:checked").each(function() {
-				$(this).prop("checked",false);
-			});
-			$("#cartDiv").html(cartForm);
-		});
-		
-		$("#lodgeZimForm input[name=lodge_no]").change(function() {
-			$("#lodgeZimForm input[type='radio'][name=insertcart_lodge_no]").prop("checked",false);
-			
-			if($("#lodgeZimForm input[type='radio'][name=insertcart_lodge_no]:checked").length == 1 ||
-			$("#foodZimForm input[type='radio'][name=insertcart_food_no]:checked").length == 1 ||
-			$("#trafficZimForm input[type='radio'][name=insertcart_traffic_no]:checked").length == 1)
-			{
-				$("#cartDiv").html(cartForm);
-			}
-			else
-			{
-				$("#cartDiv").html("");	
-			}
-		});
-		
-		$("#foodZimForm input[type='radio'][name=insertcart_food_no]").change(function() {
-			$("#foodZimForm input[name=foodshop_no]:checked").each(function() {
-				$(this).prop("checked",false);
-			});
-			$("#cartDiv").html(cartForm);
-		});
-		
-		$("#foodZimForm input[name=foodshop_no]").change(function() {
-			$("#foodZimForm input[type='radio'][name=insertcart_food_no]").prop("checked",false);
-			
-			if($("#lodgeZimForm input[type='radio'][name=insertcart_lodge_no]:checked").length == 1 ||
-			$("#foodZimForm input[type='radio'][name=insertcart_food_no]:checked").length == 1 ||
-			$("#trafficZimForm input[type='radio'][name=insertcart_traffic_no]:checked").length == 1)
-			{
-				$("#cartDiv").html(cartForm);
-			}
-			else
-			{
-				$("#cartDiv").html("");	
-			}
-		});
-		
-		$("#trafficZimForm input[type='radio'][name=insertcart_traffic_no]").change(function() {
-			$("#trafficZimForm input[name=bus_no]:checked").each(function() {
-				$(this).prop("checked",false);
-			});
-			$("#trafficZimForm input[name=train_no]:checked").each(function() {
-				$(this).prop("checked",false);
-			});
-			$("#cartDiv").html(cartForm);
-		});
-		
-		$("#trafficZimForm input[name=bus_no]").change(function() {
-			$("#trafficZimForm input[type='radio'][name=insertcart_traffic_no]").prop("checked",false);
-
-			if($("#lodgeZimForm input[type='radio'][name=insertcart_lodge_no]:checked").length == 1 ||
-			$("#foodZimForm input[type='radio'][name=insertcart_food_no]:checked").length == 1 ||
-			$("#trafficZimForm input[type='radio'][name=insertcart_traffic_no]:checked").length == 1)
-			{
-				$("#cartDiv").html(cartForm);
-			}
-			else
-			{
-				$("#cartDiv").html("");	
-			}
-		});
-		
-		$("#trafficZimForm input[name=train_no]").change(function() {
-			$("#trafficZimForm input[type='radio'][name=insertcart_traffic_no]").prop("checked",false);
-			if($("#lodgeZimForm input[type='radio'][name=insertcart_lodge_no]:checked").length == 1 ||
-			$("#foodZimForm input[type='radio'][name=insertcart_food_no]:checked").length == 1 ||
-			$("#trafficZimForm input[type='radio'][name=insertcart_traffic_no]:checked").length == 1)
-			{
-				$("#cartDiv").html(cartForm);
-			}
-			else
-			{
-				$("#cartDiv").html("");	
-			}
-		}); */
 		//초기화버튼을 눌렀을때
 		$("#cartForm").on("click", "input[name=chogi]",function(){
 			$("#lodgeZimForm input[type='radio'][name=insertcart_lodge_no]").prop("checked",false);
@@ -345,16 +262,16 @@
 <form id="trafficZimForm" action="login_deleteTrafficZim.do">
 	<h3>교통</h3><br>
 	
-	<table border="1" class="table table-striped">
-		<tr>
-			<td>출발터미널,역이름</td>
-			<td>운행시간</td>
-			<td>도착지점</td>
-			<td>가격</td>
-			<td>시간</td>
-			<td>종류</td>
-			<td>삭제</td>
-			<td>담기</td>
+	<table border="1" class="table custab">
+		<tr class="box-black">
+			<th>출발터미널,역이름</th>
+			<th>운행시간</th>
+			<th>도착지점</th>
+			<th>가격</th>
+			<th>시간</th>
+			<th>종류</th>
+			<th>삭제</th>
+			<th>담기</th>
 		</tr>
 		
 		<c:if test="${!empty trafficList.busList}">
@@ -400,14 +317,14 @@
 <hr>
 <form id="lodgeZimForm" action="login_deleteLodgeZim.do">
 	<h3>숙박</h3><br>
-	<table border="1" class='table table-striped'>
-		<tr>
-			<td>숙박지역</td>
-			<td>숙박종류</td>
-			<td>숙소이름</td>
-			<td>가격</td>		
-			<td>삭제</td>
-			<td>담기</td>
+	<table border="1" class="table custab">
+		<tr class="box-black">
+			<th>숙박지역</th>
+			<th>숙박종류</th>
+			<th>숙소이름</th>
+			<th>가격</th>		
+			<th>삭제</th>
+			<th>담기</th>
 		</tr>
 		<c:forEach items="${lodgeList }" var = "list">
 			<tr>
@@ -430,16 +347,16 @@
 <hr>
 	<form id="foodZimForm" action="login_deleteFoodZim.do">
 		<h3>음식</h3><br>
-		<table border="1" class='table table-striped'>
-			<tr align="center">
-				<td>가게명</td>
-				<td>위치</td>
-				<td>종류</td>
-				<td>주소</td>
-				<td>메인메뉴</td>
-				<td>가격</td>
-				<td>삭제</td>
-				<td>담기</td>
+		<table border="1" class="table custab">
+			<tr class="box-black">
+				<th>가게명</th>
+				<th>위치</th>
+				<th>종류</th>
+				<th>주소</th>
+				<th>메인메뉴</th>
+				<th>가격</th>
+				<th>삭제</th>
+				<th>담기</th>
 			</tr>
 			<c:forEach items="${bestFoodList }" var="bestFoodList">
 			<tr>

@@ -260,7 +260,7 @@
 </script>
 <div class="addHeight"></div>
 <div class="container" align="center">
-<h3 align="center">교통검색페이지</h3><br>
+<h3 align="center">교통검색</h3><br>
 <form id="trafficForm" method="get" action="login_checkTypeByTraffic.do">
 	<input type="hidden" name="no" value="">
 	<!-- 출발지역검색 -->
