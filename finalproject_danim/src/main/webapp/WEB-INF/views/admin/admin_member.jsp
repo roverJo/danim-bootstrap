@@ -17,18 +17,17 @@ $(document).ready(function(){
 </script>
 <div class="container_12">
 <div class="addHeight"></div>
-	<div class="community">
 		<c:if test="${sessionScope.mvo.admin>=1}">
 		<h3 align="center">회원명단</h3>
 		<table border="1" id="memberTable" class="table custab">
 			<thead>
 			<tr class="box-black">
-				<td class="box-text">아이디</td>
-				<td class="box-text">닉네임</td>
-				<td class="box-text">주소</td>
-				<td class="box-text">이메일</td>
-				<td class="box-text">회원권한</td>
-				<td class="box-text">탈퇴</td>
+				<th>아이디</th>
+				<th>닉네임</th>
+				<th>주소</th>
+				<th>이메일</th>
+				<th>회원권한</th>
+				<th>탈퇴</th>
 			</tr>
 			</thead>
 			<c:forEach items="${lvo.list}" var="list">
@@ -113,6 +112,5 @@ $(document).ready(function(){
 		location.href="${initParam.root}home.do";
 		</script>
 		</c:if>
-	</div>
 	<div class="clear"></div>
 </div>

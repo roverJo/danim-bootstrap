@@ -30,13 +30,13 @@ $(document).ready(function(){
 	$("#save").click(function(){
 		//var sHTML = document.getElementById("ir1").value;
 		var sHTML = oEditors.getById["ir1"].getIR();
-		$("#textTest").html(sHTML)
+		$("#contentCheck").html(sHTML)
 		oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-		if($("#textTest").text() == "<p><br></p>" ) { 
+		if($("#contentCheck").text() == "<p><br></p>" ) { 
 			alert("내용을 입력하세요!");
 			return false;
 		}
-		$("#frm").submit();
+		$("#updateForm").submit();
 	});//save click
 	
 	$("#reset").click(function() {
@@ -50,16 +50,16 @@ $(document).ready(function(){
 <div class="addHeight"></div>
 <div id="layer" class="container" align="center">
 <h3>글 수정</h3>
-    <div id="notice-list">
+    <div id="contact-area">
 		<c:choose>
 			<c:when test="${sessionScope.mvo!=null }">
-				<form action="comm_update.do" method="post" id="frm">
+				<form action="comm_update.do" method="post" id="updateForm">
 				<input type="hidden" name="comm_no" value="${commVO.comm_no }">
-				<textarea hidden="textTest" id="textTest"></textarea>
+				<textarea hidden="contentCheck" id="contentCheck"></textarea>
 				<table width="100%">
 						<tr>
 							<th>작성자</th>
-							<td><input type="text" name="id" value="${sessionScope.mvo.nickname}" class="form-con" readonly></td>
+							<td><input type="text" name="id" value="${sessionScope.mvo.nickname}" class="form-con" style="width:100%;" readonly></td>
 						</tr>
 						<!-- <tr>
 							<th colspan="2">내용</th>
@@ -80,8 +80,12 @@ $(document).ready(function(){
 				</form>	
 		</c:when>
 		<c:otherwise>
-			<c:redirect url="home.do" />
-			<%-- <c:import url="home.do" /> --%>
+			<script type="text/javascript">
+			alert("로그인이 필요한 페이지입니다!");
+			location.href="${initParam.root}home.do";
+			</script>
+			<%-- <c:redirect url="home.do" />
+			<c:import url="home.do" /> --%>
 		</c:otherwise>
 	</c:choose>
 	<div class="clear"></div>

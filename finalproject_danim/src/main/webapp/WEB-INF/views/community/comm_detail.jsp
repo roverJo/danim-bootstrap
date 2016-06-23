@@ -2,103 +2,77 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
-	$(document).ready(function() {
-		$("#contentUpdate").click(function() {
-			if(confirm("수정하시겠습니까?")){
-				location.href="comm_update_click.do?comm_no=${commVO.comm_no}";
-				return false;
-			}
-		});
-		$("#contentDelete").click(function() {
-			if(confirm("삭제하시겠습니까?")){
-				location.href="comm_delete.do?comm_no=${commVO.comm_no}";
-				return false;
-			}
-		});
+$(document).ready(function() {
+	$("#contentUpdate").click(function() {
+		if(confirm("수정하시겠습니까?")){
+			location.href="comm_update_click.do?comm_no=${commVO.comm_no}";
+			return false;
+		}
+	});
+	$("#contentDelete").click(function() {
+		if(confirm("삭제하시겠습니까?")){
+			location.href="comm_delete.do?comm_no=${commVO.comm_no}";
+			return false;
+		}
+	});
 		
 		
-<%-- 댓글 --%>		
-$("#commentParentText").keydown(function (key) {
-    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
-    alert(1)
-    	key.cancelBubble = true;
-        $("#commentParentSubmit").click();
-        return false;
-    }
-});
-		$("#commentParentSubmit").click(function( event ) {
-			var pText = $("#commentParentText");
-			if($.trim(pText.val())==""){
-                alert("내용을 입력하세요.");
-                pText.focus();
-                return;
-            }
-			$.ajax({
-				type: "post",
-				url: "registerComment.do",
-				data: $("#commentForm").serialize() + "&comm_no=${commVO.comm_no}",
-				success : function(result){
-						/* var commentParentText = '<tr id="r1" name="commentParentCode">'+
-			            '<td colspan=2>'+
-			                '<strong>'+item.communityVO.memberVO.nickname+'</strong> '+' <a style="cursor:pointer;" name="pAdd">답글</a> | <a style="cursor:pointer;" name="pDel" value="'+item.comment_no+'">삭제</a><p>'+item.content+'</p>'+
-			            '</td>'+'</tr>'; */
-						//var row = 						$("#commentTable").insertRow(0);
-			            var row = document.getElementById("commentTable").insertRow(0);
-						var cell1 = row.insertCell(0);
-					    cell1.innerHTML = '<strong>'+result.communityVO.memberVO.nickname+'</strong> '+' <a style="cursor:pointer;" name="pAdd">답글</a> | <a style="cursor:pointer;" name="pDel" value="'+result.comment_no+'">삭제</a><p>'+result.content+'</p>';
-				}//success
-			});//ajax
-            /* 
-            //ajax로 저장하고 성공하면 저장한 데이터를 가져와 넣어야 하는데 여기서는 테스트라 그냥 입력값을 가져옴
-            var pName = $("#commentParentName");
-            //var pPassword = $("#commentParentPassword");//패스워드를 노출 시켰는데 저장하고 나서 저장한 날짜를 보여줄 예정
-            var pText = $("#commentParentText");
-               
-            if($.trim(pName.val())==""){
-                alert("이름을 입력하세요.");
-                pName.focus();
-                return;
-             }else if($.trim(pPassword.val())==""){
-                alert("패스워드를 입력하세요.");
-                pPassword.focus();
-                return;
-            }else if($.trim(pText.val())==""){
-                alert("내용을 입력하세요.");
-                pText.focus();
-                return;
-            }
-               
-            var commentParentText = '<tr id="r1" name="commentParentCode">'+
-                                        '<td colspan=2>'+
-                                            '<strong>'+pName.val()+'</strong> '+' <a style="cursor:pointer;" name="pAdd">답글</a> | <a style="cursor:pointer;" name="pDel">삭제</a><p>'+pText.val().replace(/\n/g, "<br>")+'</p>'+
-                                        '</td>'+
-                                    '</tr>';
-            //테이블의 tr자식이 있으면 tr 뒤에 붙인다. 없으면 테이블 안에 tr을 붙인다.
-            if($('#commentTable').contents().size()==0){
-                $('#commentTable').append(commentParentText);
-            }else{
-                $('#commentTable tr:last').after(commentParentText);
-            }
-               
-            $("#commentParentName").val("");
-            $("#commentParentPassword").val("");
-                */
-            $("#commentParentText").val("");
-        });
+<%-- 댓글 추가 --%>		
+	$("#commentParentText").keydown(function (key) {
+	    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+	    	key.cancelBubble = true;
+	        $("#commentParentSubmit").click();
+	        return false;
+	    }
+	});
+	$("#commentParentSubmit").click(function( event ) {
+		var pText = $("#commentParentText");
+		if($.trim(pText.val())==""){
+	            alert("내용을 입력하세요.");
+	            pText.focus();
+	            return;
+	    }
+		$.ajax({
+			type: "post",
+			url: "registerComment.do",
+			data: $("#commentForm").serialize() + "&comm_no=${commVO.comm_no}",
+			success : function(result){
+		            var row = document.getElementById("commentTable").insertRow(0);
+					var cell1 = row.insertCell(0);
+				    cell1.innerHTML += '<tr id="r1" name="commentParentCode" title="'+result.comment_no+'">'
+				    +'<td colspan=2>' 
+				    +'<strong style="color: #009688;">'+result.communityVO.memberVO.nickname+'</strong> '
+				    +' <a style="cursor:pointer;" name="pAdd">답글</a> '
+				    +'| <a style="cursor:pointer;" name="pEdit" title="'+result.comment_no+'">수정</a> '
+				    +'| <a style="cursor:pointer;" name="pDel" value="'+result.comment_no+'">삭제</a><p>'+result.content+'</p>'
+				    +'</td></tr>';
+			}//success
+		});//ajax
+	    $("#commentParentText").val("");
+	    });
+	
 <%-- 댓글 수정 --%>
-$(document).on("click","#commentEditSubmit", function(){
-	var commentNo = $(this).attr("title");
-	var content = $(this).parent().parent().children().eq(4);
-			//filter($("#commentEditText")).html());
-	$('[type=text], textarea').each(function(){ this.defaultValue = this.value; });
-	$.ajax({
-		type: "post",
-		url: "updateComment.do",
-		data: "comment_no="+commentNo+"&content="+content.text(),
-		success : function(result){
-		}//success
-	});//ajax
-});
+	$("#commentEditText").keydown(function (key) {
+	    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+	    	key.cancelBubble = true;
+	        $("#commentEditSubmit").click();
+	        return false;
+	    }
+	});
+	$(document).on("click","#commentEditSubmit", function(){
+		var commentNo = $(this).attr("title");
+		var content = $(this).parent().parent().children().eq(0);
+				//filter($("#commentEditText")).html());
+		$('[type=text], textarea').each(function(){ this.defaultValue = this.value; });
+		$.ajax({
+			type: "post",
+			url: "updateComment.do",
+			data: "comment_no="+commentNo+"&content="+content.text(),
+			success : function(result){
+			}//success
+		});//ajax
+	});
+	
 <%-- 댓글의 댓글 수정 --%>
 $(document).on("click","#replyEditSubmit", function(){
 	var commentNo = $(this).attr("title");
@@ -112,22 +86,11 @@ $(document).on("click","#replyEditSubmit", function(){
 		}//success
 	});//ajax
 });
-<%-- --%>
-        //댓글의 댓글을 다는 이벤트
+
+<%-- 댓글의 댓글을 달기--%>
         $(document).on("click","#commentChildSubmit", function(){
-            //var cName = $("#commentChildName");
-//            var cPassword = $("#commentChildPassword");
             var cText = $("#commentChildText");
             var comment_no = $(this).parent().parent().parent().parent().prev().attr("title");
-           /*  if($.trim(cName.val())==""){
-                alert("이름을 입력하세요.");
-                cName.focus();
-                return; */
-            /* }else if($.trim(cPassword.val())==""){
-                alert("패스워드를 입력하세요.");
-                cPassword.focus();
-                return; */
-            /* }else */ 
             if($.trim(cText.val())==""){
                 alert("내용을 입력하세요.");
                 cText.focus();
@@ -216,13 +179,14 @@ $(document).on("click","#replyEditSubmit", function(){
                     //$('#deleteCommentForm input[name*=commentNo]').val($commentNo);
                     //$('#deleteCommentForm').submit();
                 }
-                //return false;
+                return;
                 
                 /* if (confirm("답글을 삭제 하시면 밑에 답글도 모두 삭제 됩니다. 정말 삭제하시겠습니까?") == true){    //확인
-                       
                 }else{   //취소
                     return;
                 } */
+                
+<%-- 댓글 삭제 클릭 --%>
             }else if($(this).attr("name")=="cDel"){
                 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
                 	var $commentNo = $(this).attr('title');
@@ -237,6 +201,8 @@ $(document).on("click","#replyEditSubmit", function(){
                 }else{   //취소
                     return;
                 }
+                
+<%-- 댓글 수정 클릭 --%>
             }else if($(this).attr("name")=="pEdit"){
             	var $commentNo = $(this).attr('title');
             	var content = $(this).siblings().filter("p");
@@ -246,21 +212,16 @@ $(document).on("click","#replyEditSubmit", function(){
                 //부모의 하단에 댓글달기 창을 삽입
                 var commentEditor = '<tr id="commentEditor">'+
                                         '<td style="width:1%"> </td>'+
-                                        '<td>'+
+                                        '<td align="right">'+
                                             '<span class="form-inline" role="form">'+
-                                                '<p>'+
-                                                    '<div class="form-group">'+
-                                                        '<input type="text" id="commentEditName" name="commentEditName" class="form-control col-lg-2" data-rule-required="true" value="${sessionScope.mvo.nickname}" maxlength="10" readonly>'+
-                                                    '</div>'+
+                                                    '<textarea id="commentEditText" name="commentEditText" class="form-control" style="width:98%" rows="4">'+content.text()+'</textarea>'+
                                                     '<div class="form-group">'+
                                                         '<button type="button" id="commentEditSubmit" class="btn btn-default" title='+$commentNo+'>확인</button>'+
                                                     '</div>'+
-                                                '</p>'+
-                                                    '<textarea id="commentEditText" name="commentEditText" class="form-control" style="width:98%" rows="4">'+content.text()+'</textarea>'+
                                             '</span>'+
                                         '</td>'+
                                     '</tr>';
-                                       
+                                    
                 parentElement.html(commentEditor);
             }else if($(this).attr("name")=="cEdit"){
             	var $commentNo = $(this).attr('title');
@@ -271,17 +232,12 @@ $(document).on("click","#replyEditSubmit", function(){
                 //부모의 하단에 댓글달기 창을 삽입
                 var commentEditor = '<tr id="commentEditor">'+
                                         '<td style="width:1%"> </td>'+
-                                        '<td>'+
+                                        '<td align="right">'+
                                             '<span class="form-inline" role="form">'+
-                                                '<p>'+
-                                                    '<div class="form-group">'+
-                                                        '<input type="text" id="commentEditName" name="commentEditName" class="form-control col-lg-2" data-rule-required="true" value="${sessionScope.mvo.nickname}" maxlength="10" readonly>'+
-                                                    '</div>'+
+                                                    '<textarea id="replyEditText" name="replyEditText" class="form-control" style="width:98%" rows="4">'+content.text()+'</textarea>'+
                                                     '<div class="form-group">'+
                                                         '<button type="button" id="replyEditSubmit" class="btn btn-default" title='+$commentNo+'>확인</button>'+
                                                     '</div>'+
-                                                '</p>'+
-                                                    '<textarea id="replyEditText" name="replyEditText" class="form-control" style="width:98%" rows="4">'+content.text()+'</textarea>'+
                                             '</span>'+
                                         '</td>'+
                                     '</tr>';
@@ -295,20 +251,12 @@ $(document).on("click","#replyEditSubmit", function(){
                 //부모의 하단에 댓글달기 창을 삽입
                 var commentEditor = '<tr id="commentEditor">'+
                                         '<td style="width:1%"> </td>'+
-                                        '<td>'+
+                                        '<td align="right">'+
                                             '<span class="form-inline" role="form">'+
-                                                '<p>'+
-                                                    '<div class="form-group">'+
-                                                        '<input type="text" id="commentChildName" name="commentChildName" class="form-control col-lg-2" data-rule-required="true" value="${sessionScope.mvo.nickname}" maxlength="10" readonly>'+
-                                                    '</div>'+
-                                                   /*  '<div class="form-group">'+
-                                                        ' <input type="password" id="commentChildPassword" name="commentChildPassword" class="form-control col-lg-2" data-rule-required="true" placeholder="패스워드" maxlength="10">'+
-                                                    '</div>'+ */
+                                                    '<textarea id="commentChildText" name="commentChildText" class="form-control" style="width:98%" rows="4"></textarea>'+
                                                     '<div class="form-group">'+
                                                         '<button type="button" id="commentChildSubmit" class="btn btn-default">확인</button>'+
                                                     '</div>'+
-                                                '</p>'+
-                                                    '<textarea id="commentChildText" name="commentChildText" class="form-control" style="width:98%" rows="4"></textarea>'+
                                             '</span>'+
                                         '</td>'+
                                     '</tr>';
@@ -362,9 +310,10 @@ $(document).on("click","#replyEditSubmit", function(){
 <form id="commentForm">
 <table class="table table-condensed">
                         <tr>
-                            <td>
+                            <td align="right">
                                 <span class="form-inline" role="form">
-                                    <p>
+                                    <textarea id="commentParentText" name="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4" placeholder="댓글"></textarea>
+                                    <!-- <p> -->
                                         <%-- <div class="form-group">
                                             <input type="text" id="commentParentName" name="commentParentName" class="form-control col-lg-2" data-rule-required="true" value="${sessionScope.mvo.nickname }" maxlength="10" readonly>
                                         </div> --%>
@@ -374,8 +323,7 @@ $(document).on("click","#replyEditSubmit", function(){
                                         <div class="form-group">
                                             <button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">확인</button>
                                         </div>
-                                    </p>
-                                        <textarea id="commentParentText" name="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4" placeholder="댓글"></textarea>
+                                    <!-- </p> -->
                                 </span>
                             </td>
                         </tr>
@@ -386,7 +334,7 @@ $(document).on("click","#replyEditSubmit", function(){
 <table id="commentTable" class="table table-condensed">
 	<c:forEach items="${commentList}" var="item">
 		<tr id="r1" name="commentParentCode" title="${item.comment_no}">
-			<td colspan=2><strong>${item.communityVO.memberVO.nickname}</strong>
+			<td colspan=2><strong style="color: #009688;">${item.communityVO.memberVO.nickname}</strong>
 			<c:if test="${sessionScope.mvo!=null }">
 			<a style="cursor:pointer;" name="pAdd">답글</a>
 			<c:if test="${item.communityVO.memberVO.id==sessionScope.mvo.id }">
@@ -403,7 +351,7 @@ $(document).on("click","#replyEditSubmit", function(){
 				<tr name="commentChildCode">
 							<td style="width:1%"><span class="glyphicon glyphicon-arrow-right"></span></td>
 							<td style="width:99%">
-								<strong>${child.memberVO.nickname }</strong>
+								<strong style="color: #009688;">${child.memberVO.nickname }</strong>
 								<c:if test="${sessionScope.mvo!=null }">
 									<!-- <a style="cursor:pointer;" name="cAdd">답글</a> -->
 									<c:if test="${child.memberVO.id==sessionScope.mvo.id }">

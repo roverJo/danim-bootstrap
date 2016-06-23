@@ -105,6 +105,15 @@ class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	</entry>
 </util:map>
 
+<!-- 재원재원추가부분 -->
+<util:map id="pagingConfigMessage">	
+	<entry key="numberOfContent">
+		<value type="int">15</value>
+	</entry>
+	<entry key="numberOfPage">
+		<value type="int">5</value>
+	</entry>
+</util:map>
 </beans>
 
 

@@ -9,3 +9,4 @@
 	<input type="submit" value="확인" class="btn btn-primary">
 	</form>
 </div>
+<div class="addHeight"></div>

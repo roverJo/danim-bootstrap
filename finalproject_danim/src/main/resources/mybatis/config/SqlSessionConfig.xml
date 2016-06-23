@@ -44,6 +44,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mapper resource="mybatis/config/cart/cart.xml"/>
 	<!-- admin -->
 	<mapper resource="mybatis/config/admin/admin.xml"/>
+	<!-- message -->
+	<mapper resource="mybatis/config/message/message.xml"/>
 	</mappers>
 	
 </configuration>

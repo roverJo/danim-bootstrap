@@ -215,7 +215,7 @@
 				<c:forEach items="${rankList }" var="rankList">
 					<tr>
 						<td>${rankList.nickname }</td>
-						<td>${rankList.content }</td>
+						<td><a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${rankList.comm_no}')">${rankList.content }</a></td>
 						<td><div class='glyphicon glyphicon-heart' style="width: 40px;">${rankList.heart }</div></td>
 					</tr>
 				</c:forEach>

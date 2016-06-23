@@ -25,6 +25,8 @@ public interface CommunityService {
 	public CommunityVO findCommByNo(int commNo);
 
 	public List<CommentVO> getCommentList(int comm_no);
+	
+	public int updateComment(CommentVO paramVO);
 
 	public int deleteComment(int comment_no);
 
@@ -35,5 +37,6 @@ public interface CommunityService {
 //	public List<ReplyVO> getReplyList(int comment_no);
 	
 	public List<CommLikeVO> getLikeRank();
+
 
 }

@@ -24,8 +24,8 @@
 						$("#memberView").html("검색결과가 없습니다");
 					}else{					
 					var table = "<div class='addHeight'></div><table border='1' class='table custab'><tr  class='box-black'>"+
-						"<td class='box-text'>아이디</td><td class='box-text'>닉네임</td><td class='box-text'>주소</td><td class='box-text'>이메일</td>";
-					table+= "<td class='box-text'>회원권한</td><td class='box-text'>권한부여</td></tr>";
+						"<th>아이디</th><th>닉네임</th><th>주소</th><th>이메일</th>";
+					table+= "<th>회원권한</th><th>권한부여</th></tr>";
 					for(var i=0;i<jsonData.length;i++){
 						table+= "<tr><td>"+jsonData[i].id+"</td><td>"+jsonData[i].nickname+"</td><td>"+jsonData[i].address;
 						table+= "</td><td>"+jsonData[i].email_add+"</td>";
@@ -82,13 +82,13 @@
 		<table border="1" id="adminTable" class="table custab">
 			<thead>
 			<tr class="box-black">
-				<td class="box-text">아이디</td>
-				<td class="box-text">닉네임</td>
-				<td class="box-text">주소</td>
-				<td class="box-text">이메일</td>
-				<td class="box-text">회원권한</td>
+				<th>아이디</th>
+				<th>닉네임</th>
+				<th>주소</th>
+				<th>이메일</th>
+				<th>회원권한</th>
 				<c:if test="${sessionScope.mvo.admin==99}">
-				<td class="box-text">권한해제</td>
+				<th>권한해제</th>
 				</c:if>
 			</tr>
 			</thead>

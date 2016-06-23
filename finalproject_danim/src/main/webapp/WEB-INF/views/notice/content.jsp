@@ -24,11 +24,11 @@ $(document).ready(function(){
 	<c:set var="nvo" value="${requestScope.nvo}"/>
 	<tr>
 		<th>글번호</th><td>${nvo.noticeno}</td>
-		<th align="right">제목</th><td align="right">${nvo.title}</td>
+		<th align="right">제목</th><td>${nvo.title}</td>
 	</tr>
 	<tr>
 		<th>작성자</th><td>${nvo.memberVO.nickname}</td>
-		<th align="right">작성일시</th><td align="right">${nvo.timePosted}</td>
+		<th align="right">작성일시</th><td>${nvo.timePosted}</td>
 	</tr>
 	<tr>
 		<td colspan="4"><pre>${nvo.content}</pre></td>
@@ -36,7 +36,7 @@ $(document).ready(function(){
 	<tr>
 		<td valign="middle" align="center" colspan="4">
 		<input type="button" class="btn btn-primary" id="listImg" value="목록"/>
-		<c:if test="${sessionScope.mvo!=null || sessionScope.mvo.admin>=1}">
+		<c:if test="${sessionScope.mvo!=null && sessionScope.mvo.admin>=1}">
 		<input type="button" class="btn btn-success" id="updateImg" value="수정"/>
 		<input type="button" class="btn btn-danger" id="deleteImg" value="삭제"/>
 		</c:if>

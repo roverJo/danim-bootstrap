@@ -94,6 +94,7 @@ public class CommunityServiceImpl implements CommunityService {
 	/**
 	 * 커뮤니티 댓글 수정 
 	 */
+	@Override
 	public int updateComment(CommentVO paramVO){
 		return commDAO.updateComment(paramVO);
 	}

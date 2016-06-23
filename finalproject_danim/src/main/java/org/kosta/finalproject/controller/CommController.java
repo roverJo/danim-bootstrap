@@ -146,6 +146,12 @@ public class CommController {
 		return commService.getCommentByNo(commentVO.getComment_no());
 	}
 	
+	@RequestMapping("updateComment.do")
+	@ResponseBody
+	public void updateComment(CommentVO paramVO){
+		commService.updateComment(paramVO);
+	}
+	
 	/**
 	 * 댓글 삭제 
 	 */
@@ -170,7 +176,7 @@ public class CommController {
 			mvo = (MemberVO) session.getAttribute("mvo");
 		}
 		commentVO.setCommunityVO(new CommunityVO(commNo, mvo));
-		commentVO.setContent(request.getParameter("commentParentText"));
+		commentVO.setContent(request.getParameter("commentChildText"));
 		commService.registerComment(commentVO);
 		
 		return commService.getCommentByNo(commentVO.getComment_no());

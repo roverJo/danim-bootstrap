@@ -89,8 +89,8 @@
 
 	/* Community 게시판 List */
 	.card-receep-header {
-		border-bottom: 1px solid #e9ecf0;
-		border-top: 1px solid #e9ecf0;
+		border-bottom: 1px solid;
+		/* border-top: 1px solid #e9ecf0; */
 	}
 	.card-receep-header .username {
 		color: #009688;
