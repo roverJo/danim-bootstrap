@@ -66,10 +66,7 @@ $(document).ready(function(){
 				<div id="infoMenu"></div>
 				<hr> 
 				<br><br><br><br><br><br><br><br><br>
-			 <a href="#" onClick="history.back(-1);">결과페이지</a>
-				<div align="right">
-					<a href="#top">TOP으로</a>
-				</div>
+			 <a href="#" onClick="history.back(-1);">결과페이지</a>			
 			</td>
 		</tr>
 	</table>

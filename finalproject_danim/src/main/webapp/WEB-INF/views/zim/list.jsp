@@ -284,8 +284,8 @@
 				<td>${list.price }원</td>
 				<td>${list.leadTime }</td>
 				<td>${list.busType }</td>
-				<td><input type="checkbox" name="bus_no" value="${list.bus_no }"></td>
-				<td><input type="radio" name="insertcart_traffic_no" value="bus/${list.bus_no }"></td>
+				<td align="center"><input type="checkbox" name="bus_no" value="${list.bus_no }"></td>
+				<td align="center"><input type="radio" name="insertcart_traffic_no" value="bus/${list.bus_no }"></td>
 			</tr>
 			
 			</c:forEach>
@@ -299,8 +299,8 @@
 				<td>${list.price }원</td>
 				<td>${list.leadTime }</td>
 				<td>${list.trainType }</td>
-				<td><input type="checkbox" name="train_no" value="${list.train_no }"></td>
-				<td><input type="radio" name="insertcart_traffic_no" value="train/${list.train_no }"></td>
+				<td align="center"><input type="checkbox" name="train_no" value="${list.train_no }"></td>
+				<td align="center"><input type="radio" name="insertcart_traffic_no" value="train/${list.train_no }"></td>
 			</tr>
 			</c:forEach>
 		</c:if>
@@ -332,8 +332,8 @@
 				<td>${list.lodgetype }</td>
 				<td>${list.shopname }</td>
 				<td>${list.price }원</td>			
-				<td><input type="checkbox" name="lodge_no" value="${list.lodge_no }"></td>
-				<td><input type="radio" name="insertcart_lodge_no" value="${list.lodge_no }"></td>
+				<td align="center"><input type="checkbox" name="lodge_no" value="${list.lodge_no }"></td>
+				<td align="center"><input type="radio" name="insertcart_lodge_no" value="${list.lodge_no }"></td>
 			</tr>
 		</c:forEach>		
 	</table>

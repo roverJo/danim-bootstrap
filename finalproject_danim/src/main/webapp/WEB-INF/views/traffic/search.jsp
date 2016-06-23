@@ -189,7 +189,7 @@
 									result +="<td>"+trafficVO.busList[i].busType+"</td>";
 									if(!flag)
 									{
-										result +="<td><input type='radio' name ='traffic_no' class='radio' value='"+trafficVO.busList[i].bus_no+"'></td>";	
+										result +="<td align='center'><input type='radio' name ='traffic_no' class='radio' value='"+trafficVO.busList[i].bus_no+"'></td>";	
 									}
 									result +="</tr>";									
 								}
@@ -223,7 +223,7 @@
 									if(!flag)
 									{
 										
-										result +="<td><input type='radio' name ='traffic_no' value="+trafficVO.trainList[i].train_no+"></td>";
+										result +="<td align='center'><input type='radio' name ='traffic_no' value="+trafficVO.trainList[i].train_no+"></td>";
 									}
 									result +="</tr>";
 								}

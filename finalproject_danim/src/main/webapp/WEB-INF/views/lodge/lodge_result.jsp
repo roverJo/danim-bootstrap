@@ -52,7 +52,6 @@
 <h4>상세정보</h4><br><br>
 ${requestScope.list[0].shopinfo}
 <br><br><br><br><br><br><br><br><br>
-<div align="right"><a href="#top">TOP으로</a></div>
 </td>
 </tr>
 </table>
