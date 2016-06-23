@@ -6,7 +6,51 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상세정보</title>
+<!-- <style type="text/css">
+.custab {
+	border: 1px solid #ccc;
+	padding: 5px;
+	/* margin: 5% 0; */
+	box-shadow: 3px 3px 2px #ccc;
+	transition: 0.5s;
+}
+.custab tr>th{
+	border: 1px solid white;
+	color: white;
+	text-align: center;
+	background-color: #ec9e9e;
+}
 
+.custab:hover {
+	box-shadow: 3px 3px 0px transparent;
+	transition: 0.5s;
+}
+/* 테이블 색깔 지정 */
+	.box-black {
+	background-color: #ec9e9e;
+	/* rgba(0, 0, 0, 0.7) */
+	}
+	/*********************/
+	.box-col-top{
+	background-color: #fdfdcc;
+	color: #cc6262;
+	}
+	.box-col-bottom{
+	background-color: #32d66c;
+	color: #fffdfd;
+	}
+	/* 테이블 속성 길이 지정 */
+	.box-time{
+		width: 71px;
+		color: white;
+		text-align: center;
+	}
+	.box-notice{
+		width: 60px;
+		color: white;
+		text-align: center;
+	}
+</style> -->
 
 <script type="text/javascript" src="${initParam.root}resources/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -37,72 +81,73 @@
 				$("#pictureView").html("<img src='${initParam.root}resources/img/food/menu/${requestScope.dList[3].food_picture}'width=100% height=500>");
 			});
 	});
+	
 </script>
 
 </head>
 <body>
 <!-- 버스상세정보 -->
 <c:if test="${busVO != null }">
-	<table border='1'>
+	<table border='1' class="table custab">
 		<tr>
-			<td>버스번호</td>
+			<th>버스번호</th>
 			<td>${busVO.bus_no }</td>
 		</tr>
 		<tr>
-			<td>운행시간</td>
+			<th>운행시간</th>
 			<td>${busVO.operation_time}</td>
 		</tr>
 		<tr>
-			<td>출발터미널</td>
+			<th>출발터미널</th>
 			<td>${busVO.terminalVO.terminal_name}</td>
 		</tr>
 		<tr>
-			<td>도착지역</td>
+			<th>도착지역</th>
 			<td>${busVO.end_area}</td>
 		</tr>
 		<tr>
-			<td>가격</td>
+			<th>가격</th>
 			<td>${busVO.price}</td>
 		</tr>
 		<tr>
-			<td>소요시간</td>
+			<th>소요시간</th>
 			<td>${busVO.leadTime}</td>
 		</tr>
 		<tr>
-			<td>버스종류</td>
+			<th>버스종류</th>
 			<td>${busVO.busType}</td>
 		</tr>
 	</table>
 </c:if>
 <!-- 기차상세정보 -->
 <c:if test="${trainVO != null }">
-	<table border='1'>
+	<table border='1' class="table custab">
 		<tr>
-			<td>기차번호</td>
+			<th>기차번호</th>
 			<td>${trainVO.train_no }</td>
 		</tr>
 		<tr>
-			<td>운행시간</td>
+			<th>운행시간</th>
 			<td>${trainVO.operation_time}</td>
 		</tr>
 		<tr>
-			<td>출발역</td>
+			<th>출발역</th>
 			<td>${trainVO.stationVO.station_name}</td>
 		</tr>
 		<tr>
-			<td>도착지역</td>
+			<th>도착지역</th>
 			<td>${trainVO.end_area}</td>
 		</tr>
 		<tr>
-			<td>가격</td>
+			<th>가격</th>
 			<td>${trainVO.price}</td>
 		</tr>
 		<tr>
-			<td>소요시간</td>
+			<th>소요시간</th>
 			<td>${trainVO.leadTime}</td>
 		</tr>
 		<tr>
-			<td>기차종류</td>
+			<th>기차종류</th>
 			<td>${trainVO.trainType}</td>
 		</tr>
 	</table>
@@ -144,10 +189,10 @@
 </c:if>
 <!-- 음식상세정보 -->
 <c:if test="${!empty dList }">
-	<table class="table table-striped ">
+	<table class="table custab">
 	<tr>
 	<td>
-	<table class="table">
+	<table class="table custab">
 	<tr>
 	<td width="50%"><br><br><div id="pictureView"><img src="${initParam.root}resources/img/food/menu/${dList[0].food_picture}" alt="..."  width=100% height=500 align="middle"></div><br><br></td>
 	</tr>

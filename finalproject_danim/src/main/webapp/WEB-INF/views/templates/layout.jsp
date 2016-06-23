@@ -175,6 +175,7 @@
 </style>
 
 <!-- CSS -->
+
 <link rel="stylesheet" href="${initParam.root}resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/owl.carousel.css">
 <link rel="stylesheet" href="css/camera.css">
@@ -194,6 +195,7 @@
 <!--[if (gt IE 9)|!(IE)]><!-->
 <script src="js/jquery.mobile.customized.min.js"></script>
 <!--<![endif]-->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
 $(window).load(function(){
   $().UItoTop({ easingType: 'easeOutQuart' });

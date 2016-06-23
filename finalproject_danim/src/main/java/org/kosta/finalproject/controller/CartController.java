@@ -21,6 +21,7 @@ import org.kosta.finalproject.model.vo.traffic.BusVO;
 import org.kosta.finalproject.model.vo.traffic.TrainVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -110,36 +111,40 @@ public class CartController
 	}
 	
 	@RequestMapping("cartDetailInfoByBus.do")
-	public ModelAndView cartDetailInfoByBus(String bus_no)
+	@ResponseBody
+	public BusVO cartDetailInfoByBus(String bus_no)
 	{
 		//System.out.println(bus_no);
 		BusVO busVO = trafficService.getBusInfo(Integer.parseInt(bus_no));
-		return new ModelAndView("popup/detail_info","busVO",busVO);
+		return busVO;
 	}
 	
 	@RequestMapping("cartDetailInfoByTrain.do")
-	public ModelAndView cartDetailInfoByTrain(String train_no)
+	@ResponseBody
+	public TrainVO cartDetailInfoByTrain(String train_no)
 	{
 		//System.out.println(bus_no);
 		TrainVO trainVO = trafficService.getTrainInfo(Integer.parseInt(train_no));
-		return new ModelAndView("popup/detail_info","trainVO",trainVO);
+		return trainVO;
 	}
 	
 	@RequestMapping("cartDetailInfoByLodge.do")
-	public ModelAndView cartDetailInfoByLodge(HttpServletRequest request,String lodge_no)
+	@ResponseBody
+	public List<LodgeVO> cartDetailInfoByLodge(HttpServletRequest request,String lodge_no)
 	{
 		List<LodgeVO> list=lodgeService.showlodge(Integer.parseInt(lodge_no));
 		List<String> rlist=lodgeService.lodgeNo();
 		request.setAttribute("rlist", rlist);
-		return new ModelAndView("popup/detail_info","lodgeVO",list);
+		return list;
 	}
 	
 	@RequestMapping("cartDetailInfoByFood.do")
-	public ModelAndView cartDetailInfoByFood(String foodshop_no)
+	@ResponseBody
+	public List<MenuVO> cartDetailInfoByFood(String foodshop_no)
 	{
 		List<MenuVO> detailFoodList=bestFoodService.detailFood(Integer.parseInt(foodshop_no));
 		System.out.println("food: "+detailFoodList);
-		return new ModelAndView("popup/detail_info","dList",detailFoodList);
+		return detailFoodList;
 	}
 	
 	
