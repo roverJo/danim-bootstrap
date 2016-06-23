@@ -26,7 +26,7 @@
 									&nbsp;&nbsp;&nbsp;
 								<c:choose>
 									<c:when test="${sessionScope.mvo!=null}">
-											<a href="checkFoodShopNo.do?foodshop_no= ${list.foodshop_no }"class="btn btn-success" role="button">찜하기</a>
+											<a href="login_checkFoodShopNo.do?foodshop_no= ${list.foodshop_no }"class="btn btn-success" role="button">찜하기</a>
 									</c:when>
 								</c:choose>
 							</p>

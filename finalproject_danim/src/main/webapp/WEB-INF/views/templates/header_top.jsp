@@ -15,7 +15,7 @@
                <li><a href="${initParam.root }notice_list.do?pageNo=1">Notice</a></li>
                <li><a href="${initParam.root }community_list.do?rownum=5">Community</a></li>
              <c:if test="${sessionScope.mvo!=null }">
-               <li><a href="${initParam.root}zim_list.do">ZZim</a>
+               <li><a href="${initParam.root}login_zimList.do">ZZim</a>
                <li><a href="${initParam.root}login_cartList.do">Cart</a></li>
              </c:if>
                <li><a href="#" class="dropdown-toggle">Search

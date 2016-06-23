@@ -14,6 +14,7 @@ import org.kosta.finalproject.model.service.TrafficService;
 import org.kosta.finalproject.model.vo.cart.CartListVO;
 import org.kosta.finalproject.model.vo.cart.CartVO;
 import org.kosta.finalproject.model.vo.food.BestFoodVO;
+import org.kosta.finalproject.model.vo.food.MenuVO;
 import org.kosta.finalproject.model.vo.lodge.LodgeVO;
 import org.kosta.finalproject.model.vo.member.MemberVO;
 import org.kosta.finalproject.model.vo.traffic.BusVO;
@@ -136,8 +137,9 @@ public class CartController
 	@RequestMapping("cartDetailInfoByFood.do")
 	public ModelAndView cartDetailInfoByFood(String foodshop_no)
 	{
-		//System.out.println(bus_no);
-		return new ModelAndView("popup/detail_info");
+		List<MenuVO> detailFoodList=bestFoodService.detailFood(Integer.parseInt(foodshop_no));
+		System.out.println("food: "+detailFoodList);
+		return new ModelAndView("popup/detail_info","dList",detailFoodList);
 	}
 	
 	

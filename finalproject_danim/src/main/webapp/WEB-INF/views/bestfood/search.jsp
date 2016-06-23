@@ -80,7 +80,7 @@ $(document).ready(function(){
  <h3 align="center">음식검색</h3>
  <div class="container" align="center">
  <div class="addHeight"></div>
- <form id="bestfoodForm" method="post" action="searchBestFood.do">
+ <form id="bestfoodForm" method="get" action="searchBestFood.do">
  	<input type="hidden" name="area_name" value="">
  	<input type="hidden" name="foodtype" value="">
  	<input type="hidden" name="detailarea_name" value="">

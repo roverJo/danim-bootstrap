@@ -26,7 +26,7 @@
 		</c:if>
 		<c:if test="${sessionScope.mvo!=null}">
 		${sessionScope.mvo.nickname}님 로그인 완료 | 
-		<a href="${initParam.root}member_updateCheck.do">회원정보수정</a> |
+		<a href="${initParam.root}login_member_updateCheck.do">회원정보수정</a> |
 		<c:if test="${sessionScope.mvo.admin>=1}">
 			<a href="${initParam.root}admin_login.do">관리자페이지</a> |
 		</c:if>

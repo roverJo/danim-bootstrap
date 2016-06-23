@@ -29,7 +29,11 @@ public class ZimListController
 	@Resource
 	private BestFoodService bestFoodService;
 	
-	
+	@RequestMapping("login_zimList.do")
+	public String getZimList()
+	{
+		return "zim_list";
+	}
 	//교통 타입 체크
 	//세션방식
 	@RequestMapping("login_checkTypeByTraffic.do")
@@ -199,15 +203,15 @@ public class ZimListController
 		}
 		
 		//음식 찜리스트
-		@RequestMapping("checkFoodShopNo.do")
+		@RequestMapping("login_checkFoodShopNo.do")
 		public ModelAndView checkFoodShopNo(int foodshop_no){
-			return new ModelAndView("redirect:addZimListByFoodShop.do?foodshop_no="+foodshop_no);
+			return new ModelAndView("redirect:login_addZimListByFoodShop.do?foodshop_no="+foodshop_no);
 		}
 		
 		
-		@RequestMapping("addZimListByFoodShop.do")
+		@RequestMapping("login_addZimListByFoodShop.do")
 		public ModelAndView addZimListByFoodShop(HttpSession session,BestFoodVO bestFoodVO){
-			System.out.println("gggggg");
+			//System.out.println("gggggg");
 			ArrayList<BestFoodVO> bestFoodList =(ArrayList<BestFoodVO>) session.getAttribute("bestFoodList");
 			if(bestFoodList == null){
 				bestFoodList = new ArrayList<BestFoodVO>();
@@ -218,7 +222,7 @@ public class ZimListController
 					}
 				}
 			}
-			System.out.println("test: " + bestFoodList);
+			//System.out.println("test: " + bestFoodList);
 			bestFoodVO =(BestFoodVO) bestFoodService.getFoodInfo(bestFoodVO.getFoodshop_no());
 			bestFoodList.add(bestFoodVO);
 			session.setAttribute("bestFoodList", bestFoodList);

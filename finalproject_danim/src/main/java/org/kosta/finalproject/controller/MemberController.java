@@ -1,9 +1,11 @@
 package org.kosta.finalproject.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.finalproject.model.service.MemberService;
@@ -22,24 +24,57 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@RequestMapping(value="login.do", method = RequestMethod.POST)
-	public String checkLogin(HttpServletRequest request,MemberVO vo){
+	public String checkLogin(HttpServletRequest request,HttpServletResponse response,MemberVO vo){
 		HttpSession session=request.getSession(false);
+		
+		
 		MemberVO mvo=memberService.loginCheck(vo);
-		if(mvo!=null){
+		if(mvo!=null)
+		{
 			session.setAttribute("mvo", mvo);
-			if(mvo.getAdmin()>=1){
+			if(mvo.getAdmin()>=1)
+			{
 				return "admin_admin_login";
-			}else{
+			}
+			else
+			{
+				String url= request.getHeader("referer");
+				if(url != null)
+				{
+					if(url.substring(url.lastIndexOf("/") + 1).equals("logout.do"))
+					{
+						return "home";
+					}
+					
+					try 
+					{
+						response.sendRedirect(url);
+					} 
+					catch (IOException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 				return "home";
 			}			
 		}
 		return "member_login_result";
 	}
 	@RequestMapping("logout.do")
-	public ModelAndView logout(HttpServletRequest request){
+	public ModelAndView logout(HttpServletRequest request,HttpServletResponse response){
 		HttpSession session=request.getSession();
+		int admin = ((MemberVO)session.getAttribute("mvo")).getAdmin();
+		String url= request.getHeader("referer");
 		if(session!=null)
-		session.invalidate();
+		{
+			session.invalidate();
+		}
+		if(url != null && admin == 0)
+		{
+			System.out.println(url);
+			return new ModelAndView("redirect:"+url);
+		}
 		return new ModelAndView("home");
 	}
 	@RequestMapping("inregi.do")
@@ -111,7 +146,7 @@ public class MemberController {
 		System.out.println(vo);
 		return "member_update_result";
 	}
-	@RequestMapping("member_updateCheck.do")
+	@RequestMapping("login_member_updateCheck.do")
 	public String moveUpdate(){
 		return "member_update_check";
 	}
