@@ -48,12 +48,12 @@ $(document).ready(function(){
 </script>
 <div class="addHeight"></div>
 <div id="layer" class="container_12">
-    <div class="community">
+    <div class="">
 		<c:choose>
 			<c:when test="${sessionScope.mvo!=null }">
 				<form action="comm_write.do" method="post" id="frm">
 				<textarea hidden="textTest" id="textTest"></textarea>
-				<table width="100%">
+				<table>
 						<tr>
 							<td>작성자</td>
 							<td><input type="text" name="id" value="${sessionScope.mvo.nickname}" readonly/></td>
@@ -61,7 +61,7 @@ $(document).ready(function(){
 						<tr>
 							<td>내용</td>
 							<td>
-								<textarea rows="10" cols="30" id="ir1" name="content" style="width:766px; height:412px; " placeholder="내용을 입력하세요"></textarea>
+								<textarea rows="10" cols="30" id="ir1" name="content" style="height:412px; " placeholder="내용을 입력하세요"></textarea>
 							</td>
 						</tr>
 						<tr>

@@ -38,16 +38,13 @@
 			location.href="community_write.do";
 		});
 		$(window).scroll(function() { // 스크롤하면 아래 코드 실행
-			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-				$("#btn").html("<button type='button' onclick='loadData()' class='btn btn-danger'>더보기</button>");
+			if("${commList.size() < commListsize}"){
+				if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+					$("#btn").html("<button type='button' onclick='loadData()' class='btn btn-danger'>더보기</button>");
+				}
 			}
 		}); //scroll
 		
-		if("${commList.size()>0}"){
-			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-				$("#btn").html("<button type='button' onclick='loadData()' class='btn btn-danger'>더보기</button>");
-			}
-		}
 		
 		if("${sessionScope.mvo}"!=""){
 			$("#commTable td").click(function() {
@@ -85,20 +82,6 @@
  	function loadData() {
 	 	var page_y = $(document).scrollTop();
 			rn+=5;
-			/* if(date==""){
-				date = new Date();
-				
-	            var day = date.getDate();
-	            var month = date.getMonth() + 1;
-	            var year = date.getFullYear();
-	
-	            if (month < 10) month = "0" + month;
-	            if (day < 10) day = "0" + day;
-	
-	            var today = year + "-" + month + "-" + day;
-	            date = today;
-	            //$("#date").attr("value", today);
-			} */
 			if ( window.location.href.indexOf('page_y') != -1 || page_y != -1) {
 		        var match = window.location.href.split('?')[1].split("&")[0].split("=");
 		        $('html, body').scrollTop( match[1] );
@@ -204,11 +187,11 @@
 						</td>
 					</tr>
 					<tr class="card-receep-entry">
-						<td colspan="3"  height="100" width="500">${list.content}<br>
+						<td colspan="3"  height="100" width="500">
+						<a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">${list.content}</a>
 							<%-- <c:if test="${fn:contains(list.content, 'img') }">
 							</c:if> --%>
 							<%-- <a href="#" onClick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">상세보기</a> --%>
-							<a href="findCommByNo.do?commNo=${list.comm_no}" >상세보기</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -231,10 +214,9 @@
 				</tr>
 				<c:forEach items="${rankList }" var="rankList">
 					<tr>
-						<%-- <td>${rankList.comm_no }</td> --%>
-						<td>${rankList.id }</td>
+						<td>${rankList.nickname }</td>
 						<td>${rankList.content }</td>
-						<td class='glyphicon glyphicon-heart' style="width: 55px;">${rankList.heart }</td>
+						<td><div class='glyphicon glyphicon-heart' style="width: 40px;">${rankList.heart }</div></td>
 					</tr>
 				</c:forEach>
 		</table>

@@ -78,6 +78,15 @@ insert into commLike(comm_no,id,likePosted) values(12,'java',1)
 insert into commLike(comm_no,id,likePosted) values(13,'admin',1)
 delete commLike where id='java' and comm_no=10
 
+select comm_no, heart, content, nickname from(
+		select r.comm_no, r.heart, rank() over (order by r.heart desc) as rank, c.content, m.id, m.nickname 
+		from (
+			select comm_no, sum(likePosted) as heart
+			from commLike
+			group by comm_no
+		) r, community c, member m
+		where r.comm_no=c.comm_no and m.id=c.id
+)
 
 --comment 연습
 insert into commcomment(comment_no,comm_no,id,content) values(comment_seq.nextval,28,'java','댓글이에여')

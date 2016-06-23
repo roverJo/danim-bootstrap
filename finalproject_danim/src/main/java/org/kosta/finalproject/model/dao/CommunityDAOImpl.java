@@ -21,6 +21,11 @@ public class CommunityDAOImpl implements CommunityDAO {
 		return template.selectList("community.getCommlist", rownum);
 	}
 	
+	@Override
+	public int getCountCommlist(){
+		return template.selectOne("community.getCountCommlist");
+	}
+	
 	/**
 	 * 커뮤니티 게시판 글 작성
 	 */

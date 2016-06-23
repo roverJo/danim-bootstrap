@@ -20,16 +20,24 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public List<CommunityVO> getCommList(int rownum){
 		List<CommunityVO> list = commDAO.getCommList(rownum);
+		
+		/* 정규 표현식을 이용하여 Community의 content에서 이미지 태그 src만 추출 */
 		for (CommunityVO cvo : list) {
 			String text = cvo.getContent();
-			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>"); //img 태그 src 추출 정규표현식
+			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
 	        Matcher matcher = pattern.matcher(text);
 	         
 	        while(matcher.find()){
 	            cvo.setContent(matcher.group(0));
 	        }
 		}
+		
 		return list;
+	}
+	
+	@Override
+	public int getCountCommlist(){
+		return commDAO.getCountCommlist();
 	}
 	
 	@Override

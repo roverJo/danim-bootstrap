@@ -93,7 +93,7 @@
 		border-top: 1px solid #e9ecf0;
 	}
 	.card-receep-header .username {
-		color: #004080;
+		color: #009688;
 		font-weight: bold;
 	}
 	.card-receep-header .timeago {

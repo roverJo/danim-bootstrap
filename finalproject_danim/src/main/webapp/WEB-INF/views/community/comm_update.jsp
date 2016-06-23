@@ -48,8 +48,9 @@ $(document).ready(function(){
 });
 </script>
 <div class="addHeight"></div>
-<div id="layer" class="container_12">
-    <div class="community">
+<div id="layer" class="container" align="center">
+<h3>글 수정</h3>
+    <div id="notice-list">
 		<c:choose>
 			<c:when test="${sessionScope.mvo!=null }">
 				<form action="comm_update.do" method="post" id="frm">
@@ -57,13 +58,16 @@ $(document).ready(function(){
 				<textarea hidden="textTest" id="textTest"></textarea>
 				<table width="100%">
 						<tr>
-							<td>작성자</td>
-							<td><input type="text" name="id" value="${sessionScope.mvo.nickname}" readonly/></td>
+							<th>작성자</th>
+							<td><input type="text" name="id" value="${sessionScope.mvo.nickname}" class="form-con" readonly></td>
 						</tr>
+						<!-- <tr>
+							<th colspan="2">내용</th>
+						</tr> -->
 						<tr>
-							<td>내용</td>
-							<td>
-								<textarea rows="10" cols="30" id="ir1" name="content" style="width:766px; height:412px; ">${commVO.content }</textarea>
+							<td colspan="2">
+								<textarea rows="10" cols="30" id="ir1" name="content" style="width:766px; height:412px; " class="form-con">
+								${commVO.content }</textarea>
 							</td>
 						</tr>
 						<tr>

@@ -10,6 +10,8 @@ import org.kosta.finalproject.model.vo.community.ReplyVO;
 public interface CommunityDAO {
 
 	public abstract List<CommunityVO> getCommList(int rownum);
+	
+	public int getCountCommlist();
 
 	/**
 	 * 커뮤니티 게시판 글 작성

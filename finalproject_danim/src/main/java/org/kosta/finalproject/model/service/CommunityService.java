@@ -9,6 +9,8 @@ import org.kosta.finalproject.model.vo.community.CommunityVO;
 public interface CommunityService {
 
 	public List<CommunityVO> getCommList(int rownum);
+	
+	public int getCountCommlist();
 
 	public void registerComm(CommunityVO paramVO);
 

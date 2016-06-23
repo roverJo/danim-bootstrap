@@ -26,6 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where l.comm_no(+)=c.comm_no and m.id=c.id and c.page=1
  	</select>
  	
+ 	<select id="getCountCommlist" resultType="int">
+ 		select count(*) from community
+ 	</select>
+ 	
  	<insert id="registerComm" parameterType="communityVO">
  		<selectKey keyProperty="comm_no" order="BEFORE" resultType="int">
  			select comm_seq.nextval from dual 
@@ -126,14 +130,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getLikeRank" resultType="commLikeVO">
 		<!-- select comm_no, likepost as likePosted, rank, content from( -->
-		select comm_no, heart, content from(
-		select r.comm_no, r.heart, rank() over (order by r.heart desc) as rank, c.content 
+		select comm_no, heart, content, nickname from(
+		select r.comm_no, r.heart, rank() over (order by r.heart desc) as rank, c.content, m.id, m.nickname 
 		from (
 			select comm_no, sum(likePosted) as heart
 			from commLike
 			group by comm_no
-		) r, community c
-		where r.comm_no=c.comm_no 
+		) r, community c, member m
+		where r.comm_no=c.comm_no and m.id=c.id
 		)
 		where rank <![CDATA[<]]>6
 	</select>
