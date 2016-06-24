@@ -57,4 +57,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        where rank < 6
     	]]>
  	</select>
+ 	
+ 	<select id="allFindLodge" resultType="lodgeVO">
+ 		select lodge_no,shopname,shopinfo,lodgetype,price,area_name,detailarea_name,local_area
+ 		from lodge
+ 	</select>
+ 	
+ 	<insert id="lodgeRegister" parameterType="lodgeVO">
+ 		insert into lodge(lodge_no,shopname,shopinfo,lodgetype,price,area_name,detailarea_name,local_area,hits)
+ 		values(lodge_seq.nextval,#{shopname},#{shopinfo},#{lodgetype},#{price},#{area_name},#{detailarea_name},#{local_area},0)
+ 	</insert>
+ 	
+ 	<select id="lodgefind" resultType="lodgeVO">
+ 		select lodge_no,shopname,shopinfo,lodgetype,price,area_name,detailarea_name,local_area
+ 		from lodge 
+ 		where shopname=#{shopname} and area_name=#{area_name} and detailarea_name=#{detailarea_name}
+ 		and lodgetype=#{lodgetype}
+ 	</select>
+	
+	<select id="findLodgeAllPicture" resultType="lodgePictureVO">
+		select picture_no,lodge_no,picture_name from lodgepicture where lodge_no=#{lodge_no}
+	</select> 	
+	
+	<insert id="lodgeResiPic" parameterType="lodgePictureVO">
+		insert into lodgepicture(picture_no,picture_name,lodge_no)
+		values(lodgepicture_seq.nextval,#{picture_name},#{lodge_no})
+	</insert>
+	
+	<select id="lodge_findPic" resultType="lodgePictureVO">
+		select picture_no,lodge_no,picture_name from lodgepicture where lodge_no=#{value}
+	</select>
+	
+	<update id="lodgePic_update" parameterType="lodgePictureVO">
+		update lodgepicture set picture_name=#{picture_name} where picture_no=#{picture_no}
+	</update>
+	<update id="lodgePic_ExcludePicupdate" parameterType="lodgePictureVO">
+		update lodgepicture set picture_no=#{picture_no} where picture_no=#{picture_no}
+	</update>
 </mapper>

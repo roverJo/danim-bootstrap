@@ -19,5 +19,12 @@ public interface LodgeService {
 	LodgeVO getLodgeInfo(int lodge_no);
 	List<LodgePictureVO> getLodgePicture(String lodge_no);
 	public List<LodgeVO> lodgetop5list();
-
+	public List<LodgeVO> allFindLodge();
+	public void lodgeRegister(LodgeVO lodgeVO);
+	public LodgeVO lodgefind(LodgeVO lodgeVO);
+	public List<LodgePictureVO> findLodgeAllPicture(LodgePictureVO lodgePictureVO);
+	public void lodgeResiPic(LodgePictureVO lodgePictureVO);
+	public List<LodgePictureVO> lodge_findPic(int lodge_no);
+	public void lodgePic_update(LodgePictureVO lodgePictureVO);
+	public void lodgePic_ExcludePicupdate(LodgePictureVO lodgePictureVO);
 }

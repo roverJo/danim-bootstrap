@@ -27,4 +27,6 @@ public interface BestFoodDAO {
 	public List<MenuVO> findMenu(int foodshop_no);
 	public abstract int totalFoodByFoodType(BestFoodVO bestFoodVO);
 	public abstract int totalFood(BestFoodVO bestFoodVO);
+	public void menuUpdate(MenuVO menuVO);
+	public void menuUpdateExcludePicture(MenuVO menuVO);
 }

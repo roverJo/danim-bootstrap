@@ -106,4 +106,13 @@ public class BestFoodDAOImpl implements BestFoodDAO {
 		// TODO Auto-generated method stub
 		return template.selectOne("bestfood.totalFood",bestFoodVO);
 	}
+	//메뉴 업데이트
+	public void menuUpdate(MenuVO menuVO){
+		template.update("menu.menuUpdate",menuVO);
+	}
+	//사진을 제외한 업데이트
+	public void menuUpdateExcludePicture(MenuVO menuVO){
+		template.update("menu.menuUpdateExcludePicture",menuVO);
+	}
+		
 }

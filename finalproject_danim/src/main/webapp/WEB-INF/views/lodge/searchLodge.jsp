@@ -11,7 +11,7 @@
 <td>
 <div class="searchForm">
     <div class="thumbnail">
-      <img src="${initParam.root}${list.lodgePictureVO.picture_name}" alt="..." class="thumimg">
+      <img src="${initParam.root}resources/img/lodge/${list.lodgePictureVO.picture_name}" alt="..." class="thumimg">
         <h4>${list.lodgetype }:  <br> ${list.shopname }</h4> <br>
         <p align="center"><a href="${initParam.root}showlodge.do?no=${list.lodge_no}" class="btn btn-success" role="button">상세보기</a>
         &nbsp;&nbsp;&nbsp;

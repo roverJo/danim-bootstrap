@@ -4,16 +4,16 @@
  <script type="text/javascript">
 	$(document).ready(function(){	
 		 $("#pic1").click(function(){
-			$("#pictureView").html("<img src='${initParam.root}${requestScope.list[0].lodgePictureVO.picture_name }'width=100% height=500>");
+			$("#pictureView").html("<img src='${initParam.root}resources/img/lodge/${requestScope.list[0].lodgePictureVO.picture_name }'width=100% height=500>");
 		});
 		 $("#pic2").click(function(){
-				$("#pictureView").html("<img src='${initParam.root}${requestScope.list[1].lodgePictureVO.picture_name }'width=100% height=500>");
+				$("#pictureView").html("<img src='${initParam.root}resources/img/lodge/${requestScope.list[1].lodgePictureVO.picture_name }'width=100% height=500>");
 			});
 		 $("#pic3").click(function(){
-				$("#pictureView").html("<img src='${initParam.root}${requestScope.list[2].lodgePictureVO.picture_name }'width=100% height=500>");
+				$("#pictureView").html("<img src='${initParam.root}resources/img/lodge/${requestScope.list[2].lodgePictureVO.picture_name }'width=100% height=500>");
 			});		
 		 $("#pic4").click(function(){
-				$("#pictureView").html("<img src='${initParam.root}${requestScope.list[3].lodgePictureVO.picture_name }'width=100% height=500>");
+				$("#pictureView").html("<img src='${initParam.root}resources/img/lodge/${requestScope.list[3].lodgePictureVO.picture_name }'width=100% height=500>");
 			});	
 	});
 </script>
@@ -24,12 +24,12 @@
 <td>
 <table class="table">
 <tr>
-<td width="50%"><br><br><div id="pictureView"><img src="${initParam.root}${requestScope.list[0].lodgePictureVO.picture_name }" alt="..."  width=100% height=500 align="middle"></div><br><br></td>
+<td width="50%"><br><br><div id="pictureView"><img src="${initParam.root}resources/img/lodge/${requestScope.list[0].lodgePictureVO.picture_name }" alt="..."  width=100% height=500 align="middle"></div><br><br></td>
 </tr>
 <tr>
 <td>
 <c:forEach var="list" items="${requestScope.list}" varStatus="i">
-<img src="${initParam.root}${list.lodgePictureVO.picture_name }" alt="..."  width=24% height=150 id="pic${i.index+1}"></img>
+<img src="${initParam.root}resources/img/lodge/${list.lodgePictureVO.picture_name }" alt="..."  width=24% height=150 id="pic${i.index+1}"></img>
 </c:forEach>
 <hr>
 <c:if test="${sessionScope.mvo != null }">

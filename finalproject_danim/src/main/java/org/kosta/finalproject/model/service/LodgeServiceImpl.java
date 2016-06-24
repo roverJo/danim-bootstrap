@@ -76,6 +76,30 @@ public class LodgeServiceImpl implements LodgeService {
 	public List<LodgeVO> lodgetop5list(){
 		return lodgeDAO.lodgetop5list();
 	}
-
+	public List<LodgeVO> allFindLodge(){
+		return lodgeDAO.allFindLodge();
+	}
+	public void lodgeRegister(LodgeVO lodgeVO){
+		lodgeDAO.lodgeRegister(lodgeVO);
+	}
+	public LodgeVO lodgefind(LodgeVO lodgeVO){
+		return lodgeDAO.lodgefind(lodgeVO);
+	}
+	
+	public List<LodgePictureVO> findLodgeAllPicture(LodgePictureVO lodgePictureVO){
+		return lodgeDAO.findLodgeAllPicture(lodgePictureVO);
+	}
+	public void lodgeResiPic(LodgePictureVO lodgePictureVO){
+		lodgeDAO.lodgeResiPic(lodgePictureVO);
+	}
+	public List<LodgePictureVO> lodge_findPic(int lodge_no){
+		return lodgeDAO.lodge_findPic(lodge_no);
+	}
+	public void lodgePic_update(LodgePictureVO lodgePictureVO){
+		lodgeDAO.lodgePic_update(lodgePictureVO);
+	}
+	public void lodgePic_ExcludePicupdate(LodgePictureVO lodgePictureVO){
+		lodgeDAO.lodgePic_ExcludePicupdate(lodgePictureVO);
+	}
 
 }

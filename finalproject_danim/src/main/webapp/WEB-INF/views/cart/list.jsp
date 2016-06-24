@@ -126,7 +126,7 @@
 					lodgeMessg += "<td>"+jsonData[0].shopinfo+"</td>";
 					lodgeMessg += "</tr>";
 					lodgeMessg += "<tr>";
-					lodgeMessg += "<td colspan = '2' width='50%'><br><br><div id='pictureView'><img src='${initParam.root}"+ jsonData[0].lodgePictureVO.picture_name +"' alt='...'  width=100% height=300 align='middle'></div><br><br></td>";
+					lodgeMessg += "<td colspan = '2' width='50%'><br><br><div id='pictureView'><img src='${initParam.root}resources/img/lodge/"+ jsonData[0].lodgePictureVO.picture_name +"' alt='...'  width=100% height=300 align='middle'></div><br><br></td>";
 					lodgeMessg += "</tr>";
 					lodgeMessg += "</table>";
 					$(".modal-body").html(lodgeMessg);

@@ -61,4 +61,35 @@ public class LodgeDAOImpl implements LodgeDAO {
 		// TODO Auto-generated method stub
 		return template.selectOne("lodge.totalLodge",vo);
 	}
+	//전체 숙박 리스트 검색
+		public List<LodgeVO> allFindLodge(){
+			return template.selectList("lodge.allFindLodge");
+		}
+		//숙박 등록
+		public void lodgeRegister(LodgeVO lodgeVO){
+			template.insert("lodge.lodgeRegister",lodgeVO);
+		}
+		//숙박 검색
+		public LodgeVO lodgefind(LodgeVO lodgeVO){
+			return template.selectOne("lodge.lodgefind",lodgeVO);
+		}
+		//속한 숙박의 사진 갯수 찾기
+		public List<LodgePictureVO> findLodgeAllPicture(LodgePictureVO lodgePictureVO){
+			return template.selectList("lodge.findLodgeAllPicture",lodgePictureVO);
+		}
+		//숙박 사진 등록(1개 업로드)
+		public void lodgeResiPic(LodgePictureVO lodgePictureVO){
+			template.insert("lodge.lodgeResiPic",lodgePictureVO);
+		}
+		//숙박 pk에 따른 사진 값들 찾아오기
+		public List<LodgePictureVO> lodge_findPic(int lodge_no){
+			return template.selectList("lodge.lodge_findPic",lodge_no);
+		}
+		//사진 값들 업데이트
+		public void lodgePic_update(LodgePictureVO lodgePictureVO){
+			template.update("lodge.lodgePic_update",lodgePictureVO);
+		}
+		public void lodgePic_ExcludePicupdate(LodgePictureVO lodgePictureVO){
+			template.update("lodge.lodgePic_ExcludePicupdate",lodgePictureVO);
+		}
 }

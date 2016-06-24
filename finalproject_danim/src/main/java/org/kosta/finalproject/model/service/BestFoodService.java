@@ -27,4 +27,6 @@ public interface BestFoodService {
 	public BestFoodVO foodShopFindByNo(int foodshop_no);
 	public void foodMenuRegister(MenuVO menuVO);
 	public List<MenuVO> findMenu(int foodshop_no);
+	public void menuUpdate(MenuVO menuVO);
+	public void menuUpdateExcludePicture(MenuVO menuVO);
 }

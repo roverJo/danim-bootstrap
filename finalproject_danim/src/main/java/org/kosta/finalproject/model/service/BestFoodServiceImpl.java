@@ -99,4 +99,11 @@ public class BestFoodServiceImpl implements BestFoodService {
 	public List<MenuVO> findMenu(int foodshop_no){
 		return bestFoodDAO.findMenu(foodshop_no);
 	}
+	public void menuUpdate(MenuVO menuVO){
+		bestFoodDAO.menuUpdate(menuVO);
+	}
+	public void menuUpdateExcludePicture(MenuVO menuVO){
+		bestFoodDAO.menuUpdateExcludePicture(menuVO);
+	}
+	
 }

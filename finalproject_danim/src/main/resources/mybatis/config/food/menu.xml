@@ -28,4 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	select menu_no,food_picture,price,food_name,foodshop_no from FOODMENU where foodshop_no=#{values}
  	</select>
  	
+ 	<update id="menuUpdate"  parameterType="menuVO">
+ 		 update foodmenu set food_picture=#{food_picture},food_name=#{food_name},price=#{price}
+ 		  where menu_no=#{menu_no}
+ 	</update>
+ 		<update id="menuUpdateExcludePicture"  parameterType="menuVO">
+ 		 update foodmenu set food_name=#{food_name},price=#{price}
+ 		  where menu_no=#{menu_no}
+ 	</update>
+ 	
 </mapper>
