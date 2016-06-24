@@ -4,16 +4,16 @@
 <div class="container" align="center">
 	<h3>관리자 정보 관리 페이지</h3>
 	<br><br>
-	<table class="table custab text-center"  style="width: 230px;">
-	<tr class="box-col-top">
+	<table class="table adminTable text-center"  style="width: 230px;">
+	<tr>
 	<td>
 	<a href="${initParam.root}adminpage_traffic_infoManagement.do">교통정보관리</a></td>
 	</tr>
-	<tr class="box-col-top">
+	<tr>
 	<td>
 	<a href="${initParam.root}admin_lodgemanagement.do">숙박정보관리</a></td>
 	</tr>
-	<tr class="box-col-top">
+	<tr>
 	<td>
 	<a href="${initParam.root}admin_foodmanagement.do">음식정보관리</a></td>
 	</tr>

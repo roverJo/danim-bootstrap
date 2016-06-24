@@ -3,7 +3,7 @@
 <!-- # Footer Ends -->
 <div class="grid_12"> 
     <h1>
-         <span><a href="home.do"><img src="${initParam.root}resources/img/logo.png" style="width:80px; height:80px;"></a> 다님, 여행을 다니다</span>
+         <span><a href="home.do"><img src="${initParam.root}resources/img/footer_logo.png" style="width:80px; height:80px;"></a> 여행을 다니다</span>
     </h1>
     회사소개 | 이용약관 | 개인정보취급방침 | 관리자에게 문의하기 | 사이트맵<br>
     경기도 성남시 분당구 대왕판교로 670길 유스페이스 B동 8층<br>

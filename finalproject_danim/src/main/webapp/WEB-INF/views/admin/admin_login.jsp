@@ -4,14 +4,14 @@
 <div class="container" align="center">
 	<h3>관리자 페이지</h3>
 	<br><br>
-	<table class="table custab text-center"  style="width: 230px;">
-	<tr class="box-col-top">
+	<table class="table adminTable text-center"  style="width: 230px;">
+	<tr>
 	<td><a href="${initParam.root}admin_member.do">회원명단</a></td>
 	</tr>
-	<tr class="box-col-top">
+	<tr>
 	<td><a href="${initParam.root }admin_appoint.do">운영진명단</a></td>
 	</tr>
-	<tr class="box-col-top">
+	<tr>
 	<td><a href="${initParam.root}admin_informationManagement.do">정보관리</a></td>
 	</tr>
 	</table>

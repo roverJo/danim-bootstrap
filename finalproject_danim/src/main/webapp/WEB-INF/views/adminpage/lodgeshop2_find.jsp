@@ -67,15 +67,19 @@ $(document).ready(function(){
 });
 	
 </script>
-<h3>숙박을 검색하세요</h3>
-<form id="lodgeFindForm" action="lodgefind2.do">
-	숙박이름: <input type="text" name="shopname"> <br> 
-	<input type="hidden" value="" name="area_name"> 
-	<input type="hidden"  value="" name="detailarea_name">
-	<input type="hidden" value="" name="lodgetype">
-<div id="searchLodgeArea"></div><br>
-<div id="searchLodgeDetailArea"></div><br>	
-<div id="searchLodgeType"></div><br>
-	 
-	<input type="submit" value="검색">
-</form>
+
+<div class="addHeight"></div>
+<div class="container" align="center">
+	<h3>숙박을 검색하세요</h3>
+	<form id="lodgeFindForm" action="lodgefind2.do">
+		숙박이름: <input type="text" name="shopname" class="form-control"> <br> 
+		<input type="hidden" value="" name="area_name" class="form-control"> 
+		<input type="hidden"  value="" name="detailarea_name" class="form-control">
+		<input type="hidden" value="" name="lodgetype" class="form-control">
+	<div id="searchLodgeArea"></div><br>
+	<div id="searchLodgeDetailArea"></div><br>	
+	<div id="searchLodgeType"></div><br>
+		 
+		<input type="submit" value="검색" class="btn btn-primary btn-lg">
+	</form>
+</div>

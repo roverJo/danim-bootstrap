@@ -7,7 +7,7 @@
 			url:"searchAreaLodge.do",
 			dataType:"json",
 			success:function(areaList){
-				var selectArea ="<select id='areaName'>";
+				var selectArea ="<select class='form-control' id='areaName'>";
 				selectArea += "<option value=''>지역을 선택하세요</option>";
 				for(var i = 0 ; i < areaList.length; i++)
 				{
@@ -28,7 +28,7 @@
 				url:"searchLodgeDetailArea.do?area_name="+$("#areaName").val(),
 				dataType:"json",
 				success:function(detailAreaList){
-					var selectFoodDetailArea ="<select id='detailareaName'>";
+					var selectFoodDetailArea ="<select class='form-control' id='detailareaName'>";
 					selectFoodDetailArea += "<option value=''>세부지역을 선택하세요</option>";
 					for(var i = 0 ; i < detailAreaList.length; i++)
 					{
@@ -47,7 +47,7 @@
 			$("#lodgelocalArea").html("");
 			$("#lodgeKind").html("");
 			if($(this).val() != "")	{
-				var selectKind = "<select id='lodgeKind'>"
+				var selectKind = "<select class='form-control' id='lodgeKind'>"
 				selectKind += "<option value=''>숙박종류를 선택하세요</option>"
 				selectKind += "<option value='게스트하우스'>게스트하우스</option>";
 				selectKind += "<option value='찜질방'>찜질방</option>";
@@ -58,7 +58,7 @@
 		
 		//지역 입력 텍스트창
 		$("#lodgeManagementForm").on("change","#lodgeKind",function(){
-			var inputFoodLocalArea="지역구 : <input type='text' name='local_area' id='lodgelocalArea'>";
+			var inputFoodLocalArea="<input type='text' name='local_area' id='lodgelocalArea' class='form-control' placeholder='지역구를 입력하세요'>";
 			$("#searchLodgeLocalArea").html(inputFoodLocalArea);
 		});
 		
@@ -72,21 +72,24 @@
 	});
 </script>
 
+<div class="addHeight"></div>
 <div class="container" align="center">
-	<h3>숙박 추가</h3>
-	<form id="lodgeManagementForm" action="lodgeshopregister.do">
-	숙소 이름 <input type="text" name="shopname"> <br>
-	가격 <input type="text" name="price"><br><br>
-	숙소 정보 <br>
-	<textarea rows="5" cols="30" name="shopinfo"></textarea>
-	<input type="hidden" value="" name="area_name">
-	<input type="hidden" value="" name="detailarea_name">
-	<input type="hidden" value="" name="lodgetype">
-	
-	<div id="searchLodgeArea"></div><br>
-	<div id="searchLodgeDetailArea"></div><br>	
-	<div id="searchLodgeType"></div><br>
-	<div id="searchLodgeLocalArea"></div>
-	<input type="submit" value="등록">
-	</form>
+	<div id="contact-area">
+	<!-- <h3>숙박 추가</h3> -->
+		<form id="lodgeManagementForm" action="lodgeshopregister.do">
+		<input type="text" name="shopname" placeholder="숙소 이름을 입력하세요" class="form-control"><br>
+		<input type="text" name="price" placeholder="가격을 입력하세요" class="form-control"><br>
+		<!-- <div id="h3r">숙소 정보</div> <br> -->
+		<textarea rows="5" cols="30" name="shopinfo" class="form-control" style="height:250px;" placeholder="숙소 정보를 입력하세요"></textarea><br>
+		<input type="hidden" value="" name="area_name">
+		<input type="hidden" value="" name="detailarea_name">
+		<input type="hidden" value="" name="lodgetype">
+		
+		<div id="searchLodgeArea"></div><br>
+		<div id="searchLodgeDetailArea"></div><br>	
+		<div id="searchLodgeType"></div><br>
+		<div id="searchLodgeLocalArea"></div><br>
+		<input type="submit" value="등록" class="btn btn-success btn-lg">
+		</form>
+	</div>
 </div>

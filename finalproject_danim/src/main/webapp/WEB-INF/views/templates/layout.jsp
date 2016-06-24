@@ -28,8 +28,19 @@
 }
 
 .community {
-	background-color: #fdfdcc;
+	/* background-color: #fdfdcc; */
+	background-color: rgba(255, 255, 255, 0.63);
 	/* padding: 10px; */
+}
+
+.adminTable{
+	background-color: #fdfdcc;
+}
+.adminTable tr{
+	background-color: #fdfdcc;
+}
+.adminTable td>a{
+	color: #cc6262;
 }
 
 .custab {
@@ -54,7 +65,7 @@
 
 #contact-area {
 	width: 400px;
-	background-color: #fdfdcc;
+	background-color: rgba(255, 255, 255, 0.63);
 	padding: 5px;
 }
 

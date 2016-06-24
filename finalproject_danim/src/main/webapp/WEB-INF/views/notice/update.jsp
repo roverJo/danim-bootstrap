@@ -32,7 +32,6 @@ $(document).ready(function(){
 
 <div class="container_12" align="center">
 <div class="addHeight"></div>
-		<h3>글수정</h3>
 		<form method="post" id="update_form" 
 		action="${initParam.root}noticeupdate.do?noticeno=${requestScope.nvo.noticeno}">
 		<div id="contact-area">

@@ -197,8 +197,8 @@
 					</tr>
 					<tr class="card-receep-entry">
 						<td colspan="3"  height="150" width="500">
-						<%-- <a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">${list.content}</a> --%>
-						<a data-toggle="modal" href="${initParam.root}findCommByNo.do?commNo=${list.comm_no}" data-target="#myModal">${list.content }</a>
+						<a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">${list.content}</a>
+						<%-- <a data-toggle="modal" href="${initParam.root}findCommByNo.do?commNo=${list.comm_no}" data-target="#myModal">${list.content }</a> --%>
 						</td>
 					</tr>
 				</c:forEach>
@@ -223,8 +223,8 @@
 					<tr>
 						<td>${rankList.nickname }</td>
 						<td>
-						<%-- <a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${rankList.comm_no}')">${rankList.content }</a> --%>
-						<a data-toggle="modal" href="${initParam.root}findCommByNo.do?commNo=${rankList.comm_no}" data-target="#myModal">${rankList.content }</a>
+						<a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${rankList.comm_no}')">${rankList.content }</a>
+						<%-- <a data-toggle="modal" href="${initParam.root}findCommByNo.do?commNo=${rankList.comm_no}" data-target="#myModal">${rankList.content }</a> --%>
 						</td>
 						<td><div class='glyphicon glyphicon-heart' style="width: 40px;">${rankList.heart }</div></td>
 					</tr>

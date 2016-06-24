@@ -284,7 +284,7 @@ $(document).on("click","#replyEditSubmit", function(){
 <!-- header -->
 <div class="modal-header">
     <!-- 닫기(x) 버튼 -->
-  <button type="button" class="close" data-dismiss="modal">×</button>
+  <!-- <button type="button" class="close" data-dismiss="modal">×</button> -->
   <!-- header title -->
   <h3 class="modal-title">상세내용</h3>
 </div>
@@ -297,14 +297,19 @@ $(document).on("click","#replyEditSubmit", function(){
 			</tr>
 			<tr>
 			<c:if test="${commVO.memberVO.id==sessionScope.mvo.id }">
-				<td><input type="button" id="contentUpdate" value="수정" class="btn btn-primary"><input type="button" id="contentDelete" value="삭제" class="btn btn-danger"></td>
+				<td>
+				<div class="addHeight"></div>
+				<input type="button" id="contentUpdate" value="수정" class="btn btn-primary"><input type="button" id="contentDelete" value="삭제" class="btn btn-danger">
+				</td>
 			</c:if>		
 			</tr>
 		</tbody>
 	</table>
-	
+</div>
+
 	<div class="addHeight"></div>
 	
+<div class="modal-footer">	
 	<table>
 	<thead>
 			<tr><th><h4>Comments</h4></th></tr>
@@ -313,7 +318,7 @@ $(document).on("click","#replyEditSubmit", function(){
 	
 	<c:if test="${sessionScope.mvo!=null }">
 	<form id="commentForm">
-	<table class="table table-condensed">
+	<table class="table table-condensed" style="text-align: left;">
 		 <tr>
 		     <td align="right">
 		         <span class="form-inline" role="form">
@@ -328,7 +333,7 @@ $(document).on("click","#replyEditSubmit", function(){
 	</form>
 	</c:if>
 	
-	<table id="commentTable" class="table table-condensed">
+	<table id="commentTable" class="table table-condensed" style="text-align: left;">
 		<c:forEach items="${commentList}" var="item">
 			<tr id="r1" name="commentParentCode" title="${item.comment_no}">
 				<td colspan=2><strong style="color: #009688;">${item.communityVO.memberVO.nickname}</strong>
