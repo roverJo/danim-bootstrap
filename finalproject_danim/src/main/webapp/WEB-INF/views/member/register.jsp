@@ -88,7 +88,6 @@
 <div class="container" align="center">
 	<div class="addHeight"></div>
 		<div id="contact-area" class="community">
-		<h3 class="lead">회원가입</h3><br>
 			<form id="registerForm" action="register.do" method="post" class="input_form">
 			<input type="text" name="id" class="form-control" placeholder="아이디" required>
 			<!-- <span id="idView"></span> -->

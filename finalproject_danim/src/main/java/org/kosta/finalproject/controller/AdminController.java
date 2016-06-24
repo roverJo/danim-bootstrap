@@ -108,7 +108,7 @@ public class AdminController {
 		return "redirect:admin_appoint.do";
 	}
 	//정보관리 페이지로 이동
-		@RequestMapping("admin_ informationManagement.do")
+		@RequestMapping("admin_informationManagement.do")
 		public ModelAndView movePage(){
 			return new ModelAndView("admin_admin_informationManagement");
 		}

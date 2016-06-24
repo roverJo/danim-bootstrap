@@ -17,7 +17,7 @@
 		if(confirm("삭제하시겠습니까?")){
 		$.ajax({
 			type:"post",
-			url:"message_selectSendDelete.do?no="+rtn,
+			url:"login_message_selectSendDelete.do?no="+rtn,
 			dataType:"text",
 			success:function(jsonData){
 				 if(jsonData=="Y"){
@@ -28,11 +28,11 @@
 			}
 			});
 		}
-		location.href="${initParam.root}message_sendIndex.do";
+		location.href="${initParam.root}login_message_sendIndex.do";
 		});
 		$("#sendMessage").click(function(){
 			$("div.modal").modal({
-				remote : "${initParam.root}message_send.do"
+				remote : "${initParam.root}login_message_send.do"
 			});
 			/*	
 			window.open("${initParam.root}message_send.do",
@@ -44,8 +44,8 @@
 
 <div class="addHeight"></div>
 <div class="container" align="center">
-	<a href="${initParam.root}message_index.do" style="display:inline;">받은 쪽지함</a> 
-	| <h3 style="display:inline;"><a href="${initParam.root}message_sendIndex.do">보낸 쪽지함</a></h3>
+	<a href="${initParam.root}login_message_index.do" style="display:inline;">받은 쪽지함</a> 
+	| <h3 style="display:inline;"><a href="${initParam.root}login_message_sendIndex.do">보낸 쪽지함</a></h3>
 	<br><br><br>
 	<table class="table custab" style="width:600px;">
 		<thead align="center">
@@ -62,7 +62,7 @@
 		<td><input type="checkbox" name="select" value="${list.message_no}"></td>
 		
 		<td>${list.recvVO.nickname}</td>
-		<td><a href="${initParam.root}message_sendContent.do?message_no=${list.message_no}">${list.title}</a></td>
+		<td><a href="${initParam.root}login_message_sendContent.do?message_no=${list.message_no}">${list.title}</a></td>
 		<td>${list.mess_date}</td>
 		
 		</tr>
@@ -91,7 +91,7 @@
 				<c:if test="${pb.previousPageGroup}">
 				&nbsp;
 				<li>
-				<a href="message_sendIndex.do?pageNo=${pb.startPageOfPageGroup-1}">◀</a>&nbsp;
+				<a href="login_message_sendIndex.do?pageNo=${pb.startPageOfPageGroup-1}">◀</a>&nbsp;
 				</li>
 				</c:if>
 				<!-- step1. 1)현 페이지 그룹의 startPage부터 endPage까지 forEach 를 이용해 출력한다
@@ -106,7 +106,7 @@
 					<c:choose>
 					<c:when test="${pb.nowPage!=i}">
 					<li>
-					<a href="message_sendIndex.do?pageNo=${i}">${i}</a>
+					<a href="login_message_sendIndex.do?pageNo=${i}">${i}</a>
 					</li> 
 					</c:when>
 					<c:otherwise>
@@ -126,7 +126,7 @@
 				<c:if test="${pb.nextPageGroup}">
 				&nbsp;
 				<li>
-				<a href="message_sendIndex.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>&nbsp;
+				<a href="login_message_sendIndex.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>&nbsp;
 				</li>
 				</c:if>
 				</p>

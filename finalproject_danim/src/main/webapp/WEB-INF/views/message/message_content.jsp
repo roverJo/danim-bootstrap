@@ -1,28 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type="text/javascript" src="${initParam.root}resources/js/backfix.min.js"></script>
+<%-- <script type="text/javascript" src="${initParam.root}resources/js/backfix.min.js"></script> --%>
+<script src="${initParam.root}resources/js/jquery-1.12.4.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#replyMessage").click(function(){
-			window.open("${initParam.root}message_replyReady.do?sendId=${mvo.sendVO.id}",
+			window.open("${initParam.root}login_message_replyReady.do?sendId=${mvo.sendVO.id}",
 					"popup","resizable=true,toolbar=no,width=500,height=400,left=300,top=150");
 		});
 		$("#listMessage").click(function(){
-			location.href="${initParam.root}message_index.do";
+			location.href="${initParam.root}login_message_index.do";
 		});
 		$("#delContent").click(function(){
 			if(confirm("삭제하시겠습니까?")){
-				location.href="${initParam.root}message_contentRecvDel.do?no=${mvo.message_no}";
+				location.href="${initParam.root}login_message_contentRecvDel.do?no=${mvo.message_no}";
 			}
 		});
-	});
 		
+		$('[data-load-remote]').on('click',function(e) {
+		    e.preventDefault();
+		    var $this = $(this);
+		    var remote = $this.data('load-remote');
+		    if(remote) {
+		        $($this.data('remote-target')).load(remote);
+		    }
+		});
+	});
+	/* 	
 	 bajb_backdetect.OnBack = function(){
 		window.history.back=function(){
 			document.location="${initParam.root}message_index.do";
 		}
 	} 
+	  */
 </script>
 <!-- header -->
 <div class="modal-header">
@@ -47,7 +58,15 @@
 	<td colspan="2" height="100"><pre>${mvo.content}</pre></td>
 	</tr>
 	</table>
-	<input type="button" value="답장하기" id="replyMessage" class="btn btn-warning">
+	<!-- <input type="button" value="답장하기" id="replyMessage" class="btn btn-warning"> -->
+	<a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal" data-load-remote="${initParam.root}login_message_replyReady.do?sendId=${mvo.sendVO.id}" data-remote-target="#myModal .modal-content">답장하기</a>
 	<input type="button" value="목록보기" id="listMessage" class="btn btn-primary">
 	<input type="button" value="삭제" id="delContent" class="btn btn-danger">
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
 </div>

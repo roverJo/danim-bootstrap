@@ -72,22 +72,21 @@
 	});
 </script>
 
-<h3>숙박 추가</h3>
-
-<form id="lodgeManagementForm" action="lodgeshopregister.do">
-숙소 이름 <input type="text" name="shopname"> <br>
-가격 <input type="text" name="price"><br><br>
-숙소 정보 <br>
-<textarea rows="5" cols="30" name="shopinfo"></textarea>
-<input type="hidden" value="" name="area_name">
-<input type="hidden" value="" name="detailarea_name">
-<input type="hidden" value="" name="lodgetype">
-
-<div id="searchLodgeArea"></div><br>
-<div id="searchLodgeDetailArea"></div><br>	
-<div id="searchLodgeType"></div><br>
-<div id="searchLodgeLocalArea"></div>
-<input type="submit" value="등록">
-</form>
-
-
+<div class="container" align="center">
+	<h3>숙박 추가</h3>
+	<form id="lodgeManagementForm" action="lodgeshopregister.do">
+	숙소 이름 <input type="text" name="shopname"> <br>
+	가격 <input type="text" name="price"><br><br>
+	숙소 정보 <br>
+	<textarea rows="5" cols="30" name="shopinfo"></textarea>
+	<input type="hidden" value="" name="area_name">
+	<input type="hidden" value="" name="detailarea_name">
+	<input type="hidden" value="" name="lodgetype">
+	
+	<div id="searchLodgeArea"></div><br>
+	<div id="searchLodgeDetailArea"></div><br>	
+	<div id="searchLodgeType"></div><br>
+	<div id="searchLodgeLocalArea"></div>
+	<input type="submit" value="등록">
+	</form>
+</div>

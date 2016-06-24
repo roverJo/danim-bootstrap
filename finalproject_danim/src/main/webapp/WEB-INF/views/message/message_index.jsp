@@ -17,7 +17,7 @@
 		if(confirm("삭제하시겠습니까?")){
 		$.ajax({
 			type:"post",
-			url:"message_selectDelete.do?no="+rtn,
+			url:"login_message_selectDelete.do?no="+rtn,
 			dataType:"text",
 			success:function(jsonData){
 				 if(jsonData=="Y"){
@@ -28,26 +28,32 @@
 			}
 			});
 		}
-		location.href="${initParam.root}message_index.do";
+		location.href="${initParam.root}login_message_index.do";
 		});
 		
-		$("#sendMessage").click(function(){
-			$("div.modal").modal({
+		/* $("#sendMessage").click(function(){
+			$("div.myModal").modal({
 				remote : "${initParam.root}message_send.do"
 			});
 			/*	
 			window.open("${initParam.root}message_send.do",
 						"popup","resizable=true,toolbar=no,width=500,height=400,left=300,top=150");
-			 */
+		}); */
+		$('[data-load-remote]').on('click',function(e) {
+		    e.preventDefault();
+		    var $this = $(this);
+		    var remote = $this.data('load-remote');
+		    if(remote) {
+		        $($this.data('remote-target')).load(remote);
+		    }
 		});
-		
 	});
 </script>
 
 <div class="addHeight"></div>
 <div class="container" align="center">
-	<h3 style="display:inline;"><a href="${initParam.root}message_index.do">받은 쪽지함</a></h3>
-	| <a href="${initParam.root}message_sendIndex.do">보낸 쪽지함</a>
+	<h3 style="display:inline;"><a href="${initParam.root}login_message_index.do">받은 쪽지함</a></h3>
+	| <a href="${initParam.root}login_message_sendIndex.do">보낸 쪽지함</a>
 	<br><br><br>
 	<table class="table custab" style="width:600px;">
 		<thead align="center">
@@ -63,14 +69,18 @@
 		<tr>
 		<td><input type="checkbox" name="select" value="${list.message_no}"></td>
 		<c:if test="${list.read_acc==0}">
-		<td><b><a href="#" onclick="window.open('${initParam.root}message_replyReady.do?sendId=${list.sendVO.id}', 'popup','resizable=true,toolbar=no,width=500,height=400,left=300,top=150');return false;" target="_blank">${list.sendVO.nickname}</a></b></td>
-		<td><a href="${initParam.root}message_content.do?message_no=${list.message_no}"><b>${list.title}</b></a></td>
+<%-- <td><b><a href="#" onclick="window.open('${initParam.root}message_replyReady.do?sendId=${list.sendVO.id}', 'popup','resizable=true,toolbar=no,width=500,height=400,left=300,top=150');return false;" target="_blank">${list.sendVO.nickname}</a></b></td> --%>
+		<td><a data-toggle="modal" href="${initParam.root}login_message_replyReady.do?sendId=${list.sendVO.id}" data-target="#myModal"><b>${list.sendVO.nickname}</b></a></td>
+		<td><a href="${initParam.root}login_message_content.do?message_no=${list.message_no}"><b>${list.title}</b></a></td>
 		<td><b>${list.mess_date}</b></td>
 		</c:if>
 		
 		<c:if test="${list.read_acc>0}">
-		<td><a href="#" onclick="window.open('${initParam.root}message_replyReady.do?sendId=${list.sendVO.id}', 'popup','resizable=true,toolbar=no,width=500,height=400,left=300,top=150');return false;" target="_blank">${list.sendVO.nickname}</a></td>
-		<td><a href="${initParam.root}message_content.do?message_no=${list.message_no}">${list.title}</a></td>
+<%-- <td><a href="#" onclick="window.open('${initParam.root}message_replyReady.do?sendId=${list.sendVO.id}', 'popup','resizable=true,toolbar=no,width=500,height=400,left=300,top=150');return false;" target="_blank">${list.sendVO.nickname}</a></td> --%>
+		<td><a data-toggle="modal" href="${initParam.root}login_message_replyReady.do?sendId=${list.sendVO.id}" data-target="#myModal">${list.sendVO.nickname}</a></td>
+		<td><a href="${initParam.root}login_message_content.do?message_no=${list.message_no}">${list.title}</a></td>
+<%-- <td><a data-toggle="modal" href="${initParam.root}message_content.do?message_no=${list.message_no}" data-target="#myModal">${list.title}</a></td> --%>
+<%-- <td><a href="#myModal" data-toggle="modal" data-load-remote="${initParam.root}message_content.do?message_no=${list.message_no}" data-remote-target="#myModal .modal-content"><b>${list.title}</b></a></td> --%>
 		<td>${list.mess_date}</td>
 		</c:if>
 		</tr>
@@ -98,7 +108,7 @@
 				<c:if test="${pb.previousPageGroup}">
 				&nbsp;
 				<li>
-				<a href="message_index.do?pageNo=${pb.startPageOfPageGroup-1}">◀</a>&nbsp;
+				<a href="login_message_index.do?pageNo=${pb.startPageOfPageGroup-1}">◀</a>&nbsp;
 				</li>
 				</c:if>
 				<!-- step1. 1)현 페이지 그룹의 startPage부터 endPage까지 forEach 를 이용해 출력한다
@@ -113,7 +123,7 @@
 					<c:choose>
 					<c:when test="${pb.nowPage!=i}">
 					<li>
-					<a href="message_index.do?pageNo=${i}">${i}</a>
+					<a href="login_message_index.do?pageNo=${i}">${i}</a>
 					</li> 
 					</c:when>
 					<c:otherwise>
@@ -133,20 +143,28 @@
 				<c:if test="${pb.nextPageGroup}">
 				&nbsp;
 				<li>
-				<a href="message_index.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>&nbsp;
+				<a href="login_message_index.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>&nbsp;
 				</li>
 				</c:if>
 			</p>
 		  </ul>
 	</div>
-	<input type="button" value="쪽지보내기" id="sendMessage" class="btn btn-warning">
+	<!-- <input type="button" value="쪽지보내기" id="sendMessage" class="btn btn-warning"> -->
+	<a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal" data-load-remote="${initParam.root}login_message_send.do" data-remote-target="#myModal .modal-content">쪽지보내기</a>
 	<input type="button" value="삭제" id="checkVal" class="btn btn-danger">
 	<div class="clear"></div>
 </div>
 
-<div class="modal fade">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
     <div class="modal-content">
     </div>
   </div>
- </div>
+</div>
+
+<c:if test="${sessionScope.mvo==null }">
+	<script type="text/javascript">
+		alert("로그인이 필요한 페이지입니다!");
+		location.href="${initParam.root}home.do";
+	</script>
+</c:if>

@@ -74,6 +74,15 @@
 			*/
 			});//table td click
 		}//session check
+		
+		$('[data-load-remote]').on('click',function(e) {
+		    e.preventDefault();
+		    var $this = $(this);
+		    var remote = $this.data('load-remote');
+		    if(remote) {
+		        $($this.data('remote-target')).load(remote);
+		    }
+		});//modal popup
 	});//ready
 	
 	var rn = "${param.rownum}";
@@ -167,9 +176,9 @@
 		</div>
 	</div>
 <!-- 	<div class="grid_12"> -->
-	<div class="col-md-6">
-		<div class="community" id="contact-area">
-			<table border="1" id="commTable">
+	<div class="col-md-5">
+		<div class="community" id="">
+			<table border="1" id="commTable" style="border: 1px solid #cc6262;">
 				<c:forEach var="list" items="${commList}">
 					 <tr class="card-receep-header">
 						<td class="username"><strong>${list.memberVO.nickname}</strong></td>
@@ -187,22 +196,20 @@
 						</td>
 					</tr>
 					<tr class="card-receep-entry">
-						<td colspan="3"  height="100" width="500">
-						<a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">${list.content}</a>
-							<%-- <c:if test="${fn:contains(list.content, 'img') }">
-							</c:if> --%>
-							<%-- <a href="#" onClick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">상세보기</a> --%>
+						<td colspan="3"  height="150" width="500">
+						<%-- <a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${list.comm_no}')">${list.content}</a> --%>
+						<a data-toggle="modal" href="${initParam.root}findCommByNo.do?commNo=${list.comm_no}" data-target="#myModal">${list.content }</a>
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
+		</div>
 			<c:if test="${sessionScope.mvo!=null}">
-				<button type="button" alt="글작성" id="commWrite" class="btn btn-warning">글쓰기</button>
+				<button type="button" alt="글작성" id="commWrite" class="btn btn-warning btn-lg">글쓰기</button>
 			</c:if>
 			<c:if test="${commList.size() >= param.rownum}">
 				<span id="btn"></span>
 			</c:if>
-		</div>
 	</div>
 	<div class="col-md-6 text-left" align="center">
 		<h3>좋아요 순위</h3>
@@ -215,10 +222,20 @@
 				<c:forEach items="${rankList }" var="rankList">
 					<tr>
 						<td>${rankList.nickname }</td>
-						<td><a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${rankList.comm_no}')">${rankList.content }</a></td>
+						<td>
+						<%-- <a href="#" onclick="javascript:openPopup('findCommByNo.do?commNo=${rankList.comm_no}')">${rankList.content }</a> --%>
+						<a data-toggle="modal" href="${initParam.root}findCommByNo.do?commNo=${rankList.comm_no}" data-target="#myModal">${rankList.content }</a>
+						</td>
 						<td><div class='glyphicon glyphicon-heart' style="width: 40px;">${rankList.heart }</div></td>
 					</tr>
 				</c:forEach>
 		</table>
 	</div>
+</div>
+
+<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="padding-right: 0px;">
+    </div>
+  </div>
 </div>

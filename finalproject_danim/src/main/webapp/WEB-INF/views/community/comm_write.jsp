@@ -48,12 +48,12 @@ $(document).ready(function(){
 </script>
 <div class="addHeight"></div>
 <div id="layer" class="container_12" align="center">
-    <div class="contact-area">
+    <div id="contact-area">
 		<c:choose>
 			<c:when test="${sessionScope.mvo!=null }">
-				<form action="comm_write.do" method="post" id="writeForm">
+				<form action="login_comm_write.do" method="post" id="writeForm">
 				<textarea hidden="contentCheck" id="contentCheck"></textarea>
-				<table>
+				<table width="100%">
 						<tr>
 							<td>작성자</td>
 							<td>

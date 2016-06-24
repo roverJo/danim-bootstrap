@@ -67,7 +67,6 @@
 <div class="container_12" align="center">
 	<div class="addHeight"></div>
 		<div id="contact-area" class="community">
-			<h3 class="lead">회원 정보 수정</h3><br>
 				<form id="updateForm" action="login_updateResult.do" method="post" class="input_form">
 				<div class="text-left">
 				아이디 <input type="text" name="id" value="${mvo.id}" class="form-control" readonly><br>
@@ -87,7 +86,7 @@
 				<br><br><br><br>
 				이메일 <input type="email" name="email_add" value="${mvo.email_add}" class="form-control" required><br><br>
 				</div>
-				<input type="submit" value="수정" class="btn btn-info btn-md-4">
+				<input type="submit" value="정보수정" class="btn btn-info btn-md-4">
 				</form>
 		</div>
 	<div class="clear"></div>

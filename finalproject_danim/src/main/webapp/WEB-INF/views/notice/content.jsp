@@ -20,7 +20,7 @@ $(document).ready(function(){
 <div class="container_12" align="center">
 <div class="addHeight"></div>
 	<h3>상세보기</h3>
-	<table class="table custab">
+	<table class="table custab" style="width: 700px;">
 	<c:set var="nvo" value="${requestScope.nvo}"/>
 	<tr>
 		<th>글번호</th><td>${nvo.noticeno}</td>

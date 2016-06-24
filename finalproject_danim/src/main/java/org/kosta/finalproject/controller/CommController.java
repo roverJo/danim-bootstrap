@@ -47,7 +47,7 @@ public class CommController {
 	/**
 	 * 커뮤니티 게시판 글 작성
 	 */
-	@RequestMapping("comm_write.do")
+	@RequestMapping("login_comm_write.do")
 	public String writeCommunity(HttpServletRequest request, CommunityVO paramVO){
 		HttpSession session = request.getSession(false);
 		if (session != null || session.getAttribute("mvo") != null) {
@@ -57,7 +57,7 @@ public class CommController {
 		return "redirect:community_list.do?rownum=5";
 	}
 	
-	@RequestMapping("comm_update_click.do")
+	@RequestMapping("login_comm_update_click.do")
 	public ModelAndView updateClickTest(CommunityVO paramVO){
 		CommunityVO commVO = commService.findCommByNo(paramVO.getComm_no());
 		return new ModelAndView("community_update", "commVO", commVO);
@@ -78,7 +78,7 @@ public class CommController {
 	/**
 	 * 커뮤니티 게시판 글 삭제
 	 */
-	@RequestMapping("comm_delete.do")
+	@RequestMapping("login_comm_delete.do")
 	public String deleteCommunity(HttpServletRequest request, CommunityVO paramVO){
 		HttpSession session = request.getSession(false);
 		if (session != null || session.getAttribute("mvo") != null) {

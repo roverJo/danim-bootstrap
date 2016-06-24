@@ -5,13 +5,13 @@
 $(document).ready(function() {
 	$("#contentUpdate").click(function() {
 		if(confirm("수정하시겠습니까?")){
-			location.href="comm_update_click.do?comm_no=${commVO.comm_no}";
+			location.href="login_comm_update_click.do?comm_no=${commVO.comm_no}";
 			return false;
 		}
 	});
 	$("#contentDelete").click(function() {
 		if(confirm("삭제하시겠습니까?")){
-			location.href="comm_delete.do?comm_no=${commVO.comm_no}";
+			location.href="login_comm_delete.do?comm_no=${commVO.comm_no}";
 			return false;
 		}
 	});
@@ -280,90 +280,88 @@ $(document).on("click","#replyEditSubmit", function(){
         });
 	});
 </script>
-<table class="list">
+
+<!-- header -->
+<div class="modal-header">
+    <!-- 닫기(x) 버튼 -->
+  <button type="button" class="close" data-dismiss="modal">×</button>
+  <!-- header title -->
+  <h3 class="modal-title">상세내용</h3>
+</div>
+<!-- body -->
+<div class="modal-body">
+	<table class="list">
+		<tbody>			
+			<tr>
+				<td>${commVO.content }</td>
+			</tr>
+			<tr>
+			<c:if test="${commVO.memberVO.id==sessionScope.mvo.id }">
+				<td><input type="button" id="contentUpdate" value="수정" class="btn btn-primary"><input type="button" id="contentDelete" value="삭제" class="btn btn-danger"></td>
+			</c:if>		
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="addHeight"></div>
+	
+	<table>
 	<thead>
-		<tr>
-			<th class="no"><h3>상세내용</h3></th>
-		</tr>
+			<tr><th><h4>Comments</h4></th></tr>
 	</thead>
-	<tbody>			
-		<tr>
-			<td>${commVO.content }</td>
-		</tr>
-		<tr>
-		<c:if test="${commVO.memberVO.id==sessionScope.mvo.id }">
-			<td><input type="button" id="contentUpdate" value="수정" class="btn btn-primary"><input type="button" id="contentDelete" value="삭제" class="btn btn-danger"></td>
-		</c:if>		
-		</tr>
-	</tbody>
-</table>
-
-<div class="addHeight"></div>
-
-<table>
-<thead>
-		<tr><th><h4>Comments</h4></th></tr>
-</thead>
-</table>
-
-<c:if test="${sessionScope.mvo!=null }">
-<form id="commentForm">
-<table class="table table-condensed">
-                        <tr>
-                            <td align="right">
-                                <span class="form-inline" role="form">
-                                    <textarea id="commentParentText" name="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4" placeholder="댓글"></textarea>
-                                    <!-- <p> -->
-                                        <%-- <div class="form-group">
-                                            <input type="text" id="commentParentName" name="commentParentName" class="form-control col-lg-2" data-rule-required="true" value="${sessionScope.mvo.nickname }" maxlength="10" readonly>
-                                        </div> --%>
-                                        <!-- <div class="form-group">
-                                            <input type="password" id="commentParentPassword" name="commentParentPassword" class="form-control col-lg-2" data-rule-required="true" placeholder="패스워드" maxlength="10">
-                                        </div> -->
-                                        <div class="form-group">
-                                            <button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">확인</button>
-                                        </div>
-                                    <!-- </p> -->
-                                </span>
-                            </td>
-                        </tr>
-</table>
-</form>
-</c:if>
-
-<table id="commentTable" class="table table-condensed">
-	<c:forEach items="${commentList}" var="item">
-		<tr id="r1" name="commentParentCode" title="${item.comment_no}">
-			<td colspan=2><strong style="color: #009688;">${item.communityVO.memberVO.nickname}</strong>
-			<c:if test="${sessionScope.mvo!=null }">
-			<a style="cursor:pointer;" name="pAdd">답글</a>
-			<c:if test="${item.communityVO.memberVO.id==sessionScope.mvo.id }">
-			| <a style="cursor:pointer;" name="pEdit" title="${item.comment_no}">수정</a>
-			| <a style="cursor:pointer;" name="pDel" title="${item.comment_no}">삭제</a>
-			</c:if>
-			</c:if> 
-				<p>${item.content}</p>
-			</td>
-		</tr>
-				<!-- <table id="childCommentTable"> -->
-		<c:if test="${!empty item.replyList }">
-			<c:forEach items="${item.replyList }" var="child">
-				<tr name="commentChildCode">
-							<td style="width:1%"><span class="glyphicon glyphicon-arrow-right"></span></td>
-							<td style="width:99%">
-								<strong style="color: #009688;">${child.memberVO.nickname }</strong>
-								<c:if test="${sessionScope.mvo!=null }">
-									<!-- <a style="cursor:pointer;" name="cAdd">답글</a> -->
-									<c:if test="${child.memberVO.id==sessionScope.mvo.id }">
-										<a style="cursor:pointer;" name="cEdit" title="${child.reply_no}">수정</a>
-										| <a style="cursor:pointer;" name="cDel" title="${child.reply_no}">삭제</a>
+	</table>
+	
+	<c:if test="${sessionScope.mvo!=null }">
+	<form id="commentForm">
+	<table class="table table-condensed">
+		 <tr>
+		     <td align="right">
+		         <span class="form-inline" role="form">
+		             <textarea id="commentParentText" name="commentParentText" class="form-control col-lg-12" style="width:100%" rows="4" placeholder="댓글"></textarea>
+		                 <div class="form-group">
+		                     <button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">확인</button>
+		                 </div>
+		         </span>
+		     </td>
+		 </tr>
+	</table>
+	</form>
+	</c:if>
+	
+	<table id="commentTable" class="table table-condensed">
+		<c:forEach items="${commentList}" var="item">
+			<tr id="r1" name="commentParentCode" title="${item.comment_no}">
+				<td colspan=2><strong style="color: #009688;">${item.communityVO.memberVO.nickname}</strong>
+				<c:if test="${sessionScope.mvo!=null }">
+				<a style="cursor:pointer;" name="pAdd">답글</a>
+				<c:if test="${item.communityVO.memberVO.id==sessionScope.mvo.id }">
+				| <a style="cursor:pointer;" name="pEdit" title="${item.comment_no}">수정</a>
+				| <a style="cursor:pointer;" name="pDel" title="${item.comment_no}">삭제</a>
+				</c:if>
+				</c:if> 
+					<p>${item.content}</p>
+				</td>
+			</tr>
+					<!-- <table id="childCommentTable"> -->
+			<c:if test="${!empty item.replyList }">
+				<c:forEach items="${item.replyList }" var="child">
+					<tr name="commentChildCode">
+								<td style="width:1%"><span class="glyphicon glyphicon-arrow-right"></span></td>
+								<td style="width:99%">
+									<strong style="color: #009688;">${child.memberVO.nickname }</strong>
+									<c:if test="${sessionScope.mvo!=null }">
+										<!-- <a style="cursor:pointer;" name="cAdd">답글</a> -->
+										<c:if test="${child.memberVO.id==sessionScope.mvo.id }">
+											<a style="cursor:pointer;" name="cEdit" title="${child.reply_no}">수정</a>
+											| <a style="cursor:pointer;" name="cDel" title="${child.reply_no}">삭제</a>
+										</c:if>
 									</c:if>
-								</c:if>
-								<p>${child.content }</p>
-							</td>
-				</tr>
-			</c:forEach>
-		</c:if>
-				<!-- </table> -->
-	</c:forEach>
-</table>
+									<p>${child.content }</p>
+								</td>
+					</tr>
+				</c:forEach>
+			</c:if>
+					<!-- </table> -->
+		</c:forEach>
+	</table>
+</div>

@@ -45,7 +45,7 @@
 </div>
 <!-- body -->
 <div class="modal-body" align="center">
-	<form action="sendMessage.do" id="sendMessForm">
+	<form action="login_sendMessage.do" id="sendMessForm">
 	<table class="table custab">
 	<tr>
 	<th align="center">받는사람</th>

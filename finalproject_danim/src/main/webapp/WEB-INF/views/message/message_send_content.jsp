@@ -5,18 +5,18 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#listMessage").click(function(){
-			location.href="${initParam.root}message_sendIndex.do";
+			location.href="${initParam.root}login_message_sendIndex.do";
 		});
 		$("#delContent").click(function(){
 			if(confirm("삭제하시겠습니까?")){
-				location.href="${initParam.root}message_contentSendDel.do?no=${mvo.message_no}";
+				location.href="${initParam.root}login_message_contentSendDel.do?no=${mvo.message_no}";
 			}
 		});
 	});
 	
 	 bajb_backdetect.OnBack = function(){
 		window.history.back=function(){
-			document.location="${initParam.root}message_sendIndex.do";
+			document.location="${initParam.root}login_message_sendIndex.do";
 		}
 	} 
 </script>

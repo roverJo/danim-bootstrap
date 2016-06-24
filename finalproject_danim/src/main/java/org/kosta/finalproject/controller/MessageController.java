@@ -21,7 +21,7 @@ public class MessageController {
 	@Resource
 	private MessageService messageService;
 	
-	@RequestMapping("message_index.do")
+	@RequestMapping("login_message_index.do")
 	public ModelAndView messageList(HttpServletRequest request,String pageNo){
 		HttpSession session = request.getSession(false);
 		MemberVO vo=(MemberVO) session.getAttribute("mvo");
@@ -37,7 +37,7 @@ public class MessageController {
 			}
 		}		
 	}
-	@RequestMapping("message_content.do")
+	@RequestMapping("login_message_content.do")
 	public ModelAndView messageContent(HttpServletRequest request,int message_no){
 		HttpSession session = request.getSession(false);
 		MemberVO vo=(MemberVO) session.getAttribute("mvo");
@@ -51,7 +51,7 @@ public class MessageController {
 			return new ModelAndView("message_message_content","mvo",mvo);
 		}
 	}
-	@RequestMapping(value="message_selectDelete.do",method = RequestMethod.POST)
+	@RequestMapping(value="login_message_selectDelete.do",method = RequestMethod.POST)
 	@ResponseBody
 	public String selectDelete(String no[]){
 		String check="N";
@@ -63,11 +63,11 @@ public class MessageController {
 		}
 		return check;
 	}
-	@RequestMapping("message_send.do")
+	@RequestMapping("login_message_send.do")
 	public String MessageSendPage(){
 		return "message/message_send";
 	}
-	@RequestMapping("sendMessage.do")
+	@RequestMapping("login_sendMessage.do")
 	public ModelAndView sendMessage(HttpServletRequest request,MessageVO messageVO,String recv_id){
 		HttpSession session=request.getSession(false);
 		MemberVO mvo=new MemberVO(recv_id, null, null, null, null, 0);
@@ -77,7 +77,7 @@ public class MessageController {
 		messageService.sendMessage(messageVO);
 		return new ModelAndView("message_message_result");
 	}
-	@RequestMapping("message_sendIndex.do")
+	@RequestMapping("login_message_sendIndex.do")
 	public ModelAndView sendMessageList(HttpServletRequest request,String pageNo){
 		HttpSession session = request.getSession(false);
 		MemberVO vo=(MemberVO) session.getAttribute("mvo");
@@ -93,7 +93,7 @@ public class MessageController {
 			}
 		}		
 	}
-	@RequestMapping(value="message_selectSendDelete.do",method = RequestMethod.POST)
+	@RequestMapping(value="login_message_selectSendDelete.do",method = RequestMethod.POST)
 	@ResponseBody
 	public String selectSendDelete(String no[]){
 		String check="N";
@@ -105,7 +105,7 @@ public class MessageController {
 		}
 		return check;
 	}
-	@RequestMapping("message_sendContent.do")
+	@RequestMapping("login_message_sendContent.do")
 	public ModelAndView messageSendContent(HttpServletRequest request,int message_no){
 		HttpSession session = request.getSession(false);
 		MemberVO vo=(MemberVO) session.getAttribute("mvo");
@@ -117,21 +117,21 @@ public class MessageController {
 			return new ModelAndView("message_message_send_content","mvo",mvo);
 		}
 	}
-	@RequestMapping("message_contentRecvDel.do")
+	@RequestMapping("login_message_contentRecvDel.do")
 	public String contentRecvDel(String no){
 		messageService.selectRecvDel(Integer.parseInt(no));
-		return "redirect:message_index.do";
+		return "redirect:login_message_index.do";
 	}
-	@RequestMapping("message_contentSendDel.do")
+	@RequestMapping("login_message_contentSendDel.do")
 	public String contentSendDel(String no){
 		messageService.selectSendDel(Integer.parseInt(no));
-		return "redirect:message_sendIndex.do";
+		return "redirect:login_message_sendIndex.do";
 	}
-	@RequestMapping("message_replyReady.do")
+	@RequestMapping("login_message_replyReady.do")
 	public ModelAndView replyReady(String sendId){
 		return new ModelAndView("message/message_reply","recvId",sendId);
 	}
-	@RequestMapping("sendReplyMessage.do")
+	@RequestMapping("login_sendReplyMessage.do")
 	public ModelAndView sendReplyMessage(HttpServletRequest request,MessageVO messageVO,String recv_id){
 		HttpSession session=request.getSession(false);
 		MemberVO mvo=new MemberVO(recv_id, null, null, null, null, 0);

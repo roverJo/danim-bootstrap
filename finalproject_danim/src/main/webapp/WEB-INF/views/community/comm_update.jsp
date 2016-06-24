@@ -49,8 +49,8 @@ $(document).ready(function(){
 </script>
 <div class="addHeight"></div>
 <div id="layer" class="container" align="center">
-<h3>글 수정</h3>
     <div id="contact-area">
+	<!-- <div id="h3r">글수정</div> -->
 		<c:choose>
 			<c:when test="${sessionScope.mvo!=null }">
 				<form action="comm_update.do" method="post" id="updateForm">
@@ -81,8 +81,8 @@ $(document).ready(function(){
 		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">
-			alert("로그인이 필요한 페이지입니다!");
-			location.href="${initParam.root}home.do";
+				alert("로그인이 필요한 페이지입니다!");
+				location.href="${initParam.root}home.do";
 			</script>
 			<%-- <c:redirect url="home.do" />
 			<c:import url="home.do" /> --%>

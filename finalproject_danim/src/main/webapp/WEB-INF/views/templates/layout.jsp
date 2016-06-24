@@ -8,8 +8,8 @@
 <meta charset="utf-8">
 <meta name = "format-detection" content = "telephone=no" />
 <!-- 다님 로고 삽입 -->
-<link rel="icon" href="resources/img/danim_logo.jpg">
-<link rel="shortcut icon" href="resources/img/danim_logo.jpg" />
+<link rel="icon" href="resources/img/logo.png">
+<link rel="shortcut icon" href="resources/img/logo.png" />
 
 <script type="text/javascript" src="${initParam.root}resources/js/jquery-1.12.4.min.js"></script>
 
@@ -17,8 +17,8 @@
 <script type="text/javascript" src="${initParam.root}resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <style type="text/css">
 #main {
-	/* background: url(resources/bootstrap/images/bg.jpg) no-repeat center
-		fixed; */
+	/* background: url(resources/bootstrap/images/bg.jpg) no-repeat center fixed; */
+	background: url(resources/img/back1.jpg) no-repeat center fixed;
 	-webkit-background-size: cover;
 	/* 	background-size: cover; */
 }
@@ -28,8 +28,8 @@
 }
 
 .community {
-	background-color: #f3f3f3;
-	padding: 10px;
+	background-color: #fdfdcc;
+	/* padding: 10px; */
 }
 
 .custab {
@@ -38,6 +38,7 @@
 	/* margin: 5% 0; */
 	box-shadow: 3px 3px 2px #ccc;
 	transition: 0.5s;
+	background-color: white;
 }
 .custab tr>th{
 	border: 1px solid white;
@@ -52,7 +53,9 @@
 }
 
 #contact-area {
-	width: 500px;
+	width: 400px;
+	background-color: #fdfdcc;
+	padding: 5px;
 }
 
 .btn-md-4 {
@@ -90,6 +93,8 @@
 	/* Community 게시판 List */
 	.card-receep-header {
 		border-bottom: 1px solid;
+		/* background-color: #32d66c; */
+		border: 1px solid grey;
 		/* border-top: 1px solid #e9ecf0; */
 	}
 	.card-receep-header .username {
@@ -171,6 +176,14 @@
 		width: 70%;
 	}	
 	/****************************/
+	
+	#h3r{
+	    font-family: nanumbarunpenb !important;
+	    font-size: 57px;
+	    color: #5c627c;
+	    margin-top: 5px;
+	    margin-bottom: 25px;
+	}
 }
 </style>
 
