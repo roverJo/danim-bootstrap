@@ -17,25 +17,15 @@ function readURL(input) {
    } 
 }
 </script>
-<h3>음식점 메뉴 추가하기</h3>
-
-<%-- 파일업로드의 폼은 반드시 post 전송방식
-	   enctype="multipart/form-data" 속성을 부여해야 함
- --%>
-<!-- <form action="foodmenu_multi_fileupload.do" enctype="multipart/form-data" method="post">
-<input type="text" name="userInfo"><br>
-<input type="file" name="file[0]"><br>
-<input type="file" name="file[1]"><br>
-<input type="file" name="file[2]"><br>
-<input type="submit" value="메뉴 업로드"><br>
-</form> -->
+<div class="addHeight"></div>
+<div class="container" align="center" id="contact-area">
 
 <form action="foodmenu_multi_fileupload.do" method="post" enctype="multipart/form-data">
-<img id="UploadedImg" src="" style="width: 120px; height: 120px; margin-left: 20px;  border-radius: 100px; left: 220px;"><br>
-메뉴 이미지<input type="file"  onchange="readURL(this);" name="uploadFile"><br>
-메뉴명<input type="text" name="food_name"><br>
-
-가격<input type="text" name="price"><br>
+<img id="UploadedImg" src="" style="width: 180px; height: 180px; border-radius: 100px; left: 220px;">
+<br><br><br>
+<input type="file"  onchange="readURL(this);" name="uploadFile"><br>
+<input type="text" name="food_name" placeholder="메뉴를 입력하세요" class="form-control"><br>
+<input type="text" name="price" placeholder="가격을 입력하세요" class="form-control"><br>
 <c:choose>
 	<c:when test="${fvo==null }">
 	<input type="hidden" name="foodshop_no" value=<%=foodshop_no %>>
@@ -45,5 +35,6 @@ function readURL(input) {
 	</c:otherwise>
 </c:choose>
 
-<input type="submit" value="등록">
+<input type="submit" value="등록" class="btn btn-warning btn-lg">
 </form>
+</div>

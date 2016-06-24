@@ -78,28 +78,27 @@ function readURL3(input) {
 
 <div class="addHeight"></div>
 <div class="container" align="center">
-<form id = "foodUpdateForm" action="food_menu_update_list.do" method="post" enctype="multipart/form-data">
+<form id = "foodUpdateForm" action="food_menu_update_list.do" method="post" enctype="multipart/form-data" class="community" >
 	<input type="hidden" name="food_name_list" value="">
 	<table class="table">
 		<tr>
 			<c:forEach	items="${menuList }" var="menuList" varStatus="status">			
-				<td id = "test">
-					<br><br><br>
-					<img id="UploadedImg${status.index }" src="${initParam.root }/resources/img/food/menu/${menuList.food_picture}" style="width: 180px; height: 180px; margin-left: 35px;  border-radius: 100px; left: 220px;">
+				<td>
 					<br><br>
+					<img id="UploadedImg${status.index }" src="${initParam.root }/resources/img/food/menu/${menuList.food_picture}" style="width: 180px; height: 180px; margin-left: 35px;  border-radius: 100px; left: 220px;">
+					<br><br><br>
 					<input type="file" onchange="readURL${status.index }(this);" name="file[${status.index }]" id="uploadFile" class="text-center"><br>
 					<!-- <div id="fileuploadDiv"></div> -->
 					<input type="hidden" name="menu_no" value="${menuList.menu_no }">
 					<input type="hidden" name="foodshop_no" value="${menuList.foodshop_no }">
 					메뉴 : <input type="text" class="form-control" name="food_name" value="${menuList.food_name }"><br>
 					가격 : <input type="text" class="form-control" size="7" name="price" value="${menuList.price }"><br>
-				</td>
-			
+				</td>			
 			</c:forEach>
 		<tr>
 	</table>
 
-	<input type="submit" value="수정하기" class="btn btn-success btn-lg">
+	<input type="submit" value="수정" class="btn btn-success btn-lg"><br><br>
 	<div id="viewHiddenFoodName"></div>
 	<div id="viewHiddenMenuNo"></div>
 	<div id="viewHiddenPrice"></div>

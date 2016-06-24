@@ -127,6 +127,7 @@ public class AdminController {
 					//음식점 추가
 					@RequestMapping(value="foodshopregister.do",method=RequestMethod.POST)
 					public ModelAndView foodShopRegister(BestFoodVO bestFoodVO){
+						System.out.println("음식점 축 ㅏ시작");
 						List<BestFoodVO> foodshoplist=bestFoodService.allFoodShop();
 						//동일 지역에 같은 이름, 주소의 음식점이 있을 경우 가입이 안되도록 한다.
 						for(int i=0; i < foodshoplist.size(); i++){
@@ -151,7 +152,8 @@ public class AdminController {
 						//ex) 맛집의 세부위치+지역구위치+맛집의이름+확장자
 						main_menu_picture=bestFoodVO.getDetailarea_name()+"_"+bestFoodVO.getLocal_area()+"_"
 						+bestFoodVO.getShopname()+"_main."+extension;
-					
+					System.out.println("파일 업로드 전");
+					System.out.println(main_menu_picture);
 						if(file.isEmpty()==false){
 							//System.out.println("파일명:"+file.getOriginalFilename());
 							//여기에 파일이 들어온거
@@ -166,6 +168,7 @@ public class AdminController {
 						
 						bestFoodVO.setMain_menu_picture(main_menu_picture);
 						bestFoodService.foodShopRegister(bestFoodVO);
+						System.out.println("등록완료"+bestFoodVO);
 						return new ModelAndView("adminpage_foodshop_find");
 					}
 					//음식점 검색(음식점 수정)

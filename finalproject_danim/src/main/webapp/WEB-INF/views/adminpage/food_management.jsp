@@ -46,7 +46,7 @@
 		//지역 입력 텍스트창
 		$("#foodManagementForm").on("change","#detailareaName",function(){
 			$("#searchFoodType").html("");
-			var inputFoodLocalArea="지역구 : <input type='text' name='local_area' id='localArea'>";
+			var inputFoodLocalArea="지역구 : <input type='text' class='form-control' name='local_area' id='localArea'>";
 			$("#searchLocalArea").html(inputFoodLocalArea);
 		});
 		
@@ -60,7 +60,7 @@
 			inputFoodType+="<option value='양식'>양식</option>";
 			inputFoodType+="<option value='분식'>분식</option>";
 			inputFoodType+="<option value='기타'>기타</option>";
-			inputFoodType+="</select>";	
+			inputFoodType+="</select><br>";	
 			
 				$("#searchFoodType").html(inputFoodType);
 		});
@@ -75,16 +75,15 @@
 		
 	});
 </script>
-<div class="container_12" align="center">
 <div class="addHeight"></div>
-	<div id="contact-area" class="community">	
+<div class="container" align="center">
+	<div id="contact-area">	
 		<form id="foodManagementForm" action="foodshopregister.do" method="post" class="input_form">
-			<div class="text-left">
-			음식점 이름 <input type="text" name="shopname" class="form-control"> <br>
-			음식점 주소 <input type="text" name="shop_add" class="form-control"><br>
-			주메뉴 <input type="text" name="main_food" class="form-control"><br>
-			주메뉴<input type="file" name="uploadFile"><br>
-			주메뉴 가격 <input type="text" name="main_price" class="form-control"><br><br>
+			<input type="text" name="shopname" placeholder="음식점 이름을 입력하세요" class="form-control"> <br>
+			<input type="text" name="shop_add" placeholder="음식점 주소를 입력하세요" class="form-control"><br>
+			<input type="text" name="main_food" placeholder="주메뉴를 입력하세요" class="form-control"><br>
+			<input type="file" name="uploadFile"><br>
+			<input type="text" name="main_price" placeholder="가격을 입력하세요" class="form-control"><br><br>
 			<input type="hidden" value="" name="area_name">
 			<input type="hidden" value="" name="detailarea_name">
 			<input type="hidden" value="" name="foodtype">
@@ -92,7 +91,7 @@
 			<div id="searchFoodDetailArea"></div><br>
 			<div id="searchLocalArea"></div><br>
 			<div id="searchFoodType"></div>
-		</div>
+
 		<input type="submit" value="등록" class="btn btn-info btn-md-4">
 		</form>		
 	</div>

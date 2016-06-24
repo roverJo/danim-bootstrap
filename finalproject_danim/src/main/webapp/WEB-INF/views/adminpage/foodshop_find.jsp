@@ -51,19 +51,19 @@ $(document).ready(function(){
 });
 	
 </script>
-<div class="container_12" align="center">
 <div class="addHeight"></div>
-	<div id="contact-area" class="community">	
+<div class="container" align="center" id="contact-area">
+	
 		<form id="foodshopFindForm" action="foodshopfind.do" >
 			<div class="text-left">
-			음식점 이름 <input type="text" name="shopname" class="form-control"><br>
+			<input type="text" name="shopname" placeholder="음식점 이름을 입력하세요" class="form-control"><br>
 			<input type="hidden" value="" name="area_name">
 			<input type="hidden" value="" name="detailarea_name">
 			<div id="searchFoodArea"></div><br>
 			<div id="searchFoodDetailArea"></div><br>
 			</div>
-		<input type="submit" value="검색" class="btn btn-info btn-md-4">
+		<input type="submit" value="검색" class="btn btn-primary btn-lg">
 		</form>
-	</div>
+	
 	<div class="clear"></div>
 </div>
