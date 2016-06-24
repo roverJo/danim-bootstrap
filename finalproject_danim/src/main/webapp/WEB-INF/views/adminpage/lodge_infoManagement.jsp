@@ -9,7 +9,7 @@
 	<td><a href="${initParam.root }admin_lodgemanagementRegi.do">숙박 등록</a></td>
 	</tr>
 	<tr class="box-col-top">
-	<td><a href="">숙박 수정</a></td>
+	<td><a href="${initParam.root }adminpage_lodgeshop_find2.do">숙박 수정</a></td>
 	</tr>
 	<tr class="box-col-top">
 	<td><a href="${initParam.root }adminpage_lodgeshop_find.do">사진 정보 등록</a></td>

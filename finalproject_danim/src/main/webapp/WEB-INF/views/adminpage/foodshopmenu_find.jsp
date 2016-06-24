@@ -7,7 +7,7 @@ $(document).ready(function(){
 		url:"searchAreaFood.do",
 		dataType:"json",
 		success:function(area){
-			var selectArea ="<select id='areaName'>";
+			var selectArea ="<select class='form-control' id='areaName'>";
 			selectArea += "<option value=''>지역을 선택하세요</option>";
 			for(var i = 0 ; i < area.length; i++)
 			{
@@ -26,7 +26,7 @@ $(document).ready(function(){
 			url:"searchFoodDetailArea.do?area_name="+$("#areaName").val(),
 			dataType:"json",
 			success:function(detailAreaList){
-				var selectFoodDetailArea ="<select id='detailareaName'>";
+				var selectFoodDetailArea ="<select class='form-control' id='detailareaName'>";
 				selectFoodDetailArea += "<option value=''>세부지역을 선택하세요</option>";
 				for(var i = 0 ; i < detailAreaList.length; i++)
 				{
@@ -50,12 +50,19 @@ $(document).ready(function(){
 });
 	
 </script>
-<h3>음식점을 검색하세요</h3>
-<form id="foodshopFindForm" action="foodshopfind2.do" >
-음식점 이름 <input type="text" name="shopname">  <br>
-<input type="hidden" value="" name="area_name">
-<input type="hidden" value="" name="detailarea_name">
-<div id="searchFoodArea"></div><br>
-<div id="searchFoodDetailArea"></div><br>
-<input type="submit" value="검색">
-</form>
+<div class="container_12" align="center">
+<div class="addHeight"></div>
+	<div id="contact-area" class="community">	
+		<form id="foodshopFindForm" action="foodshopfind2.do" >
+			<div class="text-left">
+			음식점 이름 <input type="text" name="shopname" class="form-control">  <br>
+			<input type="hidden" value="" name="area_name">
+			<input type="hidden" value="" name="detailarea_name">
+			<div id="searchFoodArea"></div><br>
+			<div id="searchFoodDetailArea"></div><br>
+			</div>
+			<input type="submit" value="검색" class="btn btn-info btn-md-4">
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>

@@ -29,4 +29,6 @@ public interface BestFoodDAO {
 	public abstract int totalFood(BestFoodVO bestFoodVO);
 	public void menuUpdate(MenuVO menuVO);
 	public void menuUpdateExcludePicture(MenuVO menuVO);
+	public void foodshopupdate(BestFoodVO bestFoodVO);
+	public void foodshopupdateExcludePic(BestFoodVO bestFoodVO);
 }

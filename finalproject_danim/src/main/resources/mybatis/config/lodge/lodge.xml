@@ -94,4 +94,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="lodgePic_ExcludePicupdate" parameterType="lodgePictureVO">
 		update lodgepicture set picture_no=#{picture_no} where picture_no=#{picture_no}
 	</update>
+	
+	<!-- 숙박 업데이트 -->
+	<update id="lodgeshopupdate" parameterType="lodgeVO">
+		update lodge set shopname=#{shopname},lodgetype=#{lodgetype},price=#{price},shopinfo=#{shopinfo}
+		where lodge_no=#{lodge_no}
+	</update>
+	
+	
 </mapper>

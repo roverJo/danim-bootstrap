@@ -85,5 +85,18 @@ select b.foodshop_no,b.shopname,b.shop_add,b.foodtype,b.area_name,b.detailarea_n
 from bestfood b,foodmenu m
 where b.foodshop_no=m.foodshop_no and m.foodshop_no=#{foodshop_no};
  	</select> -->
+ 	<!-- 음식점 수정 -->
+ 	<update id="foodshopupdate" parameterType="bestFoodVO">
+ 		update bestfood set shopname=#{shopname},shop_add=#{shop_add},foodtype=#{foodtype},
+ 		main_price=#{main_price},main_food=#{main_food},main_menu_picture=#{main_menu_picture}
+ 		where foodshop_no=#{foodshop_no}
+ 	</update>
+<!-- 음식점 수정2 사진 없는 업데이트 -->
+ 	<update id="foodshopupdateExcludePic" parameterType="bestFoodVO">
+ 		update bestfood set shopname=#{shopname},shop_add=#{shop_add},foodtype=#{foodtype},
+ 		main_price=#{main_price},main_food=#{main_food}
+ 		where foodshop_no=#{foodshop_no}
+ 	</update>
+ 	
  	
 </mapper>

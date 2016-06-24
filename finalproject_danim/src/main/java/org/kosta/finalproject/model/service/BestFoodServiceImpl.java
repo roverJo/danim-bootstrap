@@ -105,5 +105,10 @@ public class BestFoodServiceImpl implements BestFoodService {
 	public void menuUpdateExcludePicture(MenuVO menuVO){
 		bestFoodDAO.menuUpdateExcludePicture(menuVO);
 	}
-	
+	public void foodshopupdate(BestFoodVO bestFoodVO){
+		bestFoodDAO.foodshopupdate(bestFoodVO);
+	}
+	public void foodshopupdateExcludePic(BestFoodVO bestFoodVO){
+		bestFoodDAO.foodshopupdateExcludePic(bestFoodVO);
+	}
 }

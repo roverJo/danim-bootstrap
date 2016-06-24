@@ -27,7 +27,7 @@ public interface LodgeDAO {
 	public List<LodgePictureVO> lodge_findPic(int lodge_no);
 	public void lodgePic_update(LodgePictureVO lodgePictureVO);
 	public void lodgePic_ExcludePicupdate(LodgePictureVO lodgePictureVO);
-
+	public void lodgeshopupdate(LodgeVO lodgeVO);
 
 
 }

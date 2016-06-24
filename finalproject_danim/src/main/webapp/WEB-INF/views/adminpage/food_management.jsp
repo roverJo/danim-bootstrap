@@ -7,7 +7,7 @@
 			url:"searchAreaFood.do",
 			dataType:"json",
 			success:function(area){
-				var selectArea ="<select id='areaName'>";
+				var selectArea ="<select class='form-control' id='areaName'>";
 				selectArea += "<option value=''>지역을 선택하세요</option>";
 				for(var i = 0 ; i < area.length; i++)
 				{
@@ -27,7 +27,7 @@
 				url:"searchFoodDetailArea.do?area_name="+$("#areaName").val(),
 				dataType:"json",
 				success:function(detailAreaList){
-					var selectFoodDetailArea ="<select id='detailareaName'>";
+					var selectFoodDetailArea ="<select class='form-control' id='detailareaName'>";
 					selectFoodDetailArea += "<option value=''>세부지역을 선택하세요</option>";
 					for(var i = 0 ; i < detailAreaList.length; i++)
 					{
@@ -52,7 +52,7 @@
 		
 		//음식 타입
 		$("#foodManagementForm").on("change", "#localArea", function(){
-			var inputFoodType="<select id='foodType'> ";
+			var inputFoodType="<select class='form-control' id='foodType'> ";
 			inputFoodType+="<option value=''>음식종류를 선택하세요</option>";
 			inputFoodType+="<option value='한식'>한식</option>";
 			inputFoodType+="<option value='중식'>중식</option>";
@@ -75,21 +75,26 @@
 		
 	});
 </script>
-<h3>음식점 추가</h3>
-
-<form id="foodManagementForm" action="foodshopregister.do" method="post" enctype="multipart/form-data">
-음식점 이름 <input type="text" name="shopname">  <br>
-음식점 주소 <input type="text" name="shop_add"><br>
-주메뉴 <input type="text" name="main_food"><br>
-주메뉴<input type="file" name="uploadFile"><br>
-주메뉴 가격 <input type="text" name="main_price"><br><br>
-<!-- 음식타입 <input type="text" name="foodtype"><br> -->
-<input type="hidden" value="" name="area_name">
-<input type="hidden" value="" name="detailarea_name">
-<input type="hidden" value="" name="foodtype">
-<div id="searchFoodArea"></div><br>
-<div id="searchFoodDetailArea"></div><br>
-<div id="searchLocalArea"></div><br>
-<div id="searchFoodType"></div>
-<input type="submit" value="등록">
-</form>
+<div class="container_12" align="center">
+<div class="addHeight"></div>
+	<div id="contact-area" class="community">	
+		<form id="foodManagementForm" action="foodshopregister.do" method="post" class="input_form">
+			<div class="text-left">
+			음식점 이름 <input type="text" name="shopname" class="form-control"> <br>
+			음식점 주소 <input type="text" name="shop_add" class="form-control"><br>
+			주메뉴 <input type="text" name="main_food" class="form-control"><br>
+			주메뉴<input type="file" name="uploadFile"><br>
+			주메뉴 가격 <input type="text" name="main_price" class="form-control"><br><br>
+			<input type="hidden" value="" name="area_name">
+			<input type="hidden" value="" name="detailarea_name">
+			<input type="hidden" value="" name="foodtype">
+			<div id="searchFoodArea"></div><br>
+			<div id="searchFoodDetailArea"></div><br>
+			<div id="searchLocalArea"></div><br>
+			<div id="searchFoodType"></div>
+		</div>
+		<input type="submit" value="등록" class="btn btn-info btn-md-4">
+		</form>		
+	</div>
+	<div class="clear"></div>
+</div>

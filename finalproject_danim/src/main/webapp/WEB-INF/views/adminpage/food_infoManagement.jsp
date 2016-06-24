@@ -9,7 +9,7 @@
 	<td><a href="${initParam.root }admin_foodmanagementRegi.do">음식점 등록</a></td>
 	</tr>
 	<tr class="box-col-top">
-	<td><a href="">음식점 수정</a></td>
+	<td><a href="${initParam.root }adminpage_foodshop_find2.do"">음식점 수정</a></td>
 	</tr>
 	<tr class="box-col-top">
 	<td><a href="${initParam.root }adminpage_foodshop_find.do">메뉴 등록</a></td>

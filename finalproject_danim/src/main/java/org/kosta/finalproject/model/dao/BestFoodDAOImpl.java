@@ -114,5 +114,14 @@ public class BestFoodDAOImpl implements BestFoodDAO {
 	public void menuUpdateExcludePicture(MenuVO menuVO){
 		template.update("menu.menuUpdateExcludePicture",menuVO);
 	}
+	//음식점 수정
+	public void foodshopupdate(BestFoodVO bestFoodVO){
+		template.update("bestfood.foodshopupdate",bestFoodVO);
+	}
+	//음식점 수정2 사진없는 음식점 수정
+	public void foodshopupdateExcludePic(BestFoodVO bestFoodVO){
+		template.update("bestfood.foodshopupdateExcludePic",bestFoodVO);
+	}
+	
 		
 }

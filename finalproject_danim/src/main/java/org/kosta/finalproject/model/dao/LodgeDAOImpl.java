@@ -92,4 +92,10 @@ public class LodgeDAOImpl implements LodgeDAO {
 		public void lodgePic_ExcludePicupdate(LodgePictureVO lodgePictureVO){
 			template.update("lodge.lodgePic_ExcludePicupdate",lodgePictureVO);
 		}
+		//숙박 업데이트
+		public void lodgeshopupdate(LodgeVO lodgeVO){
+			template.update("lodge.lodgeshopupdate",lodgeVO);
+		}
+
+		
 }

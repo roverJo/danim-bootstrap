@@ -168,6 +168,19 @@ public class AdminController {
 						bestFoodService.foodShopRegister(bestFoodVO);
 						return new ModelAndView("adminpage_foodshop_find");
 					}
+					//음식점 검색(음식점 수정)
+					@RequestMapping("foodshopfind3.do")
+					public ModelAndView foodshopfind3(BestFoodVO bestFoodVO){
+						bestFoodVO=bestFoodService.foodshopfind(bestFoodVO);
+						//System.out.println(bestFoodVO);
+						if(bestFoodVO==null){
+							return new ModelAndView("adminpage_foodfind_fail");
+						}
+						System.out.println(bestFoodVO);
+						return new ModelAndView("adminpage_food_shop_update","fvo",bestFoodVO);
+					}
+					
+					
 					//메뉴 추가할 음식점 검색
 					@RequestMapping("foodshopfind.do")
 					public ModelAndView foodshopfind(BestFoodVO bestFoodVO){
@@ -340,6 +353,17 @@ public class AdminController {
 					
 					return new ModelAndView("adminpage_lodge_picture_register","lvo",lodgeVO);
 				}
+				
+				//사진 추가할 숙박 찾기
+				@RequestMapping("lodgefind3.do")
+				public ModelAndView lodgefind3(LodgeVO lodgeVO){
+					lodgeVO=lodgeService.lodgefind(lodgeVO);
+					if(lodgeVO==null){
+						return new ModelAndView("adminpage_lodgefind_fail");
+					}
+					
+					return new ModelAndView("adminpage_lodge_shop_update","lvo",lodgeVO);
+				}
 			//사진 등록
 			@RequestMapping(value="lodgepicture_fileupload.do",method=RequestMethod.POST)
 			public ModelAndView lodgepicture_fileupload(LodgePictureVO lodgePictureVO){
@@ -439,4 +463,54 @@ public class AdminController {
 				}	
 				return new ModelAndView("adminpage_lodge_pic_update_result");
 			}
+			
+			//음식점 수정
+			@RequestMapping("foodshopupdate.do")
+			public ModelAndView foodshopupdate(BestFoodVO bestFoodVO){
+				
+				MultipartFile file=bestFoodVO.getUploadFile();//파일
+				
+				//확장자 jsp 나 png 등의 사진파일 뒤 .xxx 의 확장자를 추출
+				String extension=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1);
+				//지정할 사진파일의 이름
+				String main_menu_picture="";
+				//새로 지정한 사진파일의 이름 등록 
+				//ex) 맛집의 세부위치+지역구위치+맛집의이름+확장자
+				main_menu_picture=bestFoodVO.getDetailarea_name()+"_"+bestFoodVO.getLocal_area()+"_"
+				+bestFoodVO.getShopname()+"_main."+extension;
+			
+				if(file.isEmpty()==false){
+					//System.out.println("파일명:"+file.getOriginalFilename());
+					//여기에 파일이 들어온거
+					File uploadFile=new File(uploadFoodShopPath+main_menu_picture);
+					try {
+						file.transferTo(uploadFile); // 실제 디렉토리로 파일을 저장한다
+						System.out.println(uploadFoodShopPath+"에 파일업로드");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				if(main_menu_picture.endsWith(".")==true){
+					
+					bestFoodService.foodshopupdateExcludePic(bestFoodVO);
+					
+				}else{
+					
+					bestFoodVO.setMain_menu_picture(main_menu_picture);
+					bestFoodService.foodshopupdate(bestFoodVO);
+				
+				}
+				
+				return new ModelAndView("adminpage_food_shop_update_result");
+			}
+			//숙박 수정
+			@RequestMapping("lodgeshopupdate.do")
+			public ModelAndView lodgeshopupdate(LodgeVO lodgeVO){
+				lodgeService.lodgeshopupdate(lodgeVO);
+				
+				return new ModelAndView("adminpage_lodge_shop_update_result");
+			}
+
+
 }

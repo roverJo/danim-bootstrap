@@ -101,5 +101,7 @@ public class LodgeServiceImpl implements LodgeService {
 	public void lodgePic_ExcludePicupdate(LodgePictureVO lodgePictureVO){
 		lodgeDAO.lodgePic_ExcludePicupdate(lodgePictureVO);
 	}
-
+	public void lodgeshopupdate(LodgeVO lodgeVO){
+		lodgeDAO.lodgeshopupdate(lodgeVO);
+	}
 }

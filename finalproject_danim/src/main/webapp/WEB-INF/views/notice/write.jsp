@@ -39,8 +39,7 @@ location.href="${initParam.root}home.do";
 <div class="container_12" align="center">
 <div class="addHeight"></div>
 		<form method="post" action="${initParam.root}write.do" id="write_form">
-		<div id="contact-area">
-		<div id="h3r">글작성</div><br>
+		<div id="contact-area">		
 			<table>
 			<tbody class="text-left">
 			<tr>
