@@ -46,7 +46,7 @@
 		//지역 입력 텍스트창
 		$("#foodManagementForm").on("change","#detailareaName",function(){
 			$("#searchFoodType").html("");
-			var inputFoodLocalArea="지역구 : <input type='text' class='form-control' name='local_area' id='localArea'>";
+			var inputFoodLocalArea="<input type='text' class='form-control' name='local_area' id='localArea' placeholder='지역구를 입력하세요'>";
 			$("#searchLocalArea").html(inputFoodLocalArea);
 		});
 		
