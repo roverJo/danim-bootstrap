@@ -89,7 +89,7 @@
 		<div id="searchLodgeDetailArea"></div><br>	
 		<div id="searchLodgeType"></div><br>
 		<div id="searchLodgeLocalArea"></div><br>
-		<input type="submit" value="등록" class="btn btn-success btn-lg">
+		<input type="submit" value="등록" class="btn btn-warning btn-lg">
 		</form>
 	</div>
 </div>

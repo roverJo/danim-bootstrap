@@ -76,7 +76,7 @@ function readURL3(input) {
 		<tr>
 	</table>
 
-	<input type="submit" value="수정하기" class="btn btn-success btn-lg"><br><br>
+	<input type="submit" value="수정" class="btn btn-success btn-lg"><br><br>
 	<div id="viewHiddenPicNo"></div>
 
 </form>

@@ -2,13 +2,12 @@
 	pageEncoding="UTF-8"%>
 <script type="text/javascript">
 $(document).ready(function(){
-	//alert("음식점 등록 성공!");
 	$.ajax({
 			type:"get",
 			url:"searchAreaLodge.do",
 			dataType:"json",
 			success:function(areaList){
-				var selectArea ="<select id='areaName'>";
+				var selectArea ="<select class='form-control' id='areaName'>";
 				selectArea += "<option value=''>지역을 선택하세요</option>";
 				for(var i = 0 ; i < areaList.length; i++)
 				{
@@ -29,7 +28,7 @@ $(document).ready(function(){
 				url:"searchLodgeDetailArea.do?area_name="+$("#areaName").val(),
 				dataType:"json",
 				success:function(detailAreaList){
-					var selectFoodDetailArea ="<select id='detailareaName'>";
+					var selectFoodDetailArea ="<select class='form-control' id='detailareaName'>";
 					selectFoodDetailArea += "<option value=''>세부지역을 선택하세요</option>";
 					for(var i = 0 ; i < detailAreaList.length; i++)
 					{
@@ -47,7 +46,7 @@ $(document).ready(function(){
 			$("#lodgelocalArea").html("");
 			$("#lodgeKind").html("");
 			if($(this).val() != "")	{
-				var selectKind = "<select id='lodgeKind'>"
+				var selectKind = "<select class='form-control' id='lodgeKind'>"
 				selectKind += "<option value=''>숙박종류를 선택하세요</option>"
 				selectKind += "<option value='게스트하우스'>게스트하우스</option>";
 				selectKind += "<option value='찜질방'>찜질방</option>";
@@ -67,15 +66,17 @@ $(document).ready(function(){
 });
 	
 </script>
-<h3>숙박을 검색하세요</h3>
-<form id="lodgeFindForm" action="lodgefind.do">
-	숙박이름: <input type="text" name="shopname"> <br> 
-	<input type="hidden" value="" name="area_name"> 
-	<input type="hidden"  value="" name="detailarea_name">
-	<input type="hidden" value="" name="lodgetype">
-<div id="searchLodgeArea"></div><br>
-<div id="searchLodgeDetailArea"></div><br>	
-<div id="searchLodgeType"></div><br>
-	 
-	<input type="submit" value="검색">
-</form>
+<div class="addHeight"></div>
+<div class="container" align="center" id="contact-area">
+	<form id="lodgeFindForm" action="lodgefind.do">
+		<input type="text" name="shopname"placeholder="숙박이름을 입력하세요" class="form-control"> <br> 
+		<input type="hidden" value="" name="area_name"> 
+		<input type="hidden"  value="" name="detailarea_name">
+		<input type="hidden" value="" name="lodgetype">
+	<div id="searchLodgeArea"></div><br>
+	<div id="searchLodgeDetailArea"></div><br>	
+	<div id="searchLodgeType"></div><br>
+		 
+		<input type="submit" value="검색" class="btn btn-primary btn-lg">
+	</form>
+</div>

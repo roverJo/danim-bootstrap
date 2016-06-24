@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <script type="text/javascript">
 $(document).ready(function(){
-	//alert("음식점 등록 성공!");
 	$.ajax({
 			type:"get",
 			url:"searchAreaLodge.do",
@@ -67,10 +66,9 @@ $(document).ready(function(){
 });
 	
 </script>
-
 <div class="addHeight"></div>
 <div class="container" align="center" id="contact-area">
-	<form id="lodgeFindForm" action="lodgefind2.do">
+	<form id="lodgeFindForm" action="lodgefind3.do">
 		<input type="text" name="shopname" placeholder="숙박이름을 입력하세요" class="form-control"> <br> 
 		<input type="hidden" value="" name="area_name" class="form-control"> 
 		<input type="hidden"  value="" name="detailarea_name" class="form-control">
