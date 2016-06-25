@@ -7,7 +7,7 @@
 			url:"searchAreaFood.do",
 			dataType:"json",
 			success:function(area){
-				var selectArea ="<select class='form-control' id='areaName'>";
+				var selectArea ="<select id='areaName'>";
 				selectArea += "<option value=''>지역을 선택하세요</option>";
 				for(var i = 0 ; i < area.length; i++)
 				{
@@ -27,7 +27,7 @@
 				url:"searchFoodDetailArea.do?area_name="+$("#areaName").val(),
 				dataType:"json",
 				success:function(detailAreaList){
-					var selectFoodDetailArea ="<select class='form-control' id='detailareaName'>";
+					var selectFoodDetailArea ="<select id='detailareaName'>";
 					selectFoodDetailArea += "<option value=''>세부지역을 선택하세요</option>";
 					for(var i = 0 ; i < detailAreaList.length; i++)
 					{
@@ -38,14 +38,21 @@
 					$("#searchFoodDetailArea").html(selectFoodDetailArea);
 					
 				}
-			});			
+			});
+			
 			
 		});// 세부지역 선택 끝
 		
+		//지역 입력 텍스트창
+		$("#foodManagementForm").on("change","#detailareaName",function(){
+			$("#searchFoodType").html("");
+			var inputFoodLocalArea="지역구 : <input type='text' name='local_area' id='localArea'>";
+			$("#searchLocalArea").html(inputFoodLocalArea);
+		});
+		
 		//음식 타입
-		$("#foodManagementForm").on("change", "#detailareaName", function(){
-			$("#searchLocalArea").html("");
-			var inputFoodType="<select class='form-control' id='foodTypeselect'> ";
+		$("#foodManagementForm").on("change", "#localArea", function(){
+			var inputFoodType="<select id='foodType'> ";
 			inputFoodType+="<option value=''>음식종류를 선택하세요</option>";
 			inputFoodType+="<option value='한식'>한식</option>";
 			inputFoodType+="<option value='중식'>중식</option>";
@@ -56,25 +63,16 @@
 			inputFoodType+="</select>";	
 			
 				$("#searchFoodType").html(inputFoodType);
-		});		
-		
-		
-		//지역 입력 텍스트창
-		$("#foodManagementForm").on("change","#foodTypeselect",function(){
-		
-			var inputFoodLocalArea=" <input type='text' class='form-control' name='local_area' id='localArea' placeholder='지역구를 입력하세요'>";
-			$("#searchLocalArea").html(inputFoodLocalArea);
 		});
-		
 		
 		
 		$("#foodManagementForm").submit(function () {
 			
 			$("#foodManagementForm :input[name=area_name]").val($("#areaName").val());
 			$("#foodManagementForm :input[name=detailarea_name]").val($("#detailareaName").val());
-			$("#foodManagementForm :input[name=foodtype]").val($("#foodTypeselect").val());
+			$("#foodManagementForm :input[name=foodtype]").val($("#foodType"));
 			
-			if($("#foodManagementForm :input[name=shopname]").val()==""){
+			if($("#foodManagementForm :input[name=area_name]").val()==""){
 				alert("음식점 이름을 입력하세요");
 				return false;
 			}
@@ -109,7 +107,9 @@
 			if(isNaN($("#foodManagementForm :input[name=main_price]").val())==true){
 				alert("음식값은 숫자를 입력하세요");
 				return false;
-			}			
+			}
+			
+			
 		
 		});
 		
@@ -121,18 +121,18 @@
 
 <form id="foodManagementForm" action="foodshopregister.do" method="post" enctype="multipart/form-data" class="input_form">
 <input type="text" name="shopname" placeholder="음식점 이름을 입력하세요" class="form-control"> <br>
-<input type="text" name="shop_add" placeholder="음식점 주소를 입력하세요" class="form-control"><br>
-<input type="text" name="main_food" placeholder="주메뉴를 입력하세요" class="form-control"><br>
-<input type="file" name="uploadFile"><br>
-<input type="text" name="main_price" placeholder="가격을 입력하세요" class="form-control"><br><br>
+			<input type="text" name="shop_add" placeholder="음식점 주소를 입력하세요" class="form-control"><br>
+			<input type="text" name="main_food" placeholder="주메뉴를 입력하세요" class="form-control"><br>
+			<input type="file" name="uploadFile"><br>
+			<input type="text" name="main_price" placeholder="가격을 입력하세요" class="form-control"><br><br>
 			
 <input type="hidden" value="" name="area_name">
 <input type="hidden" value="" name="detailarea_name">
 <input type="hidden" value="" name="foodtype">
 <div id="searchFoodArea"></div><br>
 <div id="searchFoodDetailArea"></div><br>
-<div id="searchFoodType"></div><br>
 <div id="searchLocalArea"></div><br>
+<div id="searchFoodType"></div><br>
 <input type="submit" value="등록" class="btn btn-info btn-md-4">
 </form>
 </div>
