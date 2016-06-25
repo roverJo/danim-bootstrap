@@ -13,6 +13,10 @@ public class CommunityVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public CommunityVO(int comm_no) {
+		super();
+		this.comm_no = comm_no;
+	}
 	public CommunityVO(int comm_no, String timePosted, String content,
 			int likePosted, MemberVO memberVO) {
 		super();

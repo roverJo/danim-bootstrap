@@ -5,6 +5,7 @@ import java.util.List;
 import org.kosta.finalproject.model.vo.community.CommLikeVO;
 import org.kosta.finalproject.model.vo.community.CommentVO;
 import org.kosta.finalproject.model.vo.community.CommunityVO;
+import org.kosta.finalproject.model.vo.community.ReplyVO;
 
 public interface CommunityService {
 
@@ -26,7 +27,7 @@ public interface CommunityService {
 
 	public List<CommentVO> getCommentList(int comm_no);
 	
-	public int updateComment(CommentVO paramVO);
+	public List<CommentVO> updateComment(CommentVO paramVO);
 
 	public int deleteComment(int comment_no);
 
@@ -38,5 +39,10 @@ public interface CommunityService {
 	
 	public List<CommLikeVO> getLikeRank();
 
+	public void registerReply(ReplyVO paramVO);
+
+	public void deleteReply(int replyNo);
+	
+	public int updateReply(ReplyVO paramVO);
 
 }

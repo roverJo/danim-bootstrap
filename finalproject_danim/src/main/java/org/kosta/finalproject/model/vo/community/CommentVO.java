@@ -13,7 +13,11 @@ public class CommentVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+	public CommentVO(int comment_no, CommunityVO communityVO) {
+		super();
+		this.comment_no = comment_no;
+		this.communityVO = communityVO;
+	}
 	public CommentVO(int comment_no, CommunityVO communityVO,
 			String content) {
 		super();

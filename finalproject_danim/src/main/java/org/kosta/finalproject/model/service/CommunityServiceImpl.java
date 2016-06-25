@@ -10,6 +10,7 @@ import org.kosta.finalproject.model.dao.CommunityDAO;
 import org.kosta.finalproject.model.vo.community.CommLikeVO;
 import org.kosta.finalproject.model.vo.community.CommentVO;
 import org.kosta.finalproject.model.vo.community.CommunityVO;
+import org.kosta.finalproject.model.vo.community.ReplyVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -95,8 +96,15 @@ public class CommunityServiceImpl implements CommunityService {
 	 * 커뮤니티 댓글 수정 
 	 */
 	@Override
-	public int updateComment(CommentVO paramVO){
-		return commDAO.updateComment(paramVO);
+	public List<CommentVO> updateComment(CommentVO paramVO){
+		int comm_no = paramVO.getComment_no();
+		commDAO.updateComment(paramVO);
+		List<CommentVO> list = commDAO.getCommentList(comm_no);
+		System.out.println("[service]"+list);
+		for (CommentVO clvo : list) {
+			clvo.setReplyList(commDAO.getReplyList(clvo.getComment_no()));
+		}
+		return list;
 	}
 	
 	/**
@@ -130,7 +138,35 @@ public class CommunityServiceImpl implements CommunityService {
 	}*/
 
 	@Override
+	public void registerReply(ReplyVO paramVO) {
+		commDAO.registerReply(paramVO);
+	}
+	
+	@Override
+	public void deleteReply(int replyNo) {
+		commDAO.deleteReply(replyNo);
+	}
+
+	@Override
+	public int updateReply(ReplyVO paramVO) {
+		return commDAO.updateReply(paramVO);
+	}
+	
+	@Override
 	public List<CommLikeVO> getLikeRank(){
-		return commDAO.getLikeRank();
+		List<CommLikeVO> list = commDAO.getLikeRank();
+		
+		/* 정규 표현식을 이용하여 Community의 content에서 이미지 태그 src만 추출 */
+		for (CommLikeVO cvo : list) {
+			String text = cvo.getContent();
+			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
+	        Matcher matcher = pattern.matcher(text);
+	         
+	        while(matcher.find()){
+	            cvo.setContent(matcher.group(0));
+	        }
+		}
+		
+		return list;
 	}
 }

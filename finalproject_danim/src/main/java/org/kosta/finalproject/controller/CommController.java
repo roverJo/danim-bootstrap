@@ -10,6 +10,7 @@ import org.kosta.finalproject.model.service.CommunityService;
 import org.kosta.finalproject.model.vo.community.CommLikeVO;
 import org.kosta.finalproject.model.vo.community.CommentVO;
 import org.kosta.finalproject.model.vo.community.CommunityVO;
+import org.kosta.finalproject.model.vo.community.ReplyVO;
 import org.kosta.finalproject.model.vo.member.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,7 +131,7 @@ public class CommController {
 	 */
 	@RequestMapping("registerComment.do")
 	@ResponseBody
-	public CommentVO registerComment(HttpServletRequest request){
+	public List<CommentVO> registerComment(HttpServletRequest request){
 		HttpSession session = request.getSession(false);
 		int commNo = Integer.parseInt(request.getParameter("comm_no"));
 		
@@ -143,13 +144,9 @@ public class CommController {
 		commentVO.setContent(request.getParameter("commentParentText"));
 		commService.registerComment(commentVO);
 		
-		return commService.getCommentByNo(commentVO.getComment_no());
-	}
-	
-	@RequestMapping("updateComment.do")
-	@ResponseBody
-	public void updateComment(CommentVO paramVO){
-		commService.updateComment(paramVO);
+//		return commService.getCommentByNo(commentVO.getComment_no());
+		System.out.println("[registerComment]"+commService.getCommentList(commNo));
+		return commService.getCommentList(commNo);
 	}
 	
 	/**
@@ -160,25 +157,54 @@ public class CommController {
 	public void deleteComment(int comment_no){
 		commService.deleteComment(comment_no);
 	}
+
+	/**
+	 * 댓글 수정 
+	 */
+	@RequestMapping("updateComment.do")
+	@ResponseBody
+	public List<CommentVO> updateComment(CommentVO paramVO){
+		List<CommentVO> list = commService.updateComment(paramVO);
+		System.out.println(list);
+		return list;
+	}
 	
 	/**
 	 * 댓글의 댓글 등록 
 	 */
 	@RequestMapping("registerReply.do")
 	@ResponseBody
-	public CommentVO registerReply(HttpServletRequest request){
+	public List<CommentVO> registerReply(HttpServletRequest request, ReplyVO paramVO){
 		HttpSession session = request.getSession(false);
+		int commentNo = Integer.parseInt(request.getParameter("comment_no"));
 		int commNo = Integer.parseInt(request.getParameter("comm_no"));
 		
-		CommentVO commentVO = new CommentVO();
 		MemberVO mvo = null;
 		if(session!=null || session.getAttribute("mvo")!=null){
 			mvo = (MemberVO) session.getAttribute("mvo");
 		}
-		commentVO.setCommunityVO(new CommunityVO(commNo, mvo));
-		commentVO.setContent(request.getParameter("commentChildText"));
-		commService.registerComment(commentVO);
+		ReplyVO replyVO = new ReplyVO(new CommentVO(commentNo,new CommunityVO(commNo)),mvo,paramVO.getContent());
+		commService.registerReply(replyVO);
+//		System.out.println("[controller-registerReply]"+replyVO);
 		
-		return commService.getCommentByNo(commentVO.getComment_no());
+		return commService.getCommentList(replyVO.getCommentVO().getCommunityVO().getComm_no());
+	}
+	/**
+	 * 댓글의 댓글 삭제 
+	 */
+	@RequestMapping("deleteReply.do")
+	@ResponseBody
+	public void deleteReply(int reply_no){
+		commService.deleteReply(reply_no);
+	}
+	
+	/**
+	 * 댓글의 댓글 수정 
+	 */
+	@RequestMapping("updateReply.do")
+	@ResponseBody
+	public List<CommentVO> updateReply(ReplyVO paramVO){
+		int result = commService.updateReply(paramVO);
+		return commService.getCommentList(paramVO.getCommentVO().getCommunityVO().getComm_no());
 	}
 }

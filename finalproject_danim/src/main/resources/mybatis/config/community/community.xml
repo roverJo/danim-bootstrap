@@ -112,14 +112,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select comment_reply_seq.nextval from dual
 		</selectKey>
 		insert into replycomment(reply_no,comment_no,comm_no,id,content) 
-		values(#{reply_no},#{comment_no},#{comm_no},#{id},#{content})
+		values(#{reply_no},#{commentVO.comment_no},#{commentVO.communityVO.comm_no},#{memberVO.id},#{content})
 	</insert>
 	
 	<resultMap type="replyVO" id="replyRM">
 		<result column="comment_no" property="commentVO.comment_no"/>
 		<result column="comm_no" property="commentVO.communityVO.comm_no"/>
-		<result column="id" property="commentVO.communityVO.memberVO.id"/>
-		<result column="nickname" property="commentVO.communityVO.memberVO.nickname"/>
+		<result column="id" property="memberVO.id"/>
+		<result column="nickname" property="memberVO.nickname"/>
 	</resultMap>
 	<select id="getReplyList" resultMap="replyRM">
 		select r.reply_no,r.comment_no,r.comm_no,m.id,m.nickname,r.content 
@@ -127,6 +127,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where r.id=m.id and r.comment_no=#{value}
 		order by r.reply_no desc
 	</select>
+	
+	<delete id="deleteReply">
+		delete replycomment where reply_no=#{value}
+	</delete>
+	
+	<update id="updateReply" parameterType="replyVO">
+		update replycomment set content=#{content} where reply_no=#{reply_no}
+	</update>
 	
 	<select id="getLikeRank" resultType="commLikeVO">
 		<!-- select comm_no, likepost as likePosted, rank, content from( -->

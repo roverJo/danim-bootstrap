@@ -19,6 +19,12 @@ public class ReplyVO {
 		this.memberVO = memberVO;
 		this.content = content;
 	}
+	public ReplyVO(CommentVO commentVO, MemberVO memberVO, String content) {
+		super();
+		this.commentVO = commentVO;
+		this.memberVO = memberVO;
+		this.content = content;
+	}
 	public int getReply_no() {
 		return reply_no;
 	}

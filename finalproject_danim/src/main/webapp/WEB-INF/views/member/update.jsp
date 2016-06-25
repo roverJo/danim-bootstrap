@@ -40,7 +40,7 @@
 			}
 		});
 		$("#updateForm").submit(function(){
-			/* if($("#updateForm :input[name=password]").val()==""){
+			if($("#updateForm :input[name=password]").val()==""){
 				alert("패스워드를 입력하세요!");
 				return false;
 			}
@@ -48,19 +48,19 @@
 				alert("비밀번호를 확인하세요!");
 				return false;
 			}
-			 */
+			
 			if($("#nickView").html()!="사용 가능!"){
 				alert("닉네임을 체크하세요!");
 				return false;
 			}
-			/* if($("#updateForm :input[name=address]").val()==""){
+			if($("#updateForm :input[name=address]").val()==""){
 				alert("주소를 선택하세요!");
 				return false;
 			}
 			if($("#updateForm :input[name=email_add]").val()==""){
 				alert("이메일을 입력하세요!")
 				return false;
-			} */
+			}
 		});
 	});
 </script>

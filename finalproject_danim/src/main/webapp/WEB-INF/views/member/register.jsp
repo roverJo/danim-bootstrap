@@ -57,7 +57,7 @@
 			}
 		});
 		$("#registerForm").submit(function(){
-			/* if($("#idView").html()!="사용 가능!"){
+			if($("#idView").html()!="사용 가능!"){
 				alert("아이디를 체크하세요!");
 				return false;
 			}
@@ -65,7 +65,6 @@
 				alert("패스워드를 입력하세요!");
 				return false;
 			}
-			 */
 			if($("#passView").html()!="비밀번호 일치!"){
 				alert("비밀번호를 확인하세요!");
 				return false;
@@ -74,14 +73,14 @@
 				alert("닉네임을 체크하세요!");
 				return false;
 			}
-			/* if($("#registerForm :input[name=address]").val()==""){
+			if($("#registerForm :input[name=address]").val()==""){
 				alert("주소를 선택하세요!");
 				return false;
 			}
 			if($("#registerForm :input[name=email_add]").val()==""){
 				alert("이메일을 입력하세요!")
 				return false;
-			} */
+			}
 		});
 	});
 </script>

@@ -61,5 +61,12 @@ public interface CommunityDAO {
 	public List<ReplyVO> getReplyList(int comment_no);
 
 	public List<CommLikeVO> getLikeRank();
+	
+	public void registerReply(ReplyVO paramVO);
+
+	public void deleteReply(int replyNo);
+
+	public int updateReply(ReplyVO paramVO);
+
 
 }

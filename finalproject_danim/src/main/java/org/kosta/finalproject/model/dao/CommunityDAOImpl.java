@@ -149,6 +149,26 @@ public class CommunityDAOImpl implements CommunityDAO {
 	public List<ReplyVO> getReplyList(int comment_no){
 		return template.selectList("community.getReplyList",comment_no);
 	}
+	/**
+	 * 커뮤니티 댓글의 댓글 추가
+	 */
+	@Override
+	public void registerReply(ReplyVO paramVO){
+		template.insert("community.registerReply",paramVO);
+	}
+	
+	/**
+	 * 커뮤니티 댓글의 댓글 삭제
+	 */
+	@Override
+	public void deleteReply(int replyNo){
+		template.delete("community.deleteReply",replyNo);
+	}
+
+	@Override
+	public int updateReply(ReplyVO paramVO) {
+		return template.update("community.updateReply",paramVO);
+	}
 	
 	/**
 	 * 좋아요 순위별 글내용 리스트
