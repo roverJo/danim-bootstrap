@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <script type="text/javascript" src="${initParam.root}resources/js/backfix.min.js"></script> --%>
+<script type="text/javascript" src="${initParam.root}resources/js/backfix.min.js"></script>
 <script src="${initParam.root}resources/js/jquery-1.12.4.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -27,13 +27,11 @@
 		    }
 		});
 	});
-	/* 	
 	 bajb_backdetect.OnBack = function(){
 		window.history.back=function(){
 			document.location="${initParam.root}message_index.do";
 		}
 	} 
-	  */
 </script>
 <!-- header -->
 <div class="modal-header">

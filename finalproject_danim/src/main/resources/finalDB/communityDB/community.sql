@@ -7,7 +7,7 @@ create table community(
 	timePosted date not null,
 	content clob not null,
 	id varchar2(100) not null,
-	constraint fk_comm_id foreign key(id) references member(id)
+	constraint fk_comm_id foreign key(id) references member(id) on delete cascade
 )
 
 ---------like table 추가(1차)---------
@@ -17,8 +17,8 @@ create table commLike(
 	id varchar2(100),
 	likePosted number default 0,
 	constraint pk_commLike primary key(comm_no, id),
-	constraint fk_commLike_id foreign key(id) references member(id),
-	constraint fk_commLike_community foreign key(comm_no) references community(comm_no)
+	constraint fk_commLike_id foreign key(id) references member(id) on delete cascade,
+	constraint fk_commLike_community foreign key(comm_no) references community(comm_no) on delete cascade
 )
 
 -- community 게시판 table insert하고 select해서 확인해주세요

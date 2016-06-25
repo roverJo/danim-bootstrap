@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <script type="text/javascript" src="${initParam.root}resources/js/backfix.min.js"></script> --%>
+<script type="text/javascript" src="${initParam.root}resources/js/backfix.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#selectAll").click(function(){
@@ -70,9 +70,9 @@
 		<td><input type="checkbox" name="select" value="${list.message_no}"></td>
 		<c:if test="${list.read_acc==0}">
 <%-- <td><b><a href="#" onclick="window.open('${initParam.root}message_replyReady.do?sendId=${list.sendVO.id}', 'popup','resizable=true,toolbar=no,width=500,height=400,left=300,top=150');return false;" target="_blank">${list.sendVO.nickname}</a></b></td> --%>
-		<td><a data-toggle="modal" href="${initParam.root}login_message_replyReady.do?sendId=${list.sendVO.id}" data-target="#myModal"><b>${list.sendVO.nickname}</b></a></td>
-		<td><a href="${initParam.root}login_message_content.do?message_no=${list.message_no}"><b>${list.title}</b></a></td>
-		<td><b>${list.mess_date}</b></td>
+		<td><a style="color: #2196F3;" data-toggle="modal" href="${initParam.root}login_message_replyReady.do?sendId=${list.sendVO.id}" data-target="#myModal"><b>${list.sendVO.nickname}</b></a></td>
+		<td><a style="color: #2196F3;" href="${initParam.root}login_message_content.do?message_no=${list.message_no}"><b>${list.title}</b></a></td>
+		<td><b style="font-family: sans-serif !important; color: #2196F3;">${list.mess_date}</b></td>
 		</c:if>
 		
 		<c:if test="${list.read_acc>0}">

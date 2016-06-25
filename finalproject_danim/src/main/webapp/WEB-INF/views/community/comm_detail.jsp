@@ -145,7 +145,8 @@ $(document).ready(function() {
 				$("#commentTableDiv").html(commentAdd);
 			}//success
 		});//ajax
-	});
+	});//on
+	
 <%--***************************** 댓글 수정 End ******************************--%>
 
 
@@ -290,7 +291,6 @@ $(document).ready(function() {
 					url: "deleteComment.do",
 					data: "comment_no="+$commentNo,
 					success : function(result){
-					alert(1)
 					}//success
 				});//ajax
 			   var delComment = $(this).parent().parent();
@@ -332,70 +332,73 @@ $(document).ready(function() {
 			}
 		<%--*************** 댓글의 댓글 삭제 클릭 End ***************--%>
 		
-		<%-- 댓글 수정 클릭 --%>
+		<%--*************** 댓글 수정 클릭 Start ***************--%>
 		}else if($(this).attr("name")=="pEdit"){
-		var $commentNo = $(this).attr('title');
-		var content = $(this).siblings().filter("p");
-		var parentElement = $(this).parent().parent();
-	    //댓글달기 창을 없앤다.
-	    //$("#commentEditor").remove();
-	    //부모의 하단에 댓글달기 창을 삽입
-	    var commentEditor = '<tr id="commentEditor">'+
-	                            '<td style="width:1%"> </td>'+
-	                            '<td align="right">'+
-	                                '<span class="form-inline" role="form">'+
-	                                        '<textarea id="commentEditText" name="commentEditText" class="form-control" style="width:98%" rows="4">'+content.text()+'</textarea>'+
-	                                        '<div class="form-group">'+
-	                                            '<button type="button" id="commentEditSubmit" class="btn btn-default" title='+$commentNo+'>확인</button>'+
-	                                        '</div>'+
-	                                '</span>'+
-	                            '</td>'+
-	                        '</tr>';
-	                        
-	    parentElement.html(commentEditor);
-	}else if($(this).attr("name")=="cEdit"){
-		var $commentNo = $(this).attr('title');
-		var content = $(this).siblings().filter("p");
-		var parentElement = $(this).parent().parent();
-	    //댓글달기 창을 없앤다.
-	    //$("#commentEditor").remove();
-	    //부모의 하단에 댓글달기 창을 삽입
-	    var commentEditor = '<tr id="commentEditor">'+
-	                            '<td style="width:1%"> </td>'+
-	                            '<td align="right">'+
-	                                '<span class="form-inline" role="form">'+
-	                                        '<textarea id="replyEditText" name="replyEditText" class="form-control" style="width:98%" rows="4">'+content.text()+'</textarea>'+
-	                                        '<div class="form-group">'+
-	                                            '<button type="button" id="replyEditSubmit" class="btn btn-default" title='+$commentNo+'>확인</button>'+
-	                                        '</div>'+
-	                                '</span>'+
-	                            '</td>'+
-	                        '</tr>';
-	                           
-	    parentElement.html(commentEditor);
-	}else{
-	    //자기 부모의 tr을 알아낸다.
-	    var parentElement = $(this).parent().parent();
-	    //댓글달기 창을 없앤다.
-	    $("#commentEditor").remove();
-	    //부모의 하단에 댓글달기 창을 삽입
-	    var commentEditor = '<tr id="commentEditor">'+
-	                            '<td style="width:1%"> </td>'+
-	                            '<td align="right">'+
-	                                '<span class="form-inline" role="form">'+
-	                                        '<textarea id="commentChildText" name="commentChildText" class="form-control" style="width:98%" rows="4"></textarea>'+
-	                                        '<div class="form-group">'+
-	                                            '<button type="button" id="commentChildSubmit" class="btn btn-default">확인</button>'+
-	                                        '</div>'+
-	                                '</span>'+
-	                            '</td>'+
-	                        '</tr>';
-	                           
-	    parentElement.after(commentEditor); 
-	}
-	   
-	});
-           
+			var $commentNo = $(this).attr('title');
+			var content = $(this).siblings().filter("p");
+			var parentElement = $(this).parent();
+			alert(parentElement.html())
+		   //댓글달기 창을 없앤다.
+		   //$("#commentEditor").remove();
+		   //부모의 하단에 댓글달기 창을 삽입
+		   var commentEditor = '<tr id="commentEditor">'+
+		                           '<td align="right">'+
+		                               '<span class="form-inline" role="form">'+
+		                                       '<textarea id="commentEditText" name="commentEditText" class="form-control col-lg-12" style="width:100%" rows="4">'+content.text()+'</textarea>'+
+		                                       '<div class="form-group">'+
+		                                           '<button type="button" id="commentEditSubmit" class="btn btn-default" title='+$commentNo+'>확인</button>'+
+		                                       '</div>'+
+		                               '</span>'+
+		                           '</td>'+
+		                       '</tr>';
+		                       
+			parentElement.html(commentEditor);
+		<%--*************** 댓글 수정 클릭 End ***************--%>
+		
+		<%--*************** 댓글의 댓글 수정 클릭 Start ***************--%>
+		}else if($(this).attr("name")=="cEdit"){
+			var $commentNo = $(this).attr('title');
+			var content = $(this).siblings().filter("p");
+			var parentElement = $(this).parent().parent();
+			//댓글달기 창을 없앤다.
+			//$("#commentEditor").remove();
+			//부모의 하단에 댓글달기 창을 삽입
+			var commentEditor = '<tr id="commentEditor">'+
+			                        '<td style="width:1%"> </td>'+
+			                        '<td align="right">'+
+			                            '<span class="form-inline" role="form">'+
+			                                    '<textarea id="replyEditText" name="replyEditText" class="form-control" style="width:98%" rows="4">'+content.text()+'</textarea>'+
+			                                    '<div class="form-group">'+
+			                                        '<button type="button" id="replyEditSubmit" class="btn btn-default" title='+$commentNo+'>확인</button>'+
+			                                    '</div>'+
+			                            '</span>'+
+			                        '</td>'+
+			                    '</tr>';
+			                       
+			parentElement.html(commentEditor);
+		<%--*************** 댓글의 댓글 수정 클릭 End ***************--%>
+		
+		}else{
+			//자기 부모의 tr을 알아낸다.
+			var parentElement = $(this).parent().parent();
+			//댓글달기 창을 없앤다.
+			$("#commentEditor").remove();
+			//부모의 하단에 댓글달기 창을 삽입
+			var commentEditor = '<tr id="commentEditor">'+
+			                        '<td style="width:1%"> </td>'+
+			                        '<td align="right">'+
+			                            '<span class="form-inline" role="form">'+
+			                                    '<textarea id="commentChildText" name="commentChildText" class="form-control" style="width:98%" rows="4"></textarea>'+
+			                                    '<div class="form-group">'+
+			                                        '<button type="button" id="commentChildSubmit" class="btn btn-default">확인</button>'+
+			                                    '</div>'+
+			                            '</span>'+
+			                        '</td>'+
+			                    '</tr>';
+			                       
+			parentElement.after(commentEditor); 
+		}
+	});//on   
         $( "#list" ).click(function( event ) {
             location.href='/community/notice';
         });
